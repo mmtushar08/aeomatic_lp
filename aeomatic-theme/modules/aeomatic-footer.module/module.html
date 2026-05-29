@@ -1,0 +1,26 @@
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="foot-brand">
+        <div class="brand"><span class="brand-mark"></span> {{ module.brand_name }}</div>
+        <div class="foot-tagline">{{ module.brand_tagline }}</div>
+      </div>
+      {% for col in module.link_columns %}
+      <div>
+        <h5>{{ col.column_title }}</h5>
+        {% for link in col.links %}
+        <a href="{{ link.url.href }}">{{ link.label }}</a>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="foot-row">
+      <span>{{ module.copyright_text }}</span>
+      <span>
+        {% for link in module.legal_links %}
+        <a href="{{ link.url.href }}" style="display:inline;margin-right:18px">{{ link.label }}</a>
+        {% endfor %}
+      </span>
+    </div>
+  </div>
+</footer>

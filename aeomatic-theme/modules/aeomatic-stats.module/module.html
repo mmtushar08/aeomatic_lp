@@ -1,0 +1,20 @@
+<section class="stats">
+  <div class="container">
+    <div class="stats-head rv">
+      <div>
+        <span class="eyebrow">{{ module.eyebrow }}</span>
+        <h2 class="sec-h">{{ module.heading }} <span class="accent">{{ module.heading_accent }}</span></h2>
+      </div>
+      <div class="stats-sub">{{ module.subtext }}</div>
+    </div>
+    <div class="stats-row rv">
+      {% for stat in module.stats %}
+      <div class="stat-cell">
+        <div class="n" data-target="{{ stat.number }}" data-suffix="{{ stat.suffix }}">0{{ stat.suffix }}</div>
+        <div class="l">{{ stat.label }}</div>
+        <div class="d">{{ stat.description }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<section class="awards">
+  <div class="container">
+    <div class="awards-row rv">
+      <div class="awards-head">
+        <h3>{{ module.heading }}</h3>
+        <p>{{ module.subtext }}</p>
+      </div>
+      {% for award in module.awards %}
+      <div class="award">
+        <div class="big">{{ award.big }}</div>
+        <div class="lbl">{{ award.label }}</div>
+        <div class="sub">{{ award.sub }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

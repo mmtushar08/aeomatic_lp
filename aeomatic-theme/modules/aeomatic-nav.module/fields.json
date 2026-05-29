@@ -1,0 +1,73 @@
+[
+  {
+    "id": "brand_name",
+    "name": "brand_name",
+    "label": "Brand Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "AEOmatic"
+  },
+  {
+    "id": "nav_links",
+    "name": "nav_links",
+    "label": "Navigation Links",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 0, "max": 10},
+    "default": [
+      {"label": "Features", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+      {"label": "How it works", "url": {"href": "#how", "content_id": null, "type": "EXTERNAL"}},
+      {"label": "Reviews", "url": {"href": "#quotes", "content_id": null, "type": "EXTERNAL"}},
+      {"label": "Download", "url": {"href": "#download", "content_id": null, "type": "EXTERNAL"}}
+    ],
+    "children": [
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Link Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Link"
+      },
+      {
+        "id": "url",
+        "name": "url",
+        "label": "Link URL",
+        "required": false,
+        "locked": false,
+        "type": "url",
+        "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}
+      }
+    ]
+  },
+  {
+    "id": "star_badge_text",
+    "name": "star_badge_text",
+    "label": "Star Badge Text",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "★ 3.1k on WP.org"
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA Button Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Download free"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "CTA Button URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "#download", "content_id": null, "type": "EXTERNAL"}
+  }
+]

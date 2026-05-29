@@ -1,0 +1,175 @@
+[
+  {
+    "id": "badge_tag",
+    "name": "badge_tag",
+    "label": "Badge Tag",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "v1.6"
+  },
+  {
+    "id": "badge_text",
+    "name": "badge_text",
+    "label": "Badge Text",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Free WordPress plugin — just shipped"
+  },
+  {
+    "id": "headline_line1",
+    "name": "headline_line1",
+    "label": "Headline Line 1",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Be cited by"
+  },
+  {
+    "id": "headline_line2",
+    "name": "headline_line2",
+    "label": "Headline Line 2 (accent)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "every AI answer engine"
+  },
+  {
+    "id": "headline_line3",
+    "name": "headline_line3",
+    "label": "Headline Line 3",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "automatically."
+  },
+  {
+    "id": "subtitle",
+    "name": "subtitle",
+    "label": "Subtitle",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<p>From schema detection to <span style=\"font-family:var(--mono);color:var(--ink);font-size:0.9em\">llms.txt</span>, AEOmatic handles the entire answer-engine layer for WordPress — so ChatGPT, Claude, Gemini, Perplexity and Google AI Overviews quote your URL, not someone else's.</p>"
+  },
+  {
+    "id": "primary_cta_label",
+    "name": "primary_cta_label",
+    "label": "Primary CTA Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Download free"
+  },
+  {
+    "id": "primary_cta_url",
+    "name": "primary_cta_url",
+    "label": "Primary CTA URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "#download", "content_id": null, "type": "EXTERNAL"}
+  },
+  {
+    "id": "secondary_cta_label",
+    "name": "secondary_cta_label",
+    "label": "Secondary CTA Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "See how it works"
+  },
+  {
+    "id": "secondary_cta_url",
+    "name": "secondary_cta_url",
+    "label": "Secondary CTA URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "#how", "content_id": null, "type": "EXTERNAL"}
+  },
+  {
+    "id": "hero_meta_items",
+    "name": "hero_meta_items",
+    "label": "Hero Meta Items",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 0, "max": 10},
+    "default": [
+      {"text": "✓ Free forever"},
+      {"text": "✓ No API keys"},
+      {"text": "✓ 50,000+ sites"},
+      {"text": "✓ GPL v2"}
+    ],
+    "children": [
+      {
+        "id": "text",
+        "name": "text",
+        "label": "Meta Item Text",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "✓ Free forever"
+      }
+    ]
+  },
+  {
+    "id": "stage_site_name",
+    "name": "stage_site_name",
+    "label": "Stage Site Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "slowloafkitchen.com"
+  },
+  {
+    "id": "stage_live_label",
+    "name": "stage_live_label",
+    "label": "Stage Live Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "live · 12 citations / hr"
+  },
+  {
+    "id": "trust_label",
+    "name": "trust_label",
+    "label": "Trust Section Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Trusted by 50,000+ WordPress sites — including these"
+  },
+  {
+    "id": "trust_logos",
+    "name": "trust_logos",
+    "label": "Trust Logos",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 0, "max": 20},
+    "default": [
+      {"name": "Slowloaf"},
+      {"name": "Northwind"},
+      {"name": "Linen & Loom"},
+      {"name": "Field Notes Co."},
+      {"name": "Halcyon Press"},
+      {"name": "Marginalia"},
+      {"name": "Atelier Twelve"},
+      {"name": "Open Stack"}
+    ],
+    "children": [
+      {
+        "id": "name",
+        "name": "name",
+        "label": "Logo Name",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Site Name"
+      }
+    ]
+  }
+]

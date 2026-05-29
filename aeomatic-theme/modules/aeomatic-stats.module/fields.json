@@ -1,0 +1,90 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Why AEO in 2026"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading (plain text)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Built for the"
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent (gradient)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "answer era."
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Subtext",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Search results are being rewritten by AI engines. With 10+ years of schema and SEO context baked in, AEOmatic gets your WordPress site quotable across every answer engine — without changing a single theme file."
+  },
+  {
+    "id": "stats",
+    "name": "stats",
+    "label": "Stats",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 6},
+    "default": [
+      {"number": "60", "suffix": "%", "label": "AI Overview coverage", "description": "Google AI Overviews now appear on 60%+ of informational queries — and growing."},
+      {"number": "2.4", "suffix": "B+", "label": "Monthly AI answers", "description": "ChatGPT, Claude, Gemini and Perplexity answer billions of queries every month."},
+      {"number": "3", "suffix": "×", "label": "Citation lift", "description": "Sites running AEOmatic see 3× more answer-engine citations within 60 days."}
+    ],
+    "children": [
+      {
+        "id": "number",
+        "name": "number",
+        "label": "Number (used for counter animation)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "0"
+      },
+      {
+        "id": "suffix",
+        "name": "suffix",
+        "label": "Suffix (e.g. %, B+, ×)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Stat Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Stat Label"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Stat Description",
+        "required": false,
+        "locked": false,
+        "type": "textarea",
+        "default": "Description of the stat."
+      }
+    ]
+  }
+]

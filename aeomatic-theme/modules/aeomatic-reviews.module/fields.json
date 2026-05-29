@@ -1,0 +1,146 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "From the community"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading (plain)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Builders shipping with"
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "AEOmatic."
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Subtext",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Verified WordPress.org reviewers — abridged where indicated."
+  },
+  {
+    "id": "row1_reviews",
+    "name": "row1_reviews",
+    "label": "Row 1 Reviews",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 20},
+    "default": [
+      {"quote": "I had llms.txt generated and 200 recipes serving structured data before my second coffee. Citation traffic from Perplexity tripled in a month.", "author_name": "Mira Voss", "author_initials": "MV", "author_title": "slowloafkitchen.com"},
+      {"quote": "Replaced two paid plugins and a custom JSON-LD snippet with AEOmatic. The confidence score is genuinely best-in-class.", "author_name": "Devin Kapoor", "author_initials": "DK", "author_title": "Lead SEO · Northwind"},
+      {"quote": "The audit told us exactly which 12 product pages were holding us back. ChatGPT names us on three buying-guide queries now.", "author_name": "Sara Albright", "author_initials": "SA", "author_title": "Linen & Loom"},
+      {"quote": "Setup took longer to caffeinate for than to actually install. llms.txt was live in three minutes.", "author_name": "Reza Hassan", "author_initials": "RH", "author_title": "Halcyon Press"},
+      {"quote": "Crawler control alone is worth it — we finally have a clear policy across GPTBot, ClaudeBot and Google-Extended.", "author_name": "Elena Costa", "author_initials": "EC", "author_title": "Marginalia"}
+    ],
+    "children": [
+      {
+        "id": "quote",
+        "name": "quote",
+        "label": "Quote",
+        "required": false,
+        "locked": false,
+        "type": "textarea",
+        "default": "Review text here."
+      },
+      {
+        "id": "author_name",
+        "name": "author_name",
+        "label": "Author Name",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Author Name"
+      },
+      {
+        "id": "author_initials",
+        "name": "author_initials",
+        "label": "Author Initials (for avatar)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "AN"
+      },
+      {
+        "id": "author_title",
+        "name": "author_title",
+        "label": "Author Title / Site",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Author title"
+      }
+    ]
+  },
+  {
+    "id": "row2_reviews",
+    "name": "row2_reviews",
+    "label": "Row 2 Reviews",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 20},
+    "default": [
+      {"quote": "The audit score is the part I keep coming back to — it's like Lighthouse for AI engines.", "author_name": "Juno Lee", "author_initials": "JL", "author_title": "Field Notes Co."},
+      {"quote": "Works perfectly alongside Yoast. AEO layer drops in cleanly without touching the rest of our SEO setup.", "author_name": "Priya Krishnan", "author_initials": "PK", "author_title": "Open Stack"},
+      {"quote": "For a free plugin this is unreasonably good. Found three schema misses on day one.", "author_name": "Atelier Twelve", "author_initials": "AT", "author_title": "Editorial studio"},
+      {"quote": "Page-builder support is the real story for us — we run Bricks and everything just worked.", "author_name": "Nora Fischer", "author_initials": "NF", "author_title": "Atelier Brut"},
+      {"quote": "Honestly the cleanest plugin UX I've seen in WordPress in years.", "author_name": "Tomás Weber", "author_initials": "TW", "author_title": "Solo dev"}
+    ],
+    "children": [
+      {
+        "id": "quote",
+        "name": "quote",
+        "label": "Quote",
+        "required": false,
+        "locked": false,
+        "type": "textarea",
+        "default": "Review text here."
+      },
+      {
+        "id": "author_name",
+        "name": "author_name",
+        "label": "Author Name",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Author Name"
+      },
+      {
+        "id": "author_initials",
+        "name": "author_initials",
+        "label": "Author Initials (for avatar)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "AN"
+      },
+      {
+        "id": "author_title",
+        "name": "author_title",
+        "label": "Author Title / Site",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Author title"
+      }
+    ]
+  }
+]

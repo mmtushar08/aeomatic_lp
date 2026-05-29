@@ -1,0 +1,18 @@
+<section class="channels">
+  <div class="container">
+    <div class="channels-head rv">
+      <h2>{{ module.heading }} <span class="accent">{{ module.heading_accent }}</span></h2>
+      <div class="channels-sub">{{ module.subtext }}</div>
+    </div>
+    <div class="channels-grid">
+      {% for card in module.cards %}
+      <div class="ch rv">
+        <div class="ch-icon">{{ card.icon_text }}</div>
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.description }}</p>
+        <a href="{{ card.cta_url.href }}" class="ch-cta">{{ card.cta_label }} <span class="arrow">→</span></a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

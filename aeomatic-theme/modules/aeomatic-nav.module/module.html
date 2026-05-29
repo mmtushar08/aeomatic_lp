@@ -1,0 +1,17 @@
+<nav class="aeo-nav">
+  <div class="container top-inner">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      {{ module.brand_name }}
+    </div>
+    <div class="top-links">
+      {% for link in module.nav_links %}
+      <a href="{{ link.url.href }}">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+    <div class="top-actions">
+      <span class="star-badge">{{ module.star_badge_text }}</span>
+      <a class="btn btn-primary" href="{{ module.cta_url.href }}">{{ module.cta_label }} <span class="arrow">→</span></a>
+    </div>
+  </div>
+</nav>

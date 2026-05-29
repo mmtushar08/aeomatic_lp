@@ -1,0 +1,62 @@
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="badge">
+        <span class="tag">{{ module.badge_tag }}</span>
+        {{ module.badge_text }}
+      </span>
+      <h1 class="hero-h">
+        <span class="grad">{{ module.headline_line1 }}</span><br>
+        <span class="accent">{{ module.headline_line2 }}</span><br>
+        <span class="grad" style="opacity:0.85">{{ module.headline_line3 }}</span>
+      </h1>
+      <div class="hero-sub">{{ module.subtitle }}</div>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="{{ module.primary_cta_url.href }}">{{ module.primary_cta_label }} <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="{{ module.secondary_cta_url.href }}">{{ module.secondary_cta_label }}</a>
+      </div>
+      <div class="hero-meta">
+        {% for item in module.hero_meta_items %}
+          <span>{{ item.text }}</span>
+          {% if not loop.last %}<span class="dot"></span>{% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Animated hero stage: AEO action checklist -->
+    <div class="stage" aria-hidden="true">
+      <div class="stage-head">
+        <span>aeo.run · session #2148</span>
+        <span class="lights"><i></i><i></i><i></i></span>
+      </div>
+      <div class="stage-body">
+        <p class="stage-title">Optimizing <b>{{ module.stage_site_name }}</b> for citation…</p>
+        <div class="checklist" id="aeo-checklist">
+          <div class="ci" data-step="0"><span class="indicator"></span><span class="text">Detecting schema type</span><span class="meta">step 1 / 5</span></div>
+          <div class="ci" data-step="1"><span class="indicator"></span><span class="text">Generating <span style="font-family:var(--mono)">llms.txt</span></span><span class="meta">step 2 / 5</span></div>
+          <div class="ci" data-step="2"><span class="indicator"></span><span class="text">Writing JSON-LD into &lt;head&gt;</span><span class="meta">step 3 / 5</span></div>
+          <div class="ci" data-step="3"><span class="indicator"></span><span class="text">Updating crawler policy</span><span class="meta">step 4 / 5</span></div>
+          <div class="ci" data-step="4"><span class="indicator"></span><span class="text">Running AEO audit</span><span class="meta">step 5 / 5</span></div>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <span class="live"><span class="d"></span> {{ module.stage_live_label }}</span>
+        <span>WordPress 6.4+</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo marquee -->
+  <div class="container">
+    <div class="trust">
+      <div class="trust-label">{{ module.trust_label }}</div>
+      <div class="marquee">
+        <div class="marquee-track" id="aeo-mtrack">
+          {% for logo in module.trust_logos %}
+          <span class="mlogo"><span class="mk"></span>{{ logo.name }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

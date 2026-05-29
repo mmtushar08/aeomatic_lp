@@ -1,0 +1,6 @@
+defaultPortal: aeomatic
+portals:
+  - name: aeomatic
+    portalId: YOUR_PORTAL_ID
+    authType: personalaccesskey
+    personalAccessKey: YOUR_PERSONAL_ACCESS_KEY

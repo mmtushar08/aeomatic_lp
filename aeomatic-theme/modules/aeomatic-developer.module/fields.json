@@ -1,0 +1,134 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Development"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading (plain)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "For teams that want"
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "programmatic access."
+  },
+  {
+    "id": "body",
+    "name": "body",
+    "label": "Body Text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "AEOmatic ships a REST API for everything you can do from the admin — query schema, regenerate llms.txt, set crawler policies, fetch audit scores. Perfect for headless WordPress and CI pipelines."
+  },
+  {
+    "id": "primary_cta_label",
+    "name": "primary_cta_label",
+    "label": "Primary CTA Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "View documentation"
+  },
+  {
+    "id": "primary_cta_url",
+    "name": "primary_cta_url",
+    "label": "Primary CTA URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "#download", "content_id": null, "type": "EXTERNAL"}
+  },
+  {
+    "id": "secondary_cta_label",
+    "name": "secondary_cta_label",
+    "label": "Secondary CTA Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Contact sales"
+  },
+  {
+    "id": "secondary_cta_url",
+    "name": "secondary_cta_url",
+    "label": "Secondary CTA URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "#download", "content_id": null, "type": "EXTERNAL"}
+  },
+  {
+    "id": "code_tabs",
+    "name": "code_tabs",
+    "label": "Code Tabs",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 6},
+    "default": [
+      {
+        "tab_label": "cURL",
+        "tab_lang": "shell",
+        "code": "# Fetch the AEO audit score for a post\ncurl --request GET \\\n  --url https://yoursite.com/wp-json/aeomatic/v1/audit/124 \\\n  --header 'X-AEO-Key: $AEO_API_KEY'\n\n# Response\n{\n  \"post_id\":      124,\n  \"score\":        82,\n  \"delta_7d\":    +14,\n  \"schema_type\": \"Recipe\",\n  \"confidence\":  0.87,\n  \"breakdown\": {\n    \"schema\":     94,\n    \"quotable\":   88,\n    \"questions\":  61,\n    \"links\":      76\n  },\n  \"next_fix\":    \"add FAQPage block\"\n}"
+      },
+      {
+        "tab_label": "Node",
+        "tab_lang": "js",
+        "code": "const res = await fetch(\n  'https://yoursite.com/wp-json/aeomatic/v1/audit/124',\n  { headers: { 'X-AEO-Key': process.env.AEO_API_KEY } }\n);\nconst data = await res.json();\nconsole.log(data.score); // 82"
+      },
+      {
+        "tab_label": "Python",
+        "tab_lang": "py",
+        "code": "import requests, os\n\nr = requests.get(\n    'https://yoursite.com/wp-json/aeomatic/v1/audit/124',\n    headers={'X-AEO-Key': os.environ['AEO_API_KEY']}\n)\nprint(r.json()['score'])  # 82"
+      },
+      {
+        "tab_label": "PHP",
+        "tab_lang": "php",
+        "code": "<?php\n$response = wp_remote_get(\n    'https://yoursite.com/wp-json/aeomatic/v1/audit/124',\n    ['headers' => ['X-AEO-Key' => AEO_API_KEY]]\n);\n$data = json_decode(wp_remote_retrieve_body($response));\necho $data->score; // 82"
+      }
+    ],
+    "children": [
+      {
+        "id": "tab_label",
+        "name": "tab_label",
+        "label": "Tab Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "cURL"
+      },
+      {
+        "id": "tab_lang",
+        "name": "tab_lang",
+        "label": "Language Tag (shell, js, py, php)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "shell"
+      },
+      {
+        "id": "code",
+        "name": "code",
+        "label": "Code Content",
+        "required": false,
+        "locked": false,
+        "type": "textarea",
+        "default": "// your code here"
+      }
+    ]
+  }
+]

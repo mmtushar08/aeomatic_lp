@@ -1,0 +1,91 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading (plain)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "One plugin."
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Every surface."
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Subtext",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Schema, llms.txt, crawler rules, and audit — four pillars that make every page on your site ready for the answer era."
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Cards",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 8},
+    "default": [
+      {"icon_text": "JL", "title": "JSON-LD", "description": "Structured data injected into every page's &lt;head&gt;, generated from your content with confidence scoring.", "cta_label": "Explore JSON-LD", "cta_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+      {"icon_text": "LM", "title": "llms.txt", "description": "The new standard for answer engines. AEOmatic writes yours automatically and keeps it synced.", "cta_label": "Explore llms.txt", "cta_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+      {"icon_text": "CR", "title": "Crawlers", "description": "Allow or block 18 named AI bots — per content-type, with audit logs and IP-aware rules.", "cta_label": "Explore crawlers", "cta_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+      {"icon_text": "AD", "title": "Audit", "description": "0–100 quotability score with priority-ordered fixes you can apply with one click.", "cta_label": "Explore audit", "cta_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}}
+    ],
+    "children": [
+      {
+        "id": "icon_text",
+        "name": "icon_text",
+        "label": "Icon Text (2 letters)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "JL"
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Card Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Feature"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Card Description",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "default": "Feature description."
+      },
+      {
+        "id": "cta_label",
+        "name": "cta_label",
+        "label": "CTA Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Learn more"
+      },
+      {
+        "id": "cta_url",
+        "name": "cta_url",
+        "label": "CTA URL",
+        "required": false,
+        "locked": false,
+        "type": "url",
+        "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}
+      }
+    ]
+  }
+]

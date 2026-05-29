@@ -1,0 +1,122 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Reach & ecosystem"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading (plain)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Every"
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "answer engine,"
+  },
+  {
+    "id": "heading_end",
+    "name": "heading_end",
+    "label": "Heading End (plain)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "covered."
+  },
+  {
+    "id": "body",
+    "name": "body",
+    "label": "Body Text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "One plugin, six answer engines — and counting. AEOmatic ships with crawler policies and structured-data profiles tuned for each, updated whenever the standards shift."
+  },
+  {
+    "id": "cta_label",
+    "name": "cta_label",
+    "label": "CTA Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Get AEOmatic free"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "CTA URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "#download", "content_id": null, "type": "EXTERNAL"}
+  },
+  {
+    "id": "integrations",
+    "name": "integrations",
+    "label": "Integration Bubbles",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 12},
+    "default": [
+      {"name": "ChatGPT",     "color": "#10a37f", "letter": "G", "position_class": "b1"},
+      {"name": "Claude",      "color": "#d97706", "letter": "C", "position_class": "b2"},
+      {"name": "Gemini",      "color": "#4285f4", "letter": "G", "position_class": "b3"},
+      {"name": "Perplexity",  "color": "#22d3ee", "letter": "P", "position_class": "b4"},
+      {"name": "AI Overviews","color": "#f5f1ea", "letter": "A", "position_class": "b5"},
+      {"name": "Copilot",     "color": "#a78bfa", "letter": "C", "position_class": "b6"},
+      {"name": "You.com",     "color": "#fb923c", "letter": "Y", "position_class": "b7"},
+      {"name": "Bytespider",  "color": "#34d399", "letter": "B", "position_class": "b8"}
+    ],
+    "children": [
+      {
+        "id": "name",
+        "name": "name",
+        "label": "Engine Name",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "ChatGPT"
+      },
+      {
+        "id": "color",
+        "name": "color",
+        "label": "Icon Background Color (hex)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "#10a37f"
+      },
+      {
+        "id": "letter",
+        "name": "letter",
+        "label": "Icon Letter",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "G"
+      },
+      {
+        "id": "position_class",
+        "name": "position_class",
+        "label": "Position Class (b1–b8)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "b1"
+      }
+    ]
+  }
+]

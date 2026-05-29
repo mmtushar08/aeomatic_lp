@@ -1,0 +1,105 @@
+<section id="features" class="features">
+  <div class="container">
+    <div class="features-head rv">
+      <h2>{{ module.section_heading }} <span class="accent">{{ module.section_heading_accent }}</span></h2>
+      <div class="features-intro">{{ module.section_subtext }}</div>
+    </div>
+
+    {% for feature in module.features %}
+    <div class="fblock rv{% if loop.index is divisibleby 2 %} fblock-even{% endif %}">
+      <div class="fb-text">
+        <span class="fb-tag">{{ feature.tag }}</span>
+        <h3 class="fb-h">{{ feature.heading }}</h3>
+        <div class="fb-p">{{ feature.body }}</div>
+        {% if feature.list_items %}
+        <ul class="fb-list">
+          {% for item in feature.list_items %}
+          <li>
+            <span class="icn">{{ item.icon }}</span>
+            <div><b>{{ item.title }}</b>{{ item.desc }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="{{ feature.cta_url.href }}" class="fb-cta">{{ feature.cta_label }} <span class="arrow">→</span></a>
+      </div>
+
+      <div class="fb-visual">
+
+        {% if feature.visual_type == "schema" %}
+        <div class="fbv-head"><span>post · #124 · "Sourdough Focaccia"</span><span>recipe</span></div>
+        <div class="conf">
+          <div class="crow"><span class="nm">Recipe</span><span class="bar"><i style="width:87%"></i></span><span class="pct">87%</span></div>
+          <div class="crow dim"><span class="nm">HowTo</span><span class="bar"><i style="width:62%"></i></span><span class="pct">62%</span></div>
+          <div class="crow dim"><span class="nm">Article</span><span class="bar"><i style="width:31%"></i></span><span class="pct">31%</span></div>
+          <div class="crow dim"><span class="nm">Product</span><span class="bar"><i style="width:18%"></i></span><span class="pct">18%</span></div>
+          <div class="crow dim"><span class="nm">Event</span><span class="bar"><i style="width:9%"></i></span><span class="pct">9%</span></div>
+        </div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px dashed rgba(255,255,255,0.08);font-family:var(--mono);font-size:11px;color:rgba(244,245,247,0.42);line-height:1.7;position:relative;z-index:1">
+          <span style="color:oklch(0.78 0.18 145)">✓</span> detected from: <span style="color:#f4f5f7">ingredients list, cook-time, yield</span><br>
+          <span style="color:oklch(0.78 0.18 145)">✓</span> JSON-LD injected → <span style="color:oklch(0.74 0.18 248)">live</span>
+        </div>
+
+        {% elif feature.visual_type == "llmstxt" %}
+        <div class="fbv-head"><span>yoursite.com/llms.txt</span><span>auto · synced</span></div>
+        <div class="code"><span class="com"># slowloafkitchen.com</span>
+<span class="key">&gt;</span> Slow-fermentation baking blog — recipes &amp; technique
+
+<span class="h">## Recipes</span>
+- <a>Sourdough Focaccia, Slow Rise</a> <span class="com">— 36h cold ferment</span>
+- <a>Country Loaf, 78% Hydration</a> <span class="com">— beginner</span>
+- <a>Olive Oil Brioche</a>          <span class="com">— enriched dough</span>
+
+<span class="h">## Technique</span>
+- <a>Stretch and Folds, Explained</a>
+- <a>Reading Your Starter</a></div>
+
+        {% elif feature.visual_type == "crawlers" %}
+        <div class="fbv-head"><span>crawler policy · live</span><span>14 allowed · 4 blocked</span></div>
+        <div class="crawlers">
+          <div class="cr on"><span class="sw"></span><span class="nm">GPTBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">ClaudeBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">PerplexityBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">GeminiBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">Google-Extended</span></div>
+          <div class="cr off"><span class="sw"></span><span class="nm">CCBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">Applebot</span></div>
+          <div class="cr off"><span class="sw"></span><span class="nm">YouBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">Bytespider</span></div>
+          <div class="cr off"><span class="sw"></span><span class="nm">Amazonbot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">DiffBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">+7 more</span></div>
+        </div>
+
+        {% elif feature.visual_type == "audit" %}
+        <div class="fbv-head"><span>aeo audit · #124</span><span>↑ +14 vs last week</span></div>
+        <div class="gauge">
+          <div class="ring">
+            <svg viewBox="0 0 140 140">
+              <circle cx="70" cy="70" r="60" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="none"/>
+              <circle cx="70" cy="70" r="60" stroke="url(#gg)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="377" stroke-dashoffset="68"/>
+              <defs>
+                <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="oklch(0.78 0.18 248)"/>
+                  <stop offset="100%" stop-color="oklch(0.62 0.22 280)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="num">82<span class="of">/100</span></div>
+          </div>
+          <div>
+            <div class="gl"><span>Schema completeness</span><b>94%</b></div>
+            <div class="gl"><span>Quote-ready paragraphs</span><b>88%</b></div>
+            <div class="gl"><span>Question coverage</span><b>61%</b></div>
+            <div class="gl"><span>Internal entity links</span><b>76%</b></div>
+            <div class="gl-up">↑ +14 since last week</div>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</section>

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Loved by builders.<br>Recognised by the standards bodies."
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Subtext",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "AEOmatic is the only AEO-focused plugin co-authored with the maintainers of the llms.txt and schema.org guidance."
+  },
+  {
+    "id": "awards",
+    "name": "awards",
+    "label": "Awards",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 6},
+    "default": [
+      {"big": "#1", "label": "WordPress.org", "sub": "Top AEO plugin, 2026 Q1"},
+      {"big": "4.9", "label": "Avg review score", "sub": "From 1,800+ verified reviews"},
+      {"big": "50k+", "label": "Active sites", "sub": "In 80+ countries worldwide"},
+      {"big": "∞", "label": "Free", "sub": "GPL v2 · forever, no upsell"}
+    ],
+    "children": [
+      {
+        "id": "big",
+        "name": "big",
+        "label": "Big Number / Symbol",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "#1"
+      },
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Label"
+      },
+      {
+        "id": "sub",
+        "name": "sub",
+        "label": "Sub-label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Sub-label"
+      }
+    ]
+  }
+]

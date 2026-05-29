@@ -1,0 +1,83 @@
+[
+  {
+    "id": "heading_line1",
+    "name": "heading_line1",
+    "label": "Heading Line 1",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Be cited."
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Be quoted."
+  },
+  {
+    "id": "heading_line2",
+    "name": "heading_line2",
+    "label": "Heading Line 2",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Start free today."
+  },
+  {
+    "id": "body",
+    "name": "body",
+    "label": "Body Text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Free forever. Installs in under a minute. No account, no credit card, no API key — and your AEO score updates the moment you publish."
+  },
+  {
+    "id": "primary_cta_label",
+    "name": "primary_cta_label",
+    "label": "Primary CTA Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Download free on WordPress.org"
+  },
+  {
+    "id": "primary_cta_url",
+    "name": "primary_cta_url",
+    "label": "Primary CTA URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"}
+  },
+  {
+    "id": "secondary_cta_label",
+    "name": "secondary_cta_label",
+    "label": "Secondary CTA Label",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Explore features"
+  },
+  {
+    "id": "secondary_cta_url",
+    "name": "secondary_cta_url",
+    "label": "Secondary CTA URL",
+    "required": false,
+    "locked": false,
+    "type": "url",
+    "default": {"href": "#features", "content_id": null, "type": "EXTERNAL"}
+  },
+  {
+    "id": "footer_note",
+    "name": "footer_note",
+    "label": "Footer Note",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "★★★★★ rated · GPL v2 · WordPress 6.4+"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "brand_name",
+    "name": "brand_name",
+    "label": "Brand Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "AEOmatic"
+  },
+  {
+    "id": "brand_tagline",
+    "name": "brand_tagline",
+    "label": "Brand Tagline",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Answer Engine Optimization for WordPress. Make your content quotable by ChatGPT, Claude, Gemini, Perplexity and Google AI Overviews — for free."
+  },
+  {
+    "id": "link_columns",
+    "name": "link_columns",
+    "label": "Link Columns",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 6},
+    "default": [
+      {
+        "column_title": "Plugin",
+        "links": [
+          {"label": "Features", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "Schema", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "llms.txt", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "Crawlers", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "Audit", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}}
+        ]
+      },
+      {
+        "column_title": "Resources",
+        "links": [
+          {"label": "Documentation", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "llms.txt guide", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "Changelog", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "Roadmap", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+        ]
+      },
+      {
+        "column_title": "Support",
+        "links": [
+          {"label": "WordPress.org", "url": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "GitHub", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "Contact", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"label": "Status", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+        ]
+      }
+    ],
+    "children": [
+      {
+        "id": "column_title",
+        "name": "column_title",
+        "label": "Column Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Column"
+      },
+      {
+        "id": "links",
+        "name": "links",
+        "label": "Links",
+        "required": false,
+        "locked": false,
+        "type": "group",
+        "occurrence": {"min": 0, "max": 10},
+        "default": [],
+        "children": [
+          {
+            "id": "label",
+            "name": "label",
+            "label": "Link Label",
+            "required": false,
+            "locked": false,
+            "type": "text",
+            "default": "Link"
+          },
+          {
+            "id": "url",
+            "name": "url",
+            "label": "Link URL",
+            "required": false,
+            "locked": false,
+            "type": "url",
+            "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "copyright_text",
+    "name": "copyright_text",
+    "label": "Copyright Text",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "© 2026 AEOmatic · GPL v2 licensed"
+  },
+  {
+    "id": "legal_links",
+    "name": "legal_links",
+    "label": "Legal Links",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 0, "max": 6},
+    "default": [
+      {"label": "Privacy", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+      {"label": "Terms", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+    ],
+    "children": [
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Link Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Link"
+      },
+      {
+        "id": "url",
+        "name": "url",
+        "label": "Link URL",
+        "required": false,
+        "locked": false,
+        "type": "url",
+        "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}
+      }
+    ]
+  }
+]

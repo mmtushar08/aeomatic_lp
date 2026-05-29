@@ -1,0 +1,45 @@
+<section id="quotes" class="reviews">
+  <div class="container">
+    <div class="reviews-head rv">
+      <span class="eyebrow">{{ module.eyebrow }}</span>
+      <h2>{{ module.heading }} <span class="accent">{{ module.heading_accent }}</span></h2>
+      <p>{{ module.subtext }}</p>
+    </div>
+  </div>
+
+  <div class="review-row">
+    <div class="review-track" id="aeo-rev-track1">
+      {% for review in module.row1_reviews %}
+      <div class="rv-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"{{ review.quote }}"</blockquote>
+        <div class="rv-foot">
+          <div class="av">{{ review.author_initials }}</div>
+          <div>
+            <div class="nm">{{ review.author_name }}</div>
+            <div class="ti">{{ review.author_title }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="review-row r2">
+    <div class="review-track" id="aeo-rev-track2">
+      {% for review in module.row2_reviews %}
+      <div class="rv-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"{{ review.quote }}"</blockquote>
+        <div class="rv-foot">
+          <div class="av">{{ review.author_initials }}</div>
+          <div>
+            <div class="nm">{{ review.author_name }}</div>
+            <div class="ti">{{ review.author_title }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

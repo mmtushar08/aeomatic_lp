@@ -1,0 +1,193 @@
+[
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Section Heading (plain)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Everything you need"
+  },
+  {
+    "id": "section_heading_accent",
+    "name": "section_heading_accent",
+    "label": "Section Heading Accent",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "to be quotable."
+  },
+  {
+    "id": "section_subtext",
+    "name": "section_subtext",
+    "label": "Section Subtext",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "From schema detection to crawler control — every module targets a specific reason an AI engine might skip your page, and fixes it automatically."
+  },
+  {
+    "id": "features",
+    "name": "features",
+    "label": "Feature Blocks",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {"min": 1, "max": 8},
+    "default": [
+      {
+        "tag": "Schema detection",
+        "heading": "Auto-detect the right type — with a confidence score.",
+        "body": "AEOmatic reads your post and picks from 26 schema.org types: Article, Recipe, Product, How-To, FAQ, Event and more. Every choice ships with a confidence percentage so you know when to trust it and when to override.",
+        "cta_label": "Explore schema detection",
+        "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "visual_type": "schema",
+        "list_items": [
+          {"icon": "26", "title": "Schema types out of the box", "desc": "From Article to LocalBusiness to MedicalCondition — covered without configuration."},
+          {"icon": "%", "title": "Confidence on every detection", "desc": "See exactly how sure AEOmatic is before it ships JSON-LD into your &lt;head&gt;."},
+          {"icon": "↺", "title": "One-click override", "desc": "Edge cases happen. Pick the right type yourself; the rest stays auto-synced."}
+        ]
+      },
+      {
+        "tag": "LLM indexing",
+        "heading": "A clean llms.txt, generated for you.",
+        "body": "The emerging standard — like robots.txt for answer engines — that tells LLMs which pages on your site are most worth quoting. AEOmatic writes yours automatically and updates it as you publish.",
+        "cta_label": "Read the llms.txt guide",
+        "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "visual_type": "llmstxt",
+        "list_items": [
+          {"icon": "⌘", "title": "Auto-prioritised by content", "desc": "Most quotable pages bubble to the top, sorted by freshness and structure."},
+          {"icon": "↧", "title": "Markdown export", "desc": "Review offline, edit, push back. Or let AEOmatic keep it in sync."},
+          {"icon": "⊘", "title": "Per-section opt-out", "desc": "Exclude private, paid, or low-quality pages with a single toggle."}
+        ]
+      },
+      {
+        "tag": "Crawler control",
+        "heading": "Decide which AIs can read you.",
+        "body": "Allow the engines you want to be cited by. Block the ones you don't. AEOmatic writes the robots directives, the meta tags, and the IP-aware rules — across 18 known AI crawlers — so your policy stays consistent everywhere.",
+        "cta_label": "Explore crawler control",
+        "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "visual_type": "crawlers",
+        "list_items": [
+          {"icon": "18", "title": "Named crawlers covered", "desc": "GPTBot, ClaudeBot, PerplexityBot, GeminiBot, Google-Extended, Applebot, CCBot — and 11 more."},
+          {"icon": "⊕", "title": "Per-content-type rules", "desc": "Block paid posts from training while letting your blog be quoted freely."},
+          {"icon": "≡", "title": "Audit log", "desc": "See what each bot last fetched — and when."}
+        ]
+      },
+      {
+        "tag": "Content audit",
+        "heading": "A 0–100 AEO score, with the next thing to fix.",
+        "body": "Every post gets a quotability score. The fixes are written as direct edits you can apply with one click — no consultant, no waiting.",
+        "cta_label": "Explore the audit",
+        "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "visual_type": "audit",
+        "list_items": [
+          {"icon": "100", "title": "Quotability score", "desc": "One number that tells you whether AI engines will pull from this page."},
+          {"icon": "★", "title": "Priority-ordered fixes", "desc": "The biggest wins, in order, with one-click apply."},
+          {"icon": "≋", "title": "Trend history", "desc": "See how your score moves with every publish — site-wide or per-post."}
+        ]
+      }
+    ],
+    "children": [
+      {
+        "id": "tag",
+        "name": "tag",
+        "label": "Feature Tag",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Feature tag"
+      },
+      {
+        "id": "heading",
+        "name": "heading",
+        "label": "Feature Heading",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Feature heading"
+      },
+      {
+        "id": "body",
+        "name": "body",
+        "label": "Feature Body",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "default": "Feature body text."
+      },
+      {
+        "id": "cta_label",
+        "name": "cta_label",
+        "label": "CTA Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Learn more"
+      },
+      {
+        "id": "cta_url",
+        "name": "cta_url",
+        "label": "CTA URL",
+        "required": false,
+        "locked": false,
+        "type": "url",
+        "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}
+      },
+      {
+        "id": "visual_type",
+        "name": "visual_type",
+        "label": "Visual Demo Type",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "default": "schema",
+        "choices": [
+          ["schema", "Schema Detection"],
+          ["llmstxt", "llms.txt Code"],
+          ["crawlers", "Crawler Grid"],
+          ["audit", "Audit Gauge"]
+        ]
+      },
+      {
+        "id": "list_items",
+        "name": "list_items",
+        "label": "Bullet Points",
+        "required": false,
+        "locked": false,
+        "type": "group",
+        "occurrence": {"min": 0, "max": 6},
+        "default": [],
+        "children": [
+          {
+            "id": "icon",
+            "name": "icon",
+            "label": "Icon / Short Label",
+            "required": false,
+            "locked": false,
+            "type": "text",
+            "default": "★"
+          },
+          {
+            "id": "title",
+            "name": "title",
+            "label": "Item Title",
+            "required": false,
+            "locked": false,
+            "type": "text",
+            "default": "Item title"
+          },
+          {
+            "id": "desc",
+            "name": "desc",
+            "label": "Item Description",
+            "required": false,
+            "locked": false,
+            "type": "textarea",
+            "default": "Item description."
+          }
+        ]
+      }
+    ]
+  }
+]
