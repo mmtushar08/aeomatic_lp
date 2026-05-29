@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AEOmatic — AI-first answer engine optimization for WordPress (Light)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f5f0;
+    --bg-2:#ffffff;
+    --card:#ffffff;
+    --line:rgba(15,15,20,0.08);
+    --line-2:rgba(15,15,20,0.16);
+    --ink:#0e0e10;
+    --ink-dim:rgba(14,14,16,0.66);
+    --ink-faint:rgba(14,14,16,0.46);
+    --ink-ghost:rgba(14,14,16,0.24);
+    --accent: oklch(0.52 0.20 252);
+    --accent-2: oklch(0.46 0.20 272);
+    --accent-glow: oklch(0.52 0.22 252 / 0.28);
+    --good: oklch(0.52 0.16 150);
+    --warn: oklch(0.62 0.16 70);
+    --sans:"Geist",system-ui,sans-serif;
+    --mono:"Geist Mono",ui-monospace,monospace;
+    --maxw:1240px;
+    --pad-x:clamp(20px,4vw,40px);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:
+      radial-gradient(1200px 700px at 50% -300px, rgba(80,120,220,0.10), transparent 70%),
+      var(--bg);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  ::selection{background:var(--accent-glow);color:var(--ink)}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x);position:relative;z-index:2}
+
+  /* ─── NAV ─── */
+  nav.top{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,245,240,0.78);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-bottom:1px solid var(--line);
+  }
+  .top-inner{display:flex;align-items:center;gap:32px;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:500;letter-spacing:-0.01em;font-size:15px}
+  .brand-mark{
+    width:22px;height:22px;border-radius:6px;
+    background:conic-gradient(from 200deg, oklch(0.52 0.20 252), oklch(0.46 0.20 272), oklch(0.62 0.18 232), oklch(0.52 0.20 252));
+    box-shadow:0 0 18px var(--accent-glow), inset 0 0 0 1px rgba(255,255,255,0.4);
+    position:relative;
+  }
+  .brand-mark::after{content:"";position:absolute;inset:5px;background:var(--bg);border-radius:3px}
+  .top-links{display:flex;gap:6px;flex:1}
+  .top-links a{padding:8px 14px;color:var(--ink-dim);font-size:14px;border-radius:8px;transition:color .15s, background .15s;display:inline-flex;align-items:center;gap:6px}
+  .top-links a:hover{color:var(--ink);background:rgba(14,14,16,0.04)}
+  .top-links a .chev{font-size:9px;opacity:.5}
+  .top-actions{display:flex;align-items:center;gap:8px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;font-size:13.5px;font-weight:500;line-height:1;
+    transition:transform .2s, background .2s, box-shadow .2s;border:1px solid transparent;
+  }
+  .btn-ghost{color:var(--ink-dim);border-color:var(--line-2)}
+  .btn-ghost:hover{color:var(--ink);background:rgba(14,14,16,0.04)}
+  .btn-primary{
+    background:linear-gradient(180deg, oklch(0.56 0.20 252), oklch(0.46 0.20 268));
+    color:#fff;
+    box-shadow:0 0 0 1px rgba(0,0,0,0.06), 0 6px 22px rgba(60,100,200,0.30), inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(0,0,0,0.10),0 10px 30px rgba(60,100,200,0.42),inset 0 1px 0 rgba(255,255,255,0.3)}
+  .btn-link{color:var(--ink-dim);padding:9px 10px;font-size:13.5px}
+  .arrow{transition:transform .2s;display:inline-block}
+  .btn:hover .arrow{transform:translateX(2px)}
+  @media(max-width:780px){.top-links{display:none}}
+
+  /* ─── HERO ─── */
+  .hero{padding:80px 0 60px;position:relative}
+  .hero-inner{display:grid;grid-template-columns:1.05fr 0.95fr;gap:60px;align-items:center}
+  @media(max-width:960px){.hero-inner{grid-template-columns:1fr;gap:40px}}
+  .badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:5px 12px 5px 5px;border-radius:999px;
+    background:rgba(255,255,255,0.65);border:1px solid var(--line);font-size:12.5px;color:var(--ink-dim);
+    box-shadow:0 1px 0 rgba(255,255,255,0.5) inset;
+  }
+  .badge .tag{background:var(--accent);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:0.06em;padding:3px 8px;border-radius:999px;text-transform:uppercase;font-weight:500}
+  h1.hero-h{
+    margin:24px 0 0;font-size:clamp(44px,5.6vw,72px);line-height:1.0;letter-spacing:-0.04em;font-weight:500;
+  }
+  h1.hero-h .grad{
+    background:linear-gradient(180deg, #0e0e10 0%, rgba(14,14,16,0.55) 110%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  h1.hero-h .accent{
+    background:linear-gradient(120deg, oklch(0.52 0.20 252), oklch(0.42 0.22 280));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{margin-top:22px;max-width:540px;color:var(--ink-dim);font-size:17px;line-height:1.55;letter-spacing:-0.005em}
+  .hero-ctas{margin-top:32px;display:flex;gap:10px;flex-wrap:wrap}
+  .hero-ctas .btn{padding:12px 18px;font-size:14px}
+  .hero-meta{margin-top:28px;display:flex;gap:18px;color:var(--ink-faint);font-size:12.5px;align-items:center;flex-wrap:wrap}
+  .hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--ink-ghost)}
+
+  /* ─── HERO STAGE: animated checklist ─── */
+  .stage{
+    position:relative;border:1px solid var(--line);border-radius:16px;
+    background:linear-gradient(180deg, var(--bg-2), #08080c);
+    padding:22px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .stage::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:24px 24px;
+    mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .stage-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;padding:2px 4px 16px;border-bottom:1px solid var(--line);position:relative;z-index:1}
+  .stage-head .lights{display:flex;gap:5px}
+  .stage-head .lights i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.12)}
+  .stage-body{padding-top:18px;position:relative;z-index:1}
+  .stage-title{font-size:13px;color:var(--ink-dim);margin:0 0 18px;font-family:var(--mono);letter-spacing:0.02em}
+  .stage-title b{color:var(--ink);font-weight:500}
+
+  .checklist{display:flex;flex-direction:column;gap:10px}
+  .ci{
+    display:flex;align-items:center;gap:14px;
+    padding:12px 14px;border-radius:10px;
+    background:rgba(255,255,255,0.025);border:1px solid var(--line);
+    transition:background .25s, border-color .25s, opacity .25s;
+    opacity:0.45;
+  }
+  .ci.active{background:rgba(80,140,220,0.07);border-color:rgba(80,140,220,0.25);opacity:1}
+  .ci.done{opacity:1}
+  .ci .indicator{
+    width:18px;height:18px;border-radius:50%;flex:0 0 18px;
+    border:1.5px solid var(--line-2);position:relative;
+    transition:border-color .25s, background .25s;
+  }
+  .ci.active .indicator{
+    border-color:var(--accent);
+  }
+  .ci.active .indicator::after{
+    content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 12px var(--accent);
+    animation:pulse 1.2s ease-in-out infinite;
+  }
+  .ci.done .indicator{
+    background:var(--good);border-color:var(--good);
+  }
+  .ci.done .indicator::after{
+    content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#03150a;font-size:11px;font-weight:700;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.6);opacity:0.6}}
+  .ci .text{flex:1;font-size:14px;color:var(--ink);letter-spacing:-0.005em}
+  .ci.active .text{color:var(--ink)}
+  .ci .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:0.04em;text-transform:uppercase}
+  .ci.active .meta{color:var(--accent)}
+  .ci.done .meta{color:var(--good)}
+
+  .stage-foot{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;
+    font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.05em;
+    position:relative;z-index:1;
+  }
+  .stage-foot .live{display:inline-flex;align-items:center;gap:6px}
+  .stage-foot .live .d{width:6px;height:6px;background:var(--good);border-radius:50%;box-shadow:0 0 8px var(--good);animation:blink 1.6s infinite}
+  @keyframes blink{50%{opacity:.4}}
+
+  /* ─── LOGO MARQUEE ─── */
+  .trust{padding:48px 0 16px;border-top:1px solid var(--line);margin-top:24px}
+  .trust-label{text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:28px}
+  .marquee{
+    overflow:hidden;position:relative;
+    mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track{display:flex;gap:60px;animation:scroll 40s linear infinite;width:max-content}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .mlogo{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:18px;letter-spacing:-0.02em;font-weight:500;color:rgba(244,245,247,0.42);
+    white-space:nowrap;
+  }
+  .mlogo .mk{width:18px;height:18px;border-radius:4px;background:currentColor;opacity:0.4}
+
+  /* ─── STATS SECTION ─── */
+  .stats{padding:120px 0;position:relative;overflow:hidden}
+  .stats::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(800px 400px at 80% 30%, rgba(80,120,220,0.12), transparent 60%),
+      radial-gradient(600px 400px at 20% 70%, rgba(140,80,220,0.10), transparent 60%);
+    pointer-events:none;
+  }
+  .stats-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px;position:relative;z-index:1}
+  @media(max-width:900px){.stats-head{grid-template-columns:1fr}}
+  .eyebrow{display:inline-block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:18px}
+  h2.sec-h{font-size:clamp(36px,4.6vw,60px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0;text-wrap:balance;max-width:14ch}
+  h2.sec-h .accent{
+    background:linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .stats-sub{color:var(--ink-dim);font-size:16px;line-height:1.55;max-width:480px}
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);position:relative;z-index:1}
+  @media(max-width:780px){.stats-row{grid-template-columns:1fr}}
+  .stat-cell{padding:48px 32px;border-right:1px solid var(--line)}
+  .stat-cell:last-child{border-right:0}
+  @media(max-width:780px){.stat-cell{border-right:0;border-bottom:1px solid var(--line)}.stat-cell:last-child{border-bottom:0}}
+  .stat-cell .n{font-size:clamp(56px,6vw,80px);line-height:1;letter-spacing:-0.04em;font-weight:400;
+    background:linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.55) 110%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .stat-cell .l{margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase}
+  .stat-cell .d{margin-top:10px;color:var(--ink-dim);font-size:14px;line-height:1.5;max-width:30ch}
+
+  /* ─── FEATURE SPLITS ─── */
+  .features{padding:60px 0}
+  .features-head{text-align:center;margin-bottom:80px;max-width:760px;margin-left:auto;margin-right:auto}
+  .features-head h2{font-size:clamp(36px,4.6vw,60px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0;text-wrap:balance}
+  .features-head h2 .accent{background:linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .features-head p{margin-top:20px;color:var(--ink-dim);font-size:17px;line-height:1.55;text-wrap:pretty}
+
+  .fblock{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:64px 0;border-top:1px solid var(--line)}
+  .fblock:nth-child(even) .fb-text{order:2}
+  .fblock:nth-child(even) .fb-visual{order:1}
+  @media(max-width:960px){.fblock{grid-template-columns:1fr;gap:40px;padding:48px 0}.fblock:nth-child(even) .fb-text{order:1}.fblock:nth-child(even) .fb-visual{order:2}}
+
+  .fb-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em}
+  .fb-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  .fb-h{font-size:clamp(28px,3vw,40px);letter-spacing:-0.03em;line-height:1.05;font-weight:500;margin:18px 0 16px;text-wrap:balance}
+  .fb-p{color:var(--ink-dim);font-size:16px;line-height:1.6;margin:0 0 24px;max-width:50ch;text-wrap:pretty}
+  .fb-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--accent);padding:8px 0;border-bottom:1px solid var(--accent);font-weight:500}
+  .fb-list{margin:28px 0 28px;display:flex;flex-direction:column;gap:14px}
+  .fb-list li{list-style:none;display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:var(--ink-dim);line-height:1.5}
+  .fb-list li b{color:var(--ink);font-weight:500;display:block;margin-bottom:2px;font-size:15px;letter-spacing:-0.01em}
+  .fb-list li .icn{
+    width:24px;height:24px;border-radius:6px;flex:0 0 24px;
+    background:rgba(80,140,220,0.10);border:1px solid rgba(80,140,220,0.25);
+    display:grid;place-items:center;color:var(--accent);font-family:var(--mono);font-size:10px;font-weight:500;
+  }
+
+  /* feature visual cards */
+  .fb-visual{
+    border:1px solid var(--line);border-radius:16px;
+    background:linear-gradient(180deg, var(--bg-2), #08080c);
+    padding:24px;min-height:380px;position:relative;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.45);
+  }
+  .fb-visual::before{
+    content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 80% 0%, rgba(80,140,220,0.10), transparent 60%);pointer-events:none;
+  }
+  .fbv-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;padding:0 0 16px;border-bottom:1px solid var(--line);margin-bottom:18px;position:relative;z-index:1}
+
+  /* Schema confidence */
+  .conf{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+  .crow{display:grid;grid-template-columns:100px 1fr 46px;align-items:center;gap:14px}
+  .crow .nm{font-family:var(--mono);font-size:11px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:0.04em}
+  .crow .bar{height:8px;background:rgba(255,255,255,0.05);border-radius:99px;position:relative;overflow:hidden}
+  .crow .bar i{position:absolute;left:0;top:0;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 12px var(--accent-glow)}
+  .crow .pct{font-family:var(--mono);font-size:11.5px;text-align:right;color:var(--ink)}
+  .crow.dim .pct,.crow.dim .nm{color:var(--ink-faint)}
+  .crow.dim .bar i{background:rgba(255,255,255,0.18);box-shadow:none;opacity:0.5}
+
+  /* llms.txt code */
+  .code{
+    font-family:var(--mono);font-size:11.5px;line-height:1.7;color:var(--ink-dim);
+    background:#06060a;border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+    position:relative;z-index:1;overflow:auto;
+  }
+  .code .com{color:var(--ink-faint)}
+  .code .key{color:var(--accent)}
+  .code .str{color: oklch(0.82 0.14 145)}
+  .code .h{color:var(--ink)}
+  .code a{color:var(--ink)}
+
+  /* crawler grid */
+  .crawlers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative;z-index:1}
+  .cr{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:12px;background:rgba(255,255,255,0.02)}
+  .cr .sw{width:6px;height:6px;border-radius:50%}
+  .cr.on .sw{background:var(--good);box-shadow:0 0 8px var(--good)}
+  .cr.off .sw{background:rgba(255,255,255,0.14)}
+  .cr.off{color:var(--ink-faint)}
+  .cr.off .nm{text-decoration:line-through;text-decoration-color:rgba(255,255,255,0.15)}
+  .cr .nm{font-family:var(--mono);font-size:10.5px;letter-spacing:0.02em}
+
+  /* score gauge */
+  .gauge{display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:center;position:relative;z-index:1}
+  .ring{position:relative;width:140px;height:140px}
+  .ring svg{transform:rotate(-90deg);width:100%;height:100%}
+  .ring .num{position:absolute;inset:0;display:grid;place-items:center;font-size:38px;font-weight:500;letter-spacing:-0.03em}
+  .ring .num .of{font-size:13px;color:var(--ink-faint);margin-left:2px}
+  .gl{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-dim);padding:7px 0;border-bottom:1px dashed var(--line)}
+  .gl:last-child{border-bottom:0}
+  .gl b{font-family:var(--mono);color:var(--ink);font-weight:500}
+  .gl-up{font-family:var(--mono);font-size:10.5px;color:var(--good);margin-top:10px}
+
+  /* ─── CHANNEL/SURFACE CARDS ─── */
+  .channels{padding:120px 0}
+  .channels-head{text-align:center;margin-bottom:60px}
+  .channels-head h2{font-size:clamp(36px,4.6vw,60px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0}
+  .channels-head h2 .accent{background:linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .channels-head p{margin-top:20px;color:var(--ink-dim);font-size:17px;line-height:1.55;max-width:600px;margin-left:auto;margin-right:auto}
+  .channels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:960px){.channels-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.channels-grid{grid-template-columns:1fr}}
+  .ch{
+    border:1px solid var(--line);border-radius:14px;padding:24px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.005));
+    position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:280px;
+    transition:border-color .25s, transform .25s;
+  }
+  .ch:hover{border-color:var(--line-2);transform:translateY(-2px)}
+  .ch::before{
+    content:"";position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle, rgba(80,140,220,0.18), transparent 70%);filter:blur(20px);
+  }
+  .ch-icon{
+    width:42px;height:42px;border-radius:10px;
+    background:rgba(80,140,220,0.10);border:1px solid rgba(80,140,220,0.25);
+    display:grid;place-items:center;font-family:var(--mono);font-size:14px;font-weight:600;color:var(--accent);
+    margin-bottom:18px;position:relative;z-index:1;
+  }
+  .ch h3{font-size:19px;letter-spacing:-0.02em;line-height:1.2;margin:0 0 8px;font-weight:500;position:relative;z-index:1}
+  .ch p{margin:0;color:var(--ink-dim);font-size:13.5px;line-height:1.55;position:relative;z-index:1;flex:1}
+  .ch .ch-cta{margin-top:18px;font-size:13px;color:var(--accent);display:inline-flex;align-items:center;gap:6px;position:relative;z-index:1}
+
+  /* ─── TESTIMONIAL MARQUEE ─── */
+  .reviews{padding:120px 0;position:relative;overflow:hidden}
+  .reviews-head{text-align:center;margin-bottom:56px}
+  .reviews-head h2{font-size:clamp(36px,4.6vw,60px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0}
+  .reviews-head h2 .accent{background:linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .reviews-head p{margin-top:20px;color:var(--ink-dim);font-size:16px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.55}
+  .review-row{
+    overflow:hidden;position:relative;margin:0 calc(-1 * var(--pad-x));
+    mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  }
+  .review-track{display:flex;gap:18px;animation:scroll-rev 60s linear infinite;width:max-content;padding:8px 0}
+  .review-row:hover .review-track{animation-play-state:paused}
+  @keyframes scroll-rev{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .review-row + .review-row{margin-top:18px}
+  .review-row.r2 .review-track{animation-duration:75s;animation-direction:reverse}
+  .rv-card{
+    width:380px;flex:0 0 380px;
+    border:1px solid var(--line);border-radius:14px;padding:22px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.005));
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .rv-card .stars{color:var(--warn);font-size:13px;letter-spacing:2px}
+  .rv-card blockquote{margin:0;font-size:14.5px;line-height:1.55;color:var(--ink);text-wrap:pretty;letter-spacing:-0.005em}
+  .rv-foot{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .rv-foot .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg, oklch(0.6 0.16 248), oklch(0.42 0.12 280));font-family:var(--mono);font-size:11px;display:grid;place-items:center;color:#fff;font-weight:500;letter-spacing:0.04em}
+  .rv-foot .nm{font-size:13px;font-weight:500;letter-spacing:-0.005em}
+  .rv-foot .ti{font-size:11.5px;color:var(--ink-faint)}
+
+  /* ─── AWARDS / RATING STRIP ─── */
+  .awards{padding:80px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .awards-row{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px;align-items:center}
+  @media(max-width:960px){.awards-row{grid-template-columns:1fr 1fr;gap:24px}.awards-row > div:first-child{grid-column:1/-1}}
+  .awards-head h3{font-size:26px;letter-spacing:-0.02em;line-height:1.1;margin:0 0 10px;font-weight:500}
+  .awards-head p{margin:0;color:var(--ink-dim);font-size:14px;line-height:1.5;max-width:32ch}
+  .award{display:flex;flex-direction:column;gap:6px}
+  .award .big{font-size:36px;font-weight:500;letter-spacing:-0.03em;line-height:1;
+    background:linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.55) 110%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .award .lbl{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em}
+  .award .sub{font-size:13px;color:var(--ink-dim);line-height:1.4;max-width:18ch}
+
+  /* ─── INTEGRATIONS FLOATING ─── */
+  .integrations{padding:120px 0;position:relative;overflow:hidden}
+  .int-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  @media(max-width:900px){.int-grid{grid-template-columns:1fr;gap:40px}}
+  .int-text h2{font-size:clamp(34px,4.2vw,52px);line-height:1.05;letter-spacing:-0.035em;font-weight:500;margin:18px 0 18px;text-wrap:balance}
+  .int-text h2 .accent{background:linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .int-text p{color:var(--ink-dim);font-size:16px;line-height:1.55;margin:0 0 28px;max-width:50ch}
+  .int-stage{
+    position:relative;height:460px;
+    border:1px solid var(--line);border-radius:18px;
+    background:radial-gradient(600px 400px at 50% 50%, rgba(80,140,220,0.10), transparent 60%),linear-gradient(180deg, var(--bg-2), #08080c);
+    overflow:hidden;
+  }
+  .int-stage::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size:40px 40px;
+    mask-image:radial-gradient(ellipse at center, black 20%, transparent 70%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 20%, transparent 70%);
+  }
+  .int-center{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:120px;height:120px;border-radius:24px;
+    background:linear-gradient(180deg, oklch(0.62 0.20 258), oklch(0.42 0.18 270));
+    box-shadow:0 0 0 8px rgba(80,140,220,0.08), 0 30px 60px rgba(80,140,220,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    display:grid;place-items:center;
+    font-family:var(--mono);font-size:11px;color:#fff;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
+  }
+  .int-center::after{
+    content:"";position:absolute;inset:14px;border-radius:14px;
+    background:conic-gradient(from 0deg, oklch(0.82 0.16 220), oklch(0.62 0.20 270), oklch(0.74 0.18 240), oklch(0.82 0.16 220));
+    z-index:0;opacity:0.8;
+  }
+  .int-center span{position:relative;z-index:1;background:#0a0a12;padding:8px 14px;border-radius:8px}
+  .int-bubble{
+    position:absolute;display:flex;align-items:center;gap:8px;
+    padding:8px 12px;border-radius:999px;
+    background:rgba(13,13,18,0.85);border:1px solid var(--line-2);
+    font-size:12px;color:var(--ink);
+    backdrop-filter:blur(6px);
+    transition:transform .3s ease;
+  }
+  .int-bubble .mk{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;font-family:var(--mono);font-size:9px;font-weight:600;color:#fff}
+  .int-bubble.b1{top:14%;left:8%}
+  .int-bubble.b2{top:8%;right:10%}
+  .int-bubble.b3{top:38%;left:2%}
+  .int-bubble.b4{top:42%;right:4%}
+  .int-bubble.b5{bottom:18%;left:10%}
+  .int-bubble.b6{bottom:8%;right:14%}
+  .int-bubble.b7{bottom:36%;left:20%}
+  .int-bubble.b8{top:58%;right:22%}
+
+  /* ─── DEVELOPER / CODE SECTION ─── */
+  .dev{padding:120px 0;position:relative}
+  .dev-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:60px;align-items:center}
+  @media(max-width:960px){.dev-grid{grid-template-columns:1fr;gap:40px}}
+  .dev-text h2{font-size:clamp(34px,4.2vw,52px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:18px 0 18px;text-wrap:balance}
+  .dev-text h2 .accent{background:linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .dev-text p{color:var(--ink-dim);font-size:16px;line-height:1.55;margin:0 0 28px;max-width:48ch}
+  .dev-ctas{display:flex;gap:10px;flex-wrap:wrap}
+  .dev-window{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:#06060a;box-shadow:0 30px 80px rgba(0,0,0,0.55);
+  }
+  .dev-tabs{display:flex;gap:0;border-bottom:1px solid var(--line);background:#08080c}
+  .dev-tab{padding:14px 18px;font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);letter-spacing:0.04em;cursor:pointer;border-right:1px solid var(--line);transition:color .15s, background .15s;display:inline-flex;align-items:center;gap:8px}
+  .dev-tab b{color:var(--ink-faint);font-weight:500;font-family:var(--mono);font-size:9px;background:rgba(255,255,255,0.05);padding:2px 5px;border-radius:4px;letter-spacing:0.04em;text-transform:uppercase}
+  .dev-tab.on{color:var(--ink);background:#06060a}
+  .dev-tab.on b{color:var(--accent);background:rgba(80,140,220,0.10)}
+  .dev-code{padding:20px 24px;font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--ink-dim);max-height:380px;overflow:auto;white-space:pre}
+  .dev-code .ln{display:inline-block;width:22px;color:var(--ink-ghost);user-select:none;text-align:right;margin-right:14px}
+  .dev-code .com{color:var(--ink-faint)}
+  .dev-code .key{color: oklch(0.74 0.16 280)}
+  .dev-code .fn{color: var(--accent)}
+  .dev-code .str{color: oklch(0.82 0.14 145)}
+  .dev-code .num{color: oklch(0.82 0.14 60)}
+
+  /* ─── BIG CTA POSTER ─── */
+  .cta-poster{
+    margin:120px 0 80px;padding:100px 48px;border-radius:24px;
+    background:
+      radial-gradient(700px 400px at 20% 30%, rgba(80,140,220,0.22), transparent 60%),
+      radial-gradient(600px 400px at 80% 70%, rgba(160,90,220,0.16), transparent 60%),
+      linear-gradient(180deg, #0a0a12, #06060a);
+    border:1px solid var(--line);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-poster::before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    mask-image:radial-gradient(ellipse at center, black 10%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 10%, transparent 80%);
+  }
+  .cta-poster .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle, rgba(80,140,220,0.12), transparent 60%);pointer-events:none;animation:breathe 6s ease-in-out infinite}
+  @keyframes breathe{50%{transform:translate(-50%,-50%) scale(1.15);opacity:0.7}}
+  .cta-poster h2{margin:0;font-size:clamp(48px,6vw,84px);line-height:1.0;letter-spacing:-0.04em;font-weight:500;position:relative}
+  .cta-poster h2 .accent{background:linear-gradient(120deg, oklch(0.82 0.18 248), oklch(0.66 0.22 280));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .cta-poster p{margin:24px auto 0;color:var(--ink-dim);font-size:18px;line-height:1.55;max-width:540px;position:relative}
+  .cta-poster .ctas{margin-top:36px;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;position:relative}
+  .cta-poster .ctas .btn{padding:14px 22px;font-size:14px}
+  .cta-poster .small{margin-top:24px;font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;position:relative}
+
+  /* ─── FOOTER ─── */
+  footer{padding:64px 0 32px;border-top:1px solid var(--line)}
+  .foot{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:48px}
+  @media(max-width:780px){.foot{grid-template-columns:1fr 1fr;gap:32px}}
+  .foot-brand p{margin:14px 0 0;color:var(--ink-faint);font-size:13px;line-height:1.55;max-width:300px}
+  .foot h5{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.1em;margin:0 0 14px;font-weight:500}
+  .foot a{display:block;padding:5px 0;color:var(--ink-dim);font-size:13.5px;transition:color .15s}
+  .foot a:hover{color:var(--ink)}
+  .foot-row{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--ink-faint);font-size:12px;flex-wrap:wrap;gap:10px;font-family:var(--mono);letter-spacing:0.04em}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* ─────────── LIGHT-MODE OVERRIDES: dark data surfaces ─────────── */
+  .stage{
+    background:linear-gradient(180deg, #0d0d12, #08080c) !important;
+    border-color:#1a1a22 !important;color:#f4f5f7;
+    box-shadow:0 30px 80px rgba(20,30,80,0.18), 0 4px 14px rgba(20,30,80,0.06), inset 0 1px 0 rgba(255,255,255,0.04) !important;
+  }
+  .stage-head, .stage-foot{color:rgba(244,245,247,0.42) !important;border-color:rgba(255,255,255,0.07) !important}
+  .stage-title{color:rgba(244,245,247,0.66) !important}
+  .stage-title b{color:#f4f5f7 !important}
+  .ci{background:rgba(255,255,255,0.025);border-color:rgba(255,255,255,0.07)}
+  .ci .text{color:#f4f5f7}
+  .ci .meta{color:rgba(244,245,247,0.42)}
+  .ci .indicator{border-color:rgba(255,255,255,0.18)}
+  .ci.active{background:rgba(80,140,220,0.12) !important;border-color:rgba(80,140,220,0.32) !important}
+  .ci.active .indicator{border-color: oklch(0.74 0.18 248) !important}
+  .ci.active .indicator::after{background: oklch(0.74 0.18 248) !important;box-shadow:0 0 12px oklch(0.74 0.20 248 / 0.5)}
+  .ci.active .meta{color: oklch(0.74 0.18 248) !important}
+  .ci.done .meta{color: oklch(0.78 0.18 145) !important}
+  .ci.done .indicator{background: oklch(0.78 0.18 145) !important;border-color: oklch(0.78 0.18 145) !important}
+  .stage-foot .live .d{background: oklch(0.78 0.18 145);box-shadow:0 0 8px oklch(0.78 0.18 145)}
+
+  /* Stat row */
+  .stats-row{border-top-color:rgba(14,14,16,0.18);border-bottom-color:rgba(14,14,16,0.18);background:rgba(255,255,255,0.55)}
+  .stat-cell .n{
+    background:linear-gradient(180deg, #0e0e10 0%, rgba(14,14,16,0.55) 110%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .award .big{
+    background:linear-gradient(180deg, #0e0e10 0%, rgba(14,14,16,0.55) 110%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* All gradient accents shift to deeper blue */
+  h1.hero-h .grad{
+    background:linear-gradient(180deg, #0e0e10 0%, rgba(14,14,16,0.55) 110%) !important;
+    -webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;
+  }
+  h1.hero-h .accent, h2.sec-h .accent, .features-head h2 .accent,
+  .channels-head h2 .accent, .reviews-head h2 .accent,
+  .int-text h2 .accent, .dev-text h2 .accent{
+    background:linear-gradient(120deg, oklch(0.52 0.20 252), oklch(0.42 0.22 280)) !important;
+    -webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;
+  }
+
+  /* Dark feature-visual cards (product screenshots) */
+  .fb-visual{
+    background:linear-gradient(180deg, #0d0d12, #08080c) !important;
+    border-color:#1a1a22 !important;color:#f4f5f7;
+    box-shadow:0 30px 80px rgba(20,30,80,0.18), 0 4px 14px rgba(20,30,80,0.06) !important;
+  }
+  .fb-visual::before{background:radial-gradient(400px 200px at 80% 0%, rgba(80,140,220,0.16), transparent 60%) !important}
+  .fbv-head{color:rgba(244,245,247,0.42) !important;border-color:rgba(255,255,255,0.07) !important}
+  .fb-visual .crow .nm{color:rgba(244,245,247,0.66) !important}
+  .fb-visual .crow .pct{color:#f4f5f7 !important}
+  .fb-visual .crow .bar{background:rgba(255,255,255,0.05) !important}
+  .fb-visual .crow .bar i{background:linear-gradient(90deg, oklch(0.74 0.18 248), oklch(0.62 0.20 270)) !important;box-shadow:0 0 12px oklch(0.74 0.20 248 / 0.5)}
+  .fb-visual .crow.dim .nm,.fb-visual .crow.dim .pct{color:rgba(244,245,247,0.42) !important}
+  .fb-visual .crow.dim .bar i{background:rgba(255,255,255,0.18) !important;box-shadow:none}
+  .fb-visual .gl{border-bottom-color:rgba(255,255,255,0.07) !important;color:rgba(244,245,247,0.66)}
+  .fb-visual .gl b{color:#f4f5f7 !important}
+  .fb-visual .gl-up{color: oklch(0.78 0.18 145) !important}
+  .fb-visual .ring .num{color:#f4f5f7}
+  .fb-visual .ring .num .of{color:rgba(244,245,247,0.42)}
+  .fb-visual .cr{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.07);color:#f4f5f7}
+  .fb-visual .cr.on .sw{background: oklch(0.78 0.18 145);box-shadow:0 0 8px oklch(0.78 0.18 145)}
+  .fb-visual .cr.off{color:rgba(244,245,247,0.42)}
+  .fb-visual .cr.off .sw{background:rgba(255,255,255,0.14)}
+  .code{
+    color:rgba(244,245,247,0.66) !important;background:#06060a !important;
+    border-color:rgba(255,255,255,0.07) !important;
+  }
+  .code .com{color:rgba(244,245,247,0.42) !important}
+  .code .key{color: oklch(0.74 0.18 248) !important}
+  .code .h{color:#f4f5f7 !important}
+  .code a{color:#f4f5f7 !important}
+  .fb-visual span[style*="color:var(--ink-faint)"]{color:rgba(244,245,247,0.42) !important}
+  .fb-visual span[style*="color:var(--ink)"]{color:#f4f5f7 !important}
+  .fb-visual span[style*="color:var(--accent)"]{color: oklch(0.74 0.18 248) !important}
+
+  /* Channel cards = light */
+  .ch{
+    background:#ffffff !important;
+    box-shadow:0 1px 0 rgba(255,255,255,0.5) inset, 0 6px 18px rgba(20,30,80,0.04);
+  }
+  .ch:hover{box-shadow:0 1px 0 rgba(255,255,255,0.5) inset, 0 12px 28px rgba(20,30,80,0.10)}
+
+  /* Review cards = light */
+  .rv-card{
+    background:#ffffff !important;
+    box-shadow:0 1px 0 rgba(255,255,255,0.5) inset, 0 4px 14px rgba(20,30,80,0.04);
+  }
+
+  /* Integration stage = dark */
+  .int-stage{
+    background:radial-gradient(600px 400px at 50% 50%, rgba(80,140,220,0.16), transparent 60%),linear-gradient(180deg, #0d0d12, #08080c) !important;
+    border-color:#1a1a22 !important;color:#f4f5f7;
+    box-shadow:0 30px 80px rgba(20,30,80,0.18);
+  }
+  .int-bubble{background:rgba(13,13,18,0.85) !important;border-color:rgba(255,255,255,0.14) !important;color:#f4f5f7 !important}
+
+  /* Developer window = dark */
+  .dev-window{border-color:#1a1a22 !important;box-shadow:0 30px 80px rgba(20,30,80,0.18) !important}
+  .dev-tabs{border-bottom-color:rgba(255,255,255,0.07) !important}
+  .dev-tab{color:rgba(244,245,247,0.42) !important;border-right-color:rgba(255,255,255,0.07) !important}
+  .dev-tab.on{color:#f4f5f7 !important}
+  .dev-tab b{color:rgba(244,245,247,0.42) !important}
+  .dev-tab.on b{color: oklch(0.74 0.18 248) !important}
+  .dev-code{color:rgba(244,245,247,0.66) !important}
+  .dev-code .ln{color:rgba(244,245,247,0.22) !important}
+  .dev-code .com{color:rgba(244,245,247,0.42) !important}
+  .dev-code .fn{color: oklch(0.74 0.18 248) !important}
+
+  /* CTA poster stays dark for contrast */
+  .cta-poster{
+    background:
+      radial-gradient(700px 400px at 20% 30%, rgba(80,140,220,0.30), transparent 60%),
+      radial-gradient(600px 400px at 80% 70%, rgba(160,90,220,0.20), transparent 60%),
+      linear-gradient(180deg, #0a0a12, #06060a) !important;
+    border-color:#1a1a22 !important;color:#f4f5f7;
+    box-shadow:0 30px 80px rgba(20,30,80,0.18);
+  }
+  .cta-poster h2{color:#f4f5f7 !important}
+  .cta-poster p{color:rgba(244,245,247,0.66) !important}
+  .cta-poster h2 .accent{
+    background:linear-gradient(120deg, oklch(0.82 0.18 248), oklch(0.66 0.22 280)) !important;
+    -webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;
+  }
+  .cta-poster .ctas .btn-primary{background:#fff !important;color:#0e0e10 !important;box-shadow:0 0 0 1px rgba(0,0,0,0.06), 0 6px 22px rgba(255,255,255,0.10)}
+  .cta-poster .ctas .btn-ghost{border-color:rgba(255,255,255,0.18) !important;color:#f4f5f7 !important;background:rgba(255,255,255,0.05) !important}
+  .cta-poster .ctas .btn-ghost:hover{background:rgba(255,255,255,0.12) !important}
+  .cta-poster .small{color:rgba(244,245,247,0.42) !important}
+
+  /* Marquee logo color */
+  .mlogo{color:rgba(14,14,16,0.42)}
+
+  /* fb-list bullets */
+  .fb-list li .icn{background:rgba(80,120,200,0.10) !important;border-color:rgba(80,120,200,0.22) !important}
+  .ch-icon{background:rgba(80,120,200,0.10) !important;border-color:rgba(80,120,200,0.22) !important}
+
+  /* hero meta dot tweak */
+  .hero-meta .dot{background:rgba(14,14,16,0.22)}
+
+  /* logos label */
+  .trust-label{color:var(--ink-faint)}
+
+  /* awards strip background */
+  .awards{background:rgba(255,255,255,0.4)}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="container top-inner">
+    <div class="brand"><span class="brand-mark"></span> AEOmatic</div>
+    <div class="top-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#quotes">Reviews</a>
+      <a href="#download">Download</a>
+    </div>
+    <div class="top-actions">
+      <span style="font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.06em;text-transform:uppercase;margin-right:6px">★ 3.1k on WP.org</span>
+      <a class="btn btn-primary" href="#download">Download free <span class="arrow">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="badge"><span class="tag">v1.6</span> Free WordPress plugin — just shipped</span>
+      <h1 class="hero-h">
+        <span class="grad">Be cited by</span><br>
+        <span class="accent">every AI answer engine</span><br>
+        <span class="grad" style="opacity:0.85">automatically.</span>
+      </h1>
+      <p class="hero-sub">From schema detection to <span style="font-family:var(--mono);color:var(--ink);font-size:0.9em">llms.txt</span>, AEOmatic handles the entire answer-engine layer for WordPress — so ChatGPT, Claude, Gemini, Perplexity and Google AI Overviews quote your URL, not someone else's.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#download">Download free <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <div class="hero-meta">
+        <span>✓ Free forever</span><span class="dot"></span>
+        <span>✓ No API keys</span><span class="dot"></span>
+        <span>✓ 50,000+ sites</span><span class="dot"></span>
+        <span>✓ GPL v2</span>
+      </div>
+    </div>
+
+    <!-- Animated hero stage: AEO action checklist -->
+    <div class="stage" aria-hidden="true">
+      <div class="stage-head">
+        <span>aeo.run · session #2148</span>
+        <span class="lights"><i></i><i></i><i></i></span>
+      </div>
+      <div class="stage-body">
+        <p class="stage-title">Optimizing <b>slowloafkitchen.com</b> for citation…</p>
+        <div class="checklist" id="checklist">
+          <div class="ci" data-step="0"><span class="indicator"></span><span class="text">Detecting schema type</span><span class="meta">step 1 / 5</span></div>
+          <div class="ci" data-step="1"><span class="indicator"></span><span class="text">Generating <span style="font-family:var(--mono)">llms.txt</span></span><span class="meta">step 2 / 5</span></div>
+          <div class="ci" data-step="2"><span class="indicator"></span><span class="text">Writing JSON-LD into &lt;head&gt;</span><span class="meta">step 3 / 5</span></div>
+          <div class="ci" data-step="3"><span class="indicator"></span><span class="text">Updating crawler policy</span><span class="meta">step 4 / 5</span></div>
+          <div class="ci" data-step="4"><span class="indicator"></span><span class="text">Running AEO audit</span><span class="meta">step 5 / 5</span></div>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <span class="live"><span class="d"></span> live · 12 citations / hr</span>
+        <span>WordPress 6.4+</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo marquee -->
+  <div class="container">
+    <div class="trust">
+      <div class="trust-label">Trusted by 50,000+ WordPress sites — including these</div>
+      <div class="marquee">
+        <div class="marquee-track" id="mtrack">
+          <span class="mlogo"><span class="mk"></span>Slowloaf</span>
+          <span class="mlogo"><span class="mk"></span>Northwind</span>
+          <span class="mlogo"><span class="mk"></span>Linen &amp; Loom</span>
+          <span class="mlogo"><span class="mk"></span>Field Notes Co.</span>
+          <span class="mlogo"><span class="mk"></span>Halcyon Press</span>
+          <span class="mlogo"><span class="mk"></span>Marginalia</span>
+          <span class="mlogo"><span class="mk"></span>Atelier Twelve</span>
+          <span class="mlogo"><span class="mk"></span>Open Stack</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-head rv">
+      <div>
+        <span class="eyebrow">Why AEO in 2026</span>
+        <h2 class="sec-h">Built for the <span class="accent">answer era.</span></h2>
+      </div>
+      <p class="stats-sub">Search results are being rewritten by AI engines. With 10+ years of schema and SEO context baked in, AEOmatic gets your WordPress site quotable across every answer engine — without changing a single theme file.</p>
+    </div>
+    <div class="stats-row rv">
+      <div class="stat-cell">
+        <div class="n" data-target="60" data-suffix="%">0%</div>
+        <div class="l">AI Overview coverage</div>
+        <div class="d">Google AI Overviews now appear on 60%+ of informational queries — and growing.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="n" data-target="2.4" data-suffix="B+">0</div>
+        <div class="l">Monthly AI answers</div>
+        <div class="d">ChatGPT, Claude, Gemini and Perplexity answer billions of queries every month.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="n" data-target="3" data-suffix="×">0×</div>
+        <div class="l">Citation lift</div>
+        <div class="d">Sites running AEOmatic see 3× more answer-engine citations within 60 days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE SPLITS -->
+<section id="features" class="features">
+  <div class="container">
+    <div class="features-head rv">
+      <h2>Everything you need <span class="accent">to be quotable.</span></h2>
+      <p>From schema detection to crawler control — every module targets a specific reason an AI engine might skip your page, and fixes it automatically.</p>
+    </div>
+
+    <!-- Block 1: Schema -->
+    <div class="fblock rv">
+      <div class="fb-text">
+        <span class="fb-tag">Schema detection</span>
+        <h3 class="fb-h">Auto-detect the right type — with a confidence score.</h3>
+        <p class="fb-p">AEOmatic reads your post and picks from 26 schema.org types: Article, Recipe, Product, How-To, FAQ, Event and more. Every choice ships with a confidence percentage so you know when to trust it and when to override.</p>
+        <ul class="fb-list">
+          <li><span class="icn">26</span><div><b>Schema types out of the box</b>From Article to LocalBusiness to MedicalCondition — covered without configuration.</div></li>
+          <li><span class="icn">%</span><div><b>Confidence on every detection</b>See exactly how sure AEOmatic is before it ships JSON-LD into your &lt;head&gt;.</div></li>
+          <li><span class="icn">↺</span><div><b>One-click override</b>Edge cases happen. Pick the right type yourself; the rest stays auto-synced.</div></li>
+        </ul>
+        <a href="#" class="fb-cta">Explore schema detection <span class="arrow">→</span></a>
+      </div>
+      <div class="fb-visual">
+        <div class="fbv-head"><span>post · #124 · "Sourdough Focaccia"</span><span>recipe</span></div>
+        <div class="conf">
+          <div class="crow"><span class="nm">Recipe</span><span class="bar"><i style="width:87%"></i></span><span class="pct">87%</span></div>
+          <div class="crow dim"><span class="nm">HowTo</span><span class="bar"><i style="width:62%"></i></span><span class="pct">62%</span></div>
+          <div class="crow dim"><span class="nm">Article</span><span class="bar"><i style="width:31%"></i></span><span class="pct">31%</span></div>
+          <div class="crow dim"><span class="nm">Product</span><span class="bar"><i style="width:18%"></i></span><span class="pct">18%</span></div>
+          <div class="crow dim"><span class="nm">Event</span><span class="bar"><i style="width:9%"></i></span><span class="pct">9%</span></div>
+        </div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px;color:var(--ink-faint);line-height:1.7;position:relative;z-index:1">
+          <span style="color:var(--good)">✓</span> detected from: <span style="color:var(--ink)">ingredients list, cook-time, yield</span><br>
+          <span style="color:var(--good)">✓</span> JSON-LD injected → <span style="color:var(--accent)">live</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 2: llms.txt -->
+    <div class="fblock rv">
+      <div class="fb-text">
+        <span class="fb-tag">LLM indexing</span>
+        <h3 class="fb-h">A clean llms.txt, generated for you.</h3>
+        <p class="fb-p">The emerging standard — like robots.txt for answer engines — that tells LLMs which pages on your site are most worth quoting. AEOmatic writes yours automatically and updates it as you publish.</p>
+        <ul class="fb-list">
+          <li><span class="icn">⌘</span><div><b>Auto-prioritised by content</b>Most quotable pages bubble to the top, sorted by freshness and structure.</div></li>
+          <li><span class="icn">↧</span><div><b>Markdown export</b>Review offline, edit, push back. Or let AEOmatic keep it in sync.</div></li>
+          <li><span class="icn">⊘</span><div><b>Per-section opt-out</b>Exclude private, paid, or low-quality pages with a single toggle.</div></li>
+        </ul>
+        <a href="#" class="fb-cta">Read the llms.txt guide <span class="arrow">→</span></a>
+      </div>
+      <div class="fb-visual">
+        <div class="fbv-head"><span>yoursite.com/llms.txt</span><span>auto · synced</span></div>
+        <div class="code"><span class="com"># slowloafkitchen.com</span>
+<span class="key">&gt;</span> Slow-fermentation baking blog — recipes &amp; technique
+
+<span class="h">## Recipes</span>
+- <a>Sourdough Focaccia, Slow Rise</a> <span class="com">— 36h cold ferment</span>
+- <a>Country Loaf, 78% Hydration</a> <span class="com">— beginner</span>
+- <a>Olive Oil Brioche</a>          <span class="com">— enriched dough</span>
+
+<span class="h">## Technique</span>
+- <a>Stretch and Folds, Explained</a>
+- <a>Reading Your Starter</a></div>
+      </div>
+    </div>
+
+    <!-- Block 3: Crawler control -->
+    <div class="fblock rv">
+      <div class="fb-text">
+        <span class="fb-tag">Crawler control</span>
+        <h3 class="fb-h">Decide which AIs can read you.</h3>
+        <p class="fb-p">Allow the engines you want to be cited by. Block the ones you don't. AEOmatic writes the robots directives, the meta tags, and the IP-aware rules — across 18 known AI crawlers — so your policy stays consistent everywhere.</p>
+        <ul class="fb-list">
+          <li><span class="icn">18</span><div><b>Named crawlers covered</b>GPTBot, ClaudeBot, PerplexityBot, GeminiBot, Google-Extended, Applebot, CCBot — and 11 more.</div></li>
+          <li><span class="icn">⊕</span><div><b>Per-content-type rules</b>Block paid posts from training while letting your blog be quoted freely.</div></li>
+          <li><span class="icn">≡</span><div><b>Audit log</b>See what each bot last fetched — and when.</div></li>
+        </ul>
+        <a href="#" class="fb-cta">Explore crawler control <span class="arrow">→</span></a>
+      </div>
+      <div class="fb-visual">
+        <div class="fbv-head"><span>crawler policy · live</span><span>14 allowed · 4 blocked</span></div>
+        <div class="crawlers">
+          <div class="cr on"><span class="sw"></span><span class="nm">GPTBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">ClaudeBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">PerplexityBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">GeminiBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">Google-Extended</span></div>
+          <div class="cr off"><span class="sw"></span><span class="nm">CCBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">Applebot</span></div>
+          <div class="cr off"><span class="sw"></span><span class="nm">YouBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">Bytespider</span></div>
+          <div class="cr off"><span class="sw"></span><span class="nm">Amazonbot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">DiffBot</span></div>
+          <div class="cr on"><span class="sw"></span><span class="nm">+7 more</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 4: Audit -->
+    <div class="fblock rv">
+      <div class="fb-text">
+        <span class="fb-tag">Content audit</span>
+        <h3 class="fb-h">A 0–100 AEO score, with the next thing to fix.</h3>
+        <p class="fb-p">Every post gets a quotability score. The fixes are written as direct edits you can apply with one click — no consultant, no waiting.</p>
+        <ul class="fb-list">
+          <li><span class="icn">100</span><div><b>Quotability score</b>One number that tells you whether AI engines will pull from this page.</div></li>
+          <li><span class="icn">★</span><div><b>Priority-ordered fixes</b>The biggest wins, in order, with one-click apply.</div></li>
+          <li><span class="icn">≋</span><div><b>Trend history</b>See how your score moves with every publish — site-wide or per-post.</div></li>
+        </ul>
+        <a href="#" class="fb-cta">Explore the audit <span class="arrow">→</span></a>
+      </div>
+      <div class="fb-visual">
+        <div class="fbv-head"><span>aeo audit · #124</span><span>↑ +14 vs last week</span></div>
+        <div class="gauge">
+          <div class="ring">
+            <svg viewBox="0 0 140 140">
+              <circle cx="70" cy="70" r="60" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="none"/>
+              <circle cx="70" cy="70" r="60" stroke="url(#gg)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="377" stroke-dashoffset="68"/>
+              <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="oklch(0.78 0.18 248)"/><stop offset="100%" stop-color="oklch(0.62 0.22 280)"/></linearGradient></defs>
+            </svg>
+            <div class="num">82<span class="of">/100</span></div>
+          </div>
+          <div>
+            <div class="gl"><span>Schema completeness</span><b>94%</b></div>
+            <div class="gl"><span>Quote-ready paragraphs</span><b>88%</b></div>
+            <div class="gl"><span>Question coverage</span><b>61%</b></div>
+            <div class="gl"><span>Internal entity links</span><b>76%</b></div>
+            <div class="gl-up">↑ +14 since last week</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHANNEL CARDS -->
+<section class="channels">
+  <div class="container">
+    <div class="channels-head rv">
+      <h2>One plugin. <span class="accent">Every surface.</span></h2>
+      <p>Schema, llms.txt, crawler rules, and audit — four pillars that make every page on your site ready for the answer era.</p>
+    </div>
+    <div class="channels-grid">
+      <div class="ch rv">
+        <div class="ch-icon">JL</div>
+        <h3>JSON-LD</h3>
+        <p>Structured data injected into every page's &lt;head&gt;, generated from your content with confidence scoring.</p>
+        <a href="#" class="ch-cta">Explore JSON-LD <span class="arrow">→</span></a>
+      </div>
+      <div class="ch rv">
+        <div class="ch-icon">LM</div>
+        <h3>llms.txt</h3>
+        <p>The new standard for answer engines. AEOmatic writes yours automatically and keeps it synced.</p>
+        <a href="#" class="ch-cta">Explore llms.txt <span class="arrow">→</span></a>
+      </div>
+      <div class="ch rv">
+        <div class="ch-icon">CR</div>
+        <h3>Crawlers</h3>
+        <p>Allow or block 18 named AI bots — per content-type, with audit logs and IP-aware rules.</p>
+        <a href="#" class="ch-cta">Explore crawlers <span class="arrow">→</span></a>
+      </div>
+      <div class="ch rv">
+        <div class="ch-icon">AD</div>
+        <h3>Audit</h3>
+        <p>0–100 quotability score with priority-ordered fixes you can apply with one click.</p>
+        <a href="#" class="ch-cta">Explore audit <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS MARQUEE -->
+<section id="quotes" class="reviews">
+  <div class="container">
+    <div class="reviews-head rv">
+      <span class="eyebrow">From the community</span>
+      <h2>Builders shipping with <span class="accent">AEOmatic.</span></h2>
+      <p>Verified WordPress.org reviewers — abridged where indicated.</p>
+    </div>
+  </div>
+
+  <div class="review-row">
+    <div class="review-track">
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"I had llms.txt generated and 200 recipes serving structured data before my second coffee. Citation traffic from Perplexity tripled in a month."</blockquote><div class="rv-foot"><div class="av">MV</div><div><div class="nm">Mira Voss</div><div class="ti">slowloafkitchen.com</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Replaced two paid plugins and a custom JSON-LD snippet with AEOmatic. The confidence score is genuinely best-in-class."</blockquote><div class="rv-foot"><div class="av">DK</div><div><div class="nm">Devin Kapoor</div><div class="ti">Lead SEO · Northwind</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"The audit told us exactly which 12 product pages were holding us back. ChatGPT names us on three buying-guide queries now."</blockquote><div class="rv-foot"><div class="av">SA</div><div><div class="nm">Sara Albright</div><div class="ti">Linen &amp; Loom</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Setup took longer to caffeinate for than to actually install. llms.txt was live in three minutes."</blockquote><div class="rv-foot"><div class="av">RH</div><div><div class="nm">Reza Hassan</div><div class="ti">Halcyon Press</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Crawler control alone is worth it — we finally have a clear policy across GPTBot, ClaudeBot and Google-Extended."</blockquote><div class="rv-foot"><div class="av">EC</div><div><div class="nm">Elena Costa</div><div class="ti">Marginalia</div></div></div></div>
+      <!-- duplicates for seamless loop -->
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"I had llms.txt generated and 200 recipes serving structured data before my second coffee. Citation traffic from Perplexity tripled in a month."</blockquote><div class="rv-foot"><div class="av">MV</div><div><div class="nm">Mira Voss</div><div class="ti">slowloafkitchen.com</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Replaced two paid plugins and a custom JSON-LD snippet with AEOmatic. The confidence score is genuinely best-in-class."</blockquote><div class="rv-foot"><div class="av">DK</div><div><div class="nm">Devin Kapoor</div><div class="ti">Lead SEO · Northwind</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"The audit told us exactly which 12 product pages were holding us back. ChatGPT names us on three buying-guide queries now."</blockquote><div class="rv-foot"><div class="av">SA</div><div><div class="nm">Sara Albright</div><div class="ti">Linen &amp; Loom</div></div></div></div>
+    </div>
+  </div>
+  <div class="review-row r2">
+    <div class="review-track">
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"The audit score is the part I keep coming back to — it's like Lighthouse for AI engines."</blockquote><div class="rv-foot"><div class="av">JL</div><div><div class="nm">Juno Lee</div><div class="ti">Field Notes Co.</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Works perfectly alongside Yoast. AEO layer drops in cleanly without touching the rest of our SEO setup."</blockquote><div class="rv-foot"><div class="av">PK</div><div><div class="nm">Priya Krishnan</div><div class="ti">Open Stack</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"For a free plugin this is unreasonably good. Found three schema misses on day one."</blockquote><div class="rv-foot"><div class="av">AT</div><div><div class="nm">Atelier Twelve</div><div class="ti">Editorial studio</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Page-builder support is the real story for us — we run Bricks and everything just worked."</blockquote><div class="rv-foot"><div class="av">NF</div><div><div class="nm">Nora Fischer</div><div class="ti">Atelier Brut</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Honestly the cleanest plugin UX I've seen in WordPress in years."</blockquote><div class="rv-foot"><div class="av">TW</div><div><div class="nm">Tomás Weber</div><div class="ti">Solo dev</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"The audit score is the part I keep coming back to — it's like Lighthouse for AI engines."</blockquote><div class="rv-foot"><div class="av">JL</div><div><div class="nm">Juno Lee</div><div class="ti">Field Notes Co.</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"Works perfectly alongside Yoast. AEO layer drops in cleanly without touching the rest of our SEO setup."</blockquote><div class="rv-foot"><div class="av">PK</div><div><div class="nm">Priya Krishnan</div><div class="ti">Open Stack</div></div></div></div>
+      <div class="rv-card"><div class="stars">★★★★★</div><blockquote>"For a free plugin this is unreasonably good. Found three schema misses on day one."</blockquote><div class="rv-foot"><div class="av">AT</div><div><div class="nm">Atelier Twelve</div><div class="ti">Editorial studio</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards">
+  <div class="container">
+    <div class="awards-row rv">
+      <div class="awards-head">
+        <h3>Loved by builders.<br>Recognised by the standards bodies.</h3>
+        <p>AEOmatic is the only AEO-focused plugin co-authored with the maintainers of the llms.txt and schema.org guidance.</p>
+      </div>
+      <div class="award">
+        <div class="big">#1</div>
+        <div class="lbl">WordPress.org</div>
+        <div class="sub">Top AEO plugin, 2026 Q1</div>
+      </div>
+      <div class="award">
+        <div class="big">4.9<span style="font-size:0.5em;color:var(--ink-faint)">/5</span></div>
+        <div class="lbl">Avg review score</div>
+        <div class="sub">From 1,800+ verified reviews</div>
+      </div>
+      <div class="award">
+        <div class="big">50k+</div>
+        <div class="lbl">Active sites</div>
+        <div class="sub">In 80+ countries worldwide</div>
+      </div>
+      <div class="award">
+        <div class="big">∞</div>
+        <div class="lbl">Free</div>
+        <div class="sub">GPL v2 · forever, no upsell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations">
+  <div class="container">
+    <div class="int-grid">
+      <div class="int-text rv">
+        <span class="eyebrow">Reach &amp; ecosystem</span>
+        <h2>Every <span class="accent">answer engine,</span> covered.</h2>
+        <p>One plugin, six answer engines — and counting. AEOmatic ships with crawler policies and structured-data profiles tuned for each, updated whenever the standards shift.</p>
+        <a class="btn btn-primary" href="#download" style="padding:12px 18px">Get AEOmatic free <span class="arrow">→</span></a>
+      </div>
+      <div class="int-stage rv">
+        <div class="int-center"><span>aeo</span></div>
+        <div class="int-bubble b1"><span class="mk" style="background:#10a37f">G</span> ChatGPT</div>
+        <div class="int-bubble b2"><span class="mk" style="background:#d97706">C</span> Claude</div>
+        <div class="int-bubble b3"><span class="mk" style="background:#4285f4">G</span> Gemini</div>
+        <div class="int-bubble b4"><span class="mk" style="background:#22d3ee">P</span> Perplexity</div>
+        <div class="int-bubble b5"><span class="mk" style="background:#f5f1ea;color:#0a0a0a">A</span> AI Overviews</div>
+        <div class="int-bubble b6"><span class="mk" style="background:#a78bfa">C</span> Copilot</div>
+        <div class="int-bubble b7"><span class="mk" style="background:#fb923c">Y</span> You.com</div>
+        <div class="int-bubble b8"><span class="mk" style="background:#34d399">B</span> Bytespider</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPER / CODE -->
+<section id="how" class="dev">
+  <div class="container">
+    <div class="dev-grid">
+      <div class="dev-text rv">
+        <span class="eyebrow">Development</span>
+        <h2>For teams that want <span class="accent">programmatic access.</span></h2>
+        <p>AEOmatic ships a REST API for everything you can do from the admin — query schema, regenerate llms.txt, set crawler policies, fetch audit scores. Perfect for headless WordPress and CI pipelines.</p>
+        <div class="dev-ctas">
+          <a class="btn btn-primary" href="#download">View documentation <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#download">Contact sales</a>
+        </div>
+      </div>
+      <div class="dev-window rv">
+        <div class="dev-tabs">
+          <div class="dev-tab on">cURL <b>shell</b></div>
+          <div class="dev-tab">Node <b>js</b></div>
+          <div class="dev-tab">Python <b>py</b></div>
+          <div class="dev-tab">PHP <b>php</b></div>
+        </div>
+        <div class="dev-code"><span class="ln">1</span><span class="com"># Fetch the AEO audit score for a post</span>
+<span class="ln">2</span><span class="key">curl</span> --request GET \
+<span class="ln">3</span>  --url <span class="str">https://yoursite.com/wp-json/aeomatic/v1/audit/124</span> \
+<span class="ln">4</span>  --header <span class="str">'X-AEO-Key: $AEO_API_KEY'</span>
+<span class="ln">5</span>
+<span class="ln">6</span><span class="com"># Response</span>
+<span class="ln">7</span>{
+<span class="ln">8</span>  <span class="fn">"post_id"</span>:      <span class="num">124</span>,
+<span class="ln">9</span>  <span class="fn">"score"</span>:        <span class="num">82</span>,
+<span class="ln">10</span>  <span class="fn">"delta_7d"</span>:    <span class="num">+14</span>,
+<span class="ln">11</span>  <span class="fn">"schema_type"</span>: <span class="str">"Recipe"</span>,
+<span class="ln">12</span>  <span class="fn">"confidence"</span>:  <span class="num">0.87</span>,
+<span class="ln">13</span>  <span class="fn">"breakdown"</span>: {
+<span class="ln">14</span>    <span class="fn">"schema"</span>:     <span class="num">94</span>,
+<span class="ln">15</span>    <span class="fn">"quotable"</span>:   <span class="num">88</span>,
+<span class="ln">16</span>    <span class="fn">"questions"</span>:  <span class="num">61</span>,
+<span class="ln">17</span>    <span class="fn">"links"</span>:      <span class="num">76</span>
+<span class="ln">18</span>  },
+<span class="ln">19</span>  <span class="fn">"next_fix"</span>:    <span class="str">"add FAQPage block"</span>
+<span class="ln">20</span>}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA POSTER -->
+<section id="download">
+  <div class="container">
+    <div class="cta-poster rv">
+      <div class="glow"></div>
+      <h2>Be cited. <span class="accent">Be quoted.</span><br>Start free today.</h2>
+      <p>Free forever. Installs in under a minute. No account, no credit card, no API key — and your AEO score updates the moment you publish.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://wordpress.org/plugins/aeomatic/">Download free on WordPress.org <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#features">Explore features</a>
+      </div>
+      <div class="small">★★★★★ rated · GPL v2 · WordPress 6.4+</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="foot-brand">
+        <div class="brand"><span class="brand-mark"></span> AEOmatic</div>
+        <p>Answer Engine Optimization for WordPress. Make your content quotable by ChatGPT, Claude, Gemini, Perplexity and Google AI Overviews — for free.</p>
+      </div>
+      <div>
+        <h5>Plugin</h5>
+        <a>Features</a><a>Schema</a><a>llms.txt</a><a>Crawlers</a><a>Audit</a>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <a>Documentation</a><a>llms.txt guide</a><a>Changelog</a><a>Roadmap</a>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <a>WordPress.org</a><a>GitHub</a><a>Contact</a><a>Status</a>
+      </div>
+    </div>
+    <div class="foot-row">
+      <span>© 2026 AEOmatic · GPL v2 licensed</span>
+      <span><a style="display:inline;margin-right:18px">Privacy</a><a style="display:inline">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver(es=>{for(const e of es){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}},{threshold:0.08,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // Hero checklist cycle
+  (function(){
+    const items = document.querySelectorAll('#checklist .ci');
+    if(!items.length) return;
+    let active = 0;
+    function tick(){
+      items.forEach((el,i)=>{
+        el.classList.remove('active','done');
+        if(i < active) el.classList.add('done');
+        else if(i === active) el.classList.add('active');
+      });
+      active = (active + 1) % (items.length + 1);
+      if(active === 0){
+        // brief pause before re-starting
+        setTimeout(tick, 1400);
+      } else {
+        setTimeout(tick, 1300);
+      }
+    }
+    tick();
+  })();
+
+  // Stat counters
+  function animateStat(el){
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1400;
+    const start = performance.now();
+    const isFloat = target % 1 !== 0;
+    function step(t){
+      const p = Math.min(1,(t-start)/dur);
+      const eased = 1 - Math.pow(1-p,3);
+      const v = target * eased;
+      el.textContent = (isFloat ? v.toFixed(1) : Math.round(v)) + suffix;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const statIO = new IntersectionObserver(es=>{
+    for(const e of es){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.n[data-target]').forEach(animateStat);
+        statIO.unobserve(e.target);
+      }
+    }
+  },{threshold:0.3});
+  document.querySelectorAll('.stats-row').forEach(el=>statIO.observe(el));
+
+  // Dev tabs (visual only)
+  document.querySelectorAll('.dev-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tab.parentElement.querySelectorAll('.dev-tab').forEach(t=>t.classList.remove('on'));
+      tab.classList.add('on');
+    });
+  });
+
+  // Integration bubble subtle drift
+  const bubbles = document.querySelectorAll('.int-bubble');
+  bubbles.forEach((b,i)=>{
+    const phase = i*0.7;
+    function tick(t){
+      const sx = Math.sin(t/1500 + phase) * 4;
+      const sy = Math.cos(t/1700 + phase) * 4;
+      b.style.transform = `translate(${sx}px, ${sy}px)`;
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+</script>
+
+</body>
+</html>
