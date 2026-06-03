@@ -29,29 +29,29 @@
       {
         "column_title": "Plugin",
         "links": [
-          {"link_text": "Features",  "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "Schema",    "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "llms.txt",  "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "Crawlers",  "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "Audit",     "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}}
+          {"col_link_text": "Features",  "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "Schema",    "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "llms.txt",  "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "Crawlers",  "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "Audit",     "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}}
         ]
       },
       {
         "column_title": "Resources",
         "links": [
-          {"link_text": "Documentation", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "llms.txt guide","url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "Changelog",     "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "Roadmap",       "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+          {"col_link_text": "Documentation", "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "llms.txt guide","col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "Changelog",     "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "Roadmap",       "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
         ]
       },
       {
         "column_title": "Support",
         "links": [
-          {"link_text": "WordPress.org","url": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "GitHub",       "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "Contact",      "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"link_text": "Status",       "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+          {"col_link_text": "WordPress.org","col_url": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "GitHub",       "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "Contact",      "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"col_link_text": "Status",       "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
         ]
       }
     ],
@@ -76,8 +76,8 @@
         "default": [],
         "children": [
           {
-            "id": "link_text",
-            "name": "link_text",
+            "id": "col_link_text",
+            "name": "col_link_text",
             "label": "Link Label",
             "required": false,
             "locked": false,
@@ -85,8 +85,8 @@
             "default": "Link"
           },
           {
-            "id": "url",
-            "name": "url",
+            "id": "col_url",
+            "name": "col_url",
             "label": "Link URL",
             "required": false,
             "locked": false,
@@ -115,13 +115,13 @@
     "type": "group",
     "occurrence": {"min": 0, "max": 6},
     "default": [
-      {"link_text": "Privacy", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-      {"link_text": "Terms",   "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+      {"leg_link_text": "Privacy", "leg_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+      {"leg_link_text": "Terms",   "leg_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
     ],
     "children": [
       {
-        "id": "link_text",
-        "name": "link_text",
+        "id": "leg_link_text",
+        "name": "leg_link_text",
         "label": "Link Label",
         "required": false,
         "locked": false,
@@ -129,8 +129,8 @@
         "default": "Link"
       },
       {
-        "id": "url",
-        "name": "url",
+        "id": "leg_url",
+        "name": "leg_url",
         "label": "Link URL",
         "required": false,
         "locked": false,

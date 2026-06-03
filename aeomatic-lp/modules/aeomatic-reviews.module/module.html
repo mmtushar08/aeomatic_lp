@@ -12,12 +12,12 @@
       {% for review in module.row1_reviews %}
       <div class="rv-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"{{ review.quote }}"</blockquote>
+        <blockquote>"{{ review.r1_quote }}"</blockquote>
         <div class="rv-foot">
-          <div class="av">{{ review.author_initials }}</div>
+          <div class="av">{{ review.r1_author_initials }}</div>
           <div>
-            <div class="nm">{{ review.author_name }}</div>
-            <div class="ti">{{ review.author_title }}</div>
+            <div class="nm">{{ review.r1_author_name }}</div>
+            <div class="ti">{{ review.r1_author_title }}</div>
           </div>
         </div>
       </div>
@@ -30,12 +30,12 @@
       {% for review in module.row2_reviews %}
       <div class="rv-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"{{ review.quote }}"</blockquote>
+        <blockquote>"{{ review.r2_quote }}"</blockquote>
         <div class="rv-foot">
-          <div class="av">{{ review.author_initials }}</div>
+          <div class="av">{{ review.r2_author_initials }}</div>
           <div>
-            <div class="nm">{{ review.author_name }}</div>
-            <div class="ti">{{ review.author_title }}</div>
+            <div class="nm">{{ review.r2_author_name }}</div>
+            <div class="ti">{{ review.r2_author_title }}</div>
           </div>
         </div>
       </div>

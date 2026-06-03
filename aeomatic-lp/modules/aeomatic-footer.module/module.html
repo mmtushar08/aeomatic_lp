@@ -9,7 +9,7 @@
       <div>
         <h5>{{ col.column_title }}</h5>
         {% for link in col.links %}
-        <a href="{{ link.url.href }}">{{ link.link_text }}</a>
+        <a href="{{ link.col_url.href }}">{{ link.col_link_text }}</a>
         {% endfor %}
       </div>
       {% endfor %}
@@ -18,7 +18,7 @@
       <span>{{ module.copyright_text }}</span>
       <span>
         {% for link in module.legal_links %}
-        <a href="{{ link.url.href }}" style="display:inline;margin-right:18px">{{ link.link_text }}</a>
+        <a href="{{ link.leg_url.href }}" style="display:inline;margin-right:18px">{{ link.leg_link_text }}</a>
         {% endfor %}
       </span>
     </div>
