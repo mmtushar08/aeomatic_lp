@@ -9,255 +9,107 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   {{ standard_header_includes }}
+  {{ require_css(get_asset_url("./css/aeomatic-lp.css")) }}
   <title>{{ content.html_title }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* ─── DESIGN SYSTEM TOKENS ─── */
-    :root {
-      --bg:#f7f5f0;
-      --bg-2:#ffffff;
-      --card:#ffffff;
-      --line:rgba(15,15,20,0.08);
-      --line-2:rgba(15,15,20,0.16);
-      --ink:#0e0e10;
-      --ink-dim:rgba(14,14,16,0.66);
-      --ink-faint:rgba(14,14,16,0.46);
-      --ink-ghost:rgba(14,14,16,0.24);
-      --accent: oklch(0.52 0.20 252);
-      --accent-2: oklch(0.46 0.20 272);
-      --accent-glow: oklch(0.52 0.22 252 / 0.28);
-      --good: oklch(0.52 0.16 150);
-      --warn: oklch(0.62 0.16 70);
-      --sans:"Geist",system-ui,sans-serif;
-      --mono:"Geist Mono",ui-monospace,monospace;
-      --maxw:1240px;
-      --pad-x:clamp(20px,4vw,40px);
-    }
-
-    /* ─── RESET & BASE ─── */
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-    body{
-      background:
-        radial-gradient(1200px 700px at 50% -300px, rgba(80,120,220,0.10), transparent 70%),
-        var(--bg);
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
-    ::selection{background:var(--accent-glow);color:var(--ink)}
-
-    /* ─── LAYOUT ─── */
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x);position:relative;z-index:2}
-
-    /* ─── BUTTONS ─── */
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;font-size:13.5px;font-weight:500;line-height:1;
-      transition:transform .2s, background .2s, box-shadow .2s;border:1px solid transparent;
-    }
-    .btn-ghost{color:var(--ink-dim);border-color:var(--line-2)}
-    .btn-ghost:hover{color:var(--ink);background:rgba(14,14,16,0.04)}
-    .btn-primary{
-      background:linear-gradient(180deg, oklch(0.56 0.20 252), oklch(0.46 0.20 268));
-      color:#fff;
-      box-shadow:0 0 0 1px rgba(0,0,0,0.06), 0 6px 22px rgba(60,100,200,0.30), inset 0 1px 0 rgba(255,255,255,0.25);
-    }
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(0,0,0,0.10),0 10px 30px rgba(60,100,200,0.42),inset 0 1px 0 rgba(255,255,255,0.3)}
-    .btn-link{color:var(--ink-dim);padding:9px 10px;font-size:13.5px}
-    .arrow{transition:transform .2s;display:inline-block}
-    .btn:hover .arrow{transform:translateX(2px)}
-
-    /* ─── TYPOGRAPHY UTILITIES ─── */
-    .eyebrow{display:inline-block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:18px}
-    h2.sec-h{font-size:clamp(36px,4.6vw,60px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0;text-wrap:balance;max-width:14ch}
-    h2.sec-h .accent{
-      background:linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-
-    /* ─── REVEAL ANIMATION ─── */
-    .rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
-    .rv.in{opacity:1;transform:none}
-
-    /* ─────────── LIGHT-MODE OVERRIDES: dark data surfaces ─────────── */
-
-    /* Stage (hero animated checklist) */
-    .stage{
-      background:linear-gradient(180deg, #0d0d12, #08080c) !important;
-      border-color:#1a1a22 !important;color:#f4f5f7;
-      box-shadow:0 30px 80px rgba(20,30,80,0.18), 0 4px 14px rgba(20,30,80,0.06), inset 0 1px 0 rgba(255,255,255,0.04) !important;
-    }
-    .stage-head, .stage-foot{color:rgba(244,245,247,0.42) !important;border-color:rgba(255,255,255,0.07) !important}
-    .stage-title{color:rgba(244,245,247,0.66) !important}
-    .stage-title b{color:#f4f5f7 !important}
-    .ci{background:rgba(255,255,255,0.025);border-color:rgba(255,255,255,0.07)}
-    .ci .text{color:#f4f5f7}
-    .ci .meta{color:rgba(244,245,247,0.42)}
-    .ci .indicator{border-color:rgba(255,255,255,0.18)}
-    .ci.active{background:rgba(80,140,220,0.12) !important;border-color:rgba(80,140,220,0.32) !important}
-    .ci.active .indicator{border-color: oklch(0.74 0.18 248) !important}
-    .ci.active .indicator::after{background: oklch(0.74 0.18 248) !important;box-shadow:0 0 12px oklch(0.74 0.20 248 / 0.5)}
-    .ci.active .meta{color: oklch(0.74 0.18 248) !important}
-    .ci.done .meta{color: oklch(0.78 0.18 145) !important}
-    .ci.done .indicator{background: oklch(0.78 0.18 145) !important;border-color: oklch(0.78 0.18 145) !important}
-    .stage-foot .live .d{background: oklch(0.78 0.18 145);box-shadow:0 0 8px oklch(0.78 0.18 145)}
-
-    /* Stat row */
-    .stats-row{border-top-color:rgba(14,14,16,0.18);border-bottom-color:rgba(14,14,16,0.18);background:rgba(255,255,255,0.55)}
-    .stat-cell .n{
-      background:linear-gradient(180deg, #0e0e10 0%, rgba(14,14,16,0.55) 110%);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    .award .big{
-      background:linear-gradient(180deg, #0e0e10 0%, rgba(14,14,16,0.55) 110%);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-
-    /* Gradient accents shift to deeper blue */
-    h1.hero-h .grad{
-      background:linear-gradient(180deg, #0e0e10 0%, rgba(14,14,16,0.55) 110%) !important;
-      -webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;
-    }
-    h1.hero-h .accent, h2.sec-h .accent, .features-head h2 .accent,
-    .channels-head h2 .accent, .reviews-head h2 .accent,
-    .int-text h2 .accent, .dev-text h2 .accent{
-      background:linear-gradient(120deg, oklch(0.52 0.20 252), oklch(0.42 0.22 280)) !important;
-      -webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;
-    }
-
-    /* Dark feature-visual cards (product screenshots) */
-    .fb-visual{
-      background:linear-gradient(180deg, #0d0d12, #08080c) !important;
-      border-color:#1a1a22 !important;color:#f4f5f7;
-      box-shadow:0 30px 80px rgba(20,30,80,0.18), 0 4px 14px rgba(20,30,80,0.06) !important;
-    }
-    .fb-visual::before{background:radial-gradient(400px 200px at 80% 0%, rgba(80,140,220,0.16), transparent 60%) !important}
-    .fbv-head{color:rgba(244,245,247,0.42) !important;border-color:rgba(255,255,255,0.07) !important}
-    .fb-visual .crow .nm{color:rgba(244,245,247,0.66) !important}
-    .fb-visual .crow .pct{color:#f4f5f7 !important}
-    .fb-visual .crow .bar{background:rgba(255,255,255,0.05) !important}
-    .fb-visual .crow .bar i{background:linear-gradient(90deg, oklch(0.74 0.18 248), oklch(0.62 0.20 270)) !important;box-shadow:0 0 12px oklch(0.74 0.20 248 / 0.5)}
-    .fb-visual .crow.dim .nm,.fb-visual .crow.dim .pct{color:rgba(244,245,247,0.42) !important}
-    .fb-visual .crow.dim .bar i{background:rgba(255,255,255,0.18) !important;box-shadow:none}
-    .fb-visual .gl{border-bottom-color:rgba(255,255,255,0.07) !important;color:rgba(244,245,247,0.66)}
-    .fb-visual .gl b{color:#f4f5f7 !important}
-    .fb-visual .gl-up{color: oklch(0.78 0.18 145) !important}
-    .fb-visual .ring .num{color:#f4f5f7}
-    .fb-visual .ring .num .of{color:rgba(244,245,247,0.42)}
-    .fb-visual .cr{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.07);color:#f4f5f7}
-    .fb-visual .cr.on .sw{background: oklch(0.78 0.18 145);box-shadow:0 0 8px oklch(0.78 0.18 145)}
-    .fb-visual .cr.off{color:rgba(244,245,247,0.42)}
-    .fb-visual .cr.off .sw{background:rgba(255,255,255,0.14)}
-    .code{
-      color:rgba(244,245,247,0.66) !important;background:#06060a !important;
-      border-color:rgba(255,255,255,0.07) !important;
-    }
-    .code .com{color:rgba(244,245,247,0.42) !important}
-    .code .key{color: oklch(0.74 0.18 248) !important}
-    .code .h{color:#f4f5f7 !important}
-    .code a{color:#f4f5f7 !important}
-    .fb-visual span[style*="color:var(--ink-faint)"]{color:rgba(244,245,247,0.42) !important}
-    .fb-visual span[style*="color:var(--ink)"]{color:#f4f5f7 !important}
-    .fb-visual span[style*="color:var(--accent)"]{color: oklch(0.74 0.18 248) !important}
-
-    /* Channel cards = light */
-    .ch{
-      background:#ffffff !important;
-      box-shadow:0 1px 0 rgba(255,255,255,0.5) inset, 0 6px 18px rgba(20,30,80,0.04);
-    }
-    .ch:hover{box-shadow:0 1px 0 rgba(255,255,255,0.5) inset, 0 12px 28px rgba(20,30,80,0.10)}
-
-    /* Review cards = light */
-    .rv-card{
-      background:#ffffff !important;
-      box-shadow:0 1px 0 rgba(255,255,255,0.5) inset, 0 4px 14px rgba(20,30,80,0.04);
-    }
-
-    /* Integration stage = dark */
-    .int-stage{
-      background:radial-gradient(600px 400px at 50% 50%, rgba(80,140,220,0.16), transparent 60%),linear-gradient(180deg, #0d0d12, #08080c) !important;
-      border-color:#1a1a22 !important;color:#f4f5f7;
-      box-shadow:0 30px 80px rgba(20,30,80,0.18);
-    }
-    .int-bubble{background:rgba(13,13,18,0.85) !important;border-color:rgba(255,255,255,0.14) !important;color:#f4f5f7 !important}
-
-    /* Developer window = dark */
-    .dev-window{border-color:#1a1a22 !important;box-shadow:0 30px 80px rgba(20,30,80,0.18) !important}
-    .dev-tabs{border-bottom-color:rgba(255,255,255,0.07) !important}
-    .dev-tab{color:rgba(244,245,247,0.42) !important;border-right-color:rgba(255,255,255,0.07) !important}
-    .dev-tab.on{color:#f4f5f7 !important}
-    .dev-tab b{color:rgba(244,245,247,0.42) !important}
-    .dev-tab.on b{color: oklch(0.74 0.18 248) !important}
-    .dev-code{color:rgba(244,245,247,0.66) !important}
-    .dev-code .ln{color:rgba(244,245,247,0.22) !important}
-    .dev-code .com{color:rgba(244,245,247,0.42) !important}
-    .dev-code .fn{color: oklch(0.74 0.18 248) !important}
-
-    /* CTA poster stays dark */
-    .cta-poster{
-      background:
-        radial-gradient(700px 400px at 20% 30%, rgba(80,140,220,0.30), transparent 60%),
-        radial-gradient(600px 400px at 80% 70%, rgba(160,90,220,0.20), transparent 60%),
-        linear-gradient(180deg, #0a0a12, #06060a) !important;
-      border-color:#1a1a22 !important;color:#f4f5f7;
-      box-shadow:0 30px 80px rgba(20,30,80,0.18);
-    }
-    .cta-poster h2{color:#f4f5f7 !important}
-    .cta-poster p{color:rgba(244,245,247,0.66) !important}
-    .cta-poster h2 .accent{
-      background:linear-gradient(120deg, oklch(0.82 0.18 248), oklch(0.66 0.22 280)) !important;
-      -webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;
-    }
-    .cta-poster .ctas .btn-primary{background:#fff !important;color:#0e0e10 !important;box-shadow:0 0 0 1px rgba(0,0,0,0.06), 0 6px 22px rgba(255,255,255,0.10)}
-    .cta-poster .ctas .btn-ghost{border-color:rgba(255,255,255,0.18) !important;color:#f4f5f7 !important;background:rgba(255,255,255,0.05) !important}
-    .cta-poster .ctas .btn-ghost:hover{background:rgba(255,255,255,0.12) !important}
-    .cta-poster .small{color:rgba(244,245,247,0.42) !important}
-
-    /* Marquee logo color */
-    .mlogo{color:rgba(14,14,16,0.42)}
-
-    /* fb-list bullets */
-    .fb-list li .icn{background:rgba(80,120,200,0.10) !important;border-color:rgba(80,120,200,0.22) !important}
-    .ch-icon{background:rgba(80,120,200,0.10) !important;border-color:rgba(80,120,200,0.22) !important}
-
-    /* Hero meta dot */
-    .hero-meta .dot{background:rgba(14,14,16,0.22)}
-
-    /* Trust label */
-    .trust-label{color:var(--ink-faint)}
-
-    /* Awards strip background */
-    .awards{background:rgba(255,255,255,0.4)}
-  </style>
 </head>
 <body>
-  {% module "aeomatic_nav"          path="../modules/aeomatic-nav.module" %}
-  {% module "aeomatic_hero"         path="../modules/aeomatic-hero.module" %}
-  {% module "aeomatic_stats"        path="../modules/aeomatic-stats.module" %}
-  {% module "aeomatic_features"     path="../modules/aeomatic-features.module" %}
-  {% module "aeomatic_channel_cards" path="../modules/aeomatic-channel-cards.module" %}
-  {% module "aeomatic_reviews"      path="../modules/aeomatic-reviews.module" %}
-  {% module "aeomatic_awards"       path="../modules/aeomatic-awards.module" %}
-  {% module "aeomatic_integrations" path="../modules/aeomatic-integrations.module" %}
-  {% module "aeomatic_developer"    path="../modules/aeomatic-developer.module" %}
-  {% module "aeomatic_cta_poster"   path="../modules/aeomatic-cta-poster.module" %}
-  {% module "aeomatic_footer"       path="../modules/aeomatic-footer.module" %}
 
-  <script>
-    // Reveal on scroll — global
-    const io = new IntersectionObserver(es => {
-      for (const e of es) {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      }
-    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
-    document.querySelectorAll('.rv').forEach(el => io.observe(el));
-  </script>
+  {# Fixed nav — always at top, not part of DND #}
+  {% module "aeomatic_nav" path="../modules/aeomatic-nav.module" %}
 
+  {# DND area — editors can add, remove, and reorder sections #}
+  {% dnd_area "dnd_main" label="Page Content" %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-hero.module" label="Hero" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-stats.module" label="Stats" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-features.module" label="Features" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-channel-cards.module" label="Channel Cards" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-reviews.module" label="Reviews" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-awards.module" label="Awards" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-integrations.module" label="Integrations" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-developer.module" label="Developer" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+    {% dnd_section padding_top=0 padding_bottom=0 %}
+      {% dnd_column offset=0 width=12 padding={"top":0,"bottom":0,"left":0,"right":0} %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/aeomatic-cta-poster.module" label="CTA Poster" %}
+          {% enddnd_module %}
+        {% enddnd_row %}
+      {% enddnd_column %}
+    {% enddnd_section %}
+
+  {% enddnd_area %}
+
+  {# Fixed footer — always at bottom, not part of DND #}
+  {% module "aeomatic_footer" path="../modules/aeomatic-footer.module" %}
+
+  {{ require_js(get_asset_url("./js/aeomatic-lp.js"), "footer") }}
   {{ standard_footer_includes }}
 </body>
 </html>
