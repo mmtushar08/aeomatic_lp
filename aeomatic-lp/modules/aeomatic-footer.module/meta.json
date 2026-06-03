@@ -3,7 +3,7 @@
   "css_assets": [],
   "external_js": [],
   "global": true,
-  "host_template_types": ["LANDING_PAGE"],
+  "host_template_types": ["PAGE"],
   "icon": "",
   "js_assets": [],
   "other_assets": [],
