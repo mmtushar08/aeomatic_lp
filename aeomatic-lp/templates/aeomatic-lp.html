@@ -1,3 +1,8 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: AEOmatic Landing Page
+-->
 <!doctype html>
 <html lang="{{ html_lang }}">
 <head>
@@ -228,108 +233,17 @@
   </style>
 </head>
 <body>
-  {% dnd_area "dnd_area" label="Main Content" %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-nav.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-hero.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-stats.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-features.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-channel-cards.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-reviews.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-awards.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-integrations.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-developer.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-cta-poster.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../modules/aeomatic-footer.module" %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-
-  {% end_dnd_area %}
+  {% module "aeomatic_nav"          path="../modules/aeomatic-nav.module" %}
+  {% module "aeomatic_hero"         path="../modules/aeomatic-hero.module" %}
+  {% module "aeomatic_stats"        path="../modules/aeomatic-stats.module" %}
+  {% module "aeomatic_features"     path="../modules/aeomatic-features.module" %}
+  {% module "aeomatic_channel_cards" path="../modules/aeomatic-channel-cards.module" %}
+  {% module "aeomatic_reviews"      path="../modules/aeomatic-reviews.module" %}
+  {% module "aeomatic_awards"       path="../modules/aeomatic-awards.module" %}
+  {% module "aeomatic_integrations" path="../modules/aeomatic-integrations.module" %}
+  {% module "aeomatic_developer"    path="../modules/aeomatic-developer.module" %}
+  {% module "aeomatic_cta_poster"   path="../modules/aeomatic-cta-poster.module" %}
+  {% module "aeomatic_footer"       path="../modules/aeomatic-footer.module" %}
 
   <script>
     // Reveal on scroll — global
