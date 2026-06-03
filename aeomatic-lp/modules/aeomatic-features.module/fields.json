@@ -41,12 +41,7 @@
         "body_text": "AEOmatic reads your post and picks from 26 schema.org types: Article, Recipe, Product, How-To, FAQ, Event and more. Every choice ships with a confidence percentage so you know when to trust it and when to override.",
         "cta_label": "Explore schema detection",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "schema",
-        "list_items": [
-          {"icon": "26", "title": "Schema types out of the box", "desc": "From Article to LocalBusiness to MedicalCondition — covered without configuration."},
-          {"icon": "%", "title": "Confidence on every detection", "desc": "See exactly how sure AEOmatic is before it ships JSON-LD into your &lt;head&gt;."},
-          {"icon": "↺", "title": "One-click override", "desc": "Edge cases happen. Pick the right type yourself; the rest stays auto-synced."}
-        ]
+        "visual_type": "schema"
       },
       {
         "tag": "LLM indexing",
@@ -54,12 +49,7 @@
         "body_text": "The emerging standard — like robots.txt for answer engines — that tells LLMs which pages on your site are most worth quoting. AEOmatic writes yours automatically and updates it as you publish.",
         "cta_label": "Read the llms.txt guide",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "llmstxt",
-        "list_items": [
-          {"icon": "⌘", "title": "Auto-prioritised by content", "desc": "Most quotable pages bubble to the top, sorted by freshness and structure."},
-          {"icon": "↧", "title": "Markdown export", "desc": "Review offline, edit, push back. Or let AEOmatic keep it in sync."},
-          {"icon": "⊘", "title": "Per-section opt-out", "desc": "Exclude private, paid, or low-quality pages with a single toggle."}
-        ]
+        "visual_type": "llmstxt"
       },
       {
         "tag": "Crawler control",
@@ -67,12 +57,7 @@
         "body_text": "Allow the engines you want to be cited by. Block the ones you don't. AEOmatic writes the robots directives, the meta tags, and the IP-aware rules — across 18 known AI crawlers — so your policy stays consistent everywhere.",
         "cta_label": "Explore crawler control",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "crawlers",
-        "list_items": [
-          {"icon": "18", "title": "Named crawlers covered", "desc": "GPTBot, ClaudeBot, PerplexityBot, GeminiBot, Google-Extended, Applebot, CCBot — and 11 more."},
-          {"icon": "⊕", "title": "Per-content-type rules", "desc": "Block paid posts from training while letting your blog be quoted freely."},
-          {"icon": "≡", "title": "Audit log", "desc": "See what each bot last fetched — and when."}
-        ]
+        "visual_type": "crawlers"
       },
       {
         "tag": "Content audit",
@@ -80,12 +65,7 @@
         "body_text": "Every post gets a quotability score. The fixes are written as direct edits you can apply with one click — no consultant, no waiting.",
         "cta_label": "Explore the audit",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "audit",
-        "list_items": [
-          {"icon": "100", "title": "Quotability score", "desc": "One number that tells you whether AI engines will pull from this page."},
-          {"icon": "★", "title": "Priority-ordered fixes", "desc": "The biggest wins, in order, with one-click apply."},
-          {"icon": "≋", "title": "Trend history", "desc": "See how your score moves with every publish — site-wide or per-post."}
-        ]
+        "visual_type": "audit"
       }
     ],
     "children": [
@@ -160,8 +140,8 @@
         "default": [],
         "children": [
           {
-            "id": "icon",
-            "name": "icon",
+            "id": "li_icon",
+            "name": "li_icon",
             "label": "Icon / Short Label",
             "required": false,
             "locked": false,
@@ -169,8 +149,8 @@
             "default": "★"
           },
           {
-            "id": "title",
-            "name": "title",
+            "id": "li_title",
+            "name": "li_title",
             "label": "Item Title",
             "required": false,
             "locked": false,
@@ -178,8 +158,8 @@
             "default": "Item title"
           },
           {
-            "id": "desc",
-            "name": "desc",
+            "id": "li_desc",
+            "name": "li_desc",
             "label": "Item Description",
             "required": false,
             "locked": false,
