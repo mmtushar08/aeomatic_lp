@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   {{ standard_header_includes }}
-  {{ require_css(get_asset_url("./css/aeomatic-lp.css")) }}
+  {{ require_css(get_asset_url("../css/aeomatic-lp.css")) }}
   <title>{{ content.html_title }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,7 +109,7 @@
   {# Fixed footer — always at bottom, not part of DND #}
   {% module "aeomatic_footer" path="../modules/aeomatic-footer.module" %}
 
-  {{ require_js(get_asset_url("./js/aeomatic-lp.js"), "footer") }}
+  {{ require_js(get_asset_url("../js/aeomatic-lp.js"), "footer") }}
   {{ standard_footer_includes }}
 </body>
 </html>
