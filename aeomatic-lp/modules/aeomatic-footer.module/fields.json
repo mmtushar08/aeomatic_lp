@@ -28,31 +28,27 @@
     "default": [
       {
         "column_title": "Plugin",
-        "links": [
-          {"col_link_text": "Features",  "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "Schema",    "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "llms.txt",  "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "Crawlers",  "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "Audit",     "col_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}}
-        ]
+        "l1_text": "Features",  "l1_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"},
+        "l2_text": "Schema",    "l2_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"},
+        "l3_text": "llms.txt",  "l3_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"},
+        "l4_text": "Crawlers",  "l4_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"},
+        "l5_text": "Audit",     "l5_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}
       },
       {
         "column_title": "Resources",
-        "links": [
-          {"col_link_text": "Documentation", "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "llms.txt guide","col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "Changelog",     "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "Roadmap",       "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
-        ]
+        "l1_text": "Documentation", "l1_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "l2_text": "llms.txt guide","l2_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "l3_text": "Changelog",     "l3_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "l4_text": "Roadmap",       "l4_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "l5_text": "", "l5_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}
       },
       {
         "column_title": "Support",
-        "links": [
-          {"col_link_text": "WordPress.org","col_url": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "GitHub",       "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "Contact",      "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"col_link_text": "Status",       "col_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
-        ]
+        "l1_text": "WordPress.org","l1_url": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"},
+        "l2_text": "GitHub",       "l2_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "l3_text": "Contact",      "l3_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "l4_text": "Status",       "l4_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
+        "l5_text": "", "l5_url": {"href": "#", "content_id": null, "type": "EXTERNAL"}
       }
     ],
     "children": [
@@ -65,36 +61,16 @@
         "type": "text",
         "default": "Column"
       },
-      {
-        "id": "links",
-        "name": "links",
-        "label": "Links",
-        "required": false,
-        "locked": false,
-        "type": "group",
-        "occurrence": {"min": 0, "max": 10},
-        "default": [],
-        "children": [
-          {
-            "id": "col_link_text",
-            "name": "col_link_text",
-            "label": "Link Label",
-            "required": false,
-            "locked": false,
-            "type": "text",
-            "default": "Link"
-          },
-          {
-            "id": "col_url",
-            "name": "col_url",
-            "label": "Link URL",
-            "required": false,
-            "locked": false,
-            "type": "url",
-            "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}
-          }
-        ]
-      }
+      {"id": "l1_text", "name": "l1_text", "label": "Link 1 — Label", "required": false, "locked": false, "type": "text", "default": ""},
+      {"id": "l1_url",  "name": "l1_url",  "label": "Link 1 — URL",   "required": false, "locked": false, "type": "url",  "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+      {"id": "l2_text", "name": "l2_text", "label": "Link 2 — Label", "required": false, "locked": false, "type": "text", "default": ""},
+      {"id": "l2_url",  "name": "l2_url",  "label": "Link 2 — URL",   "required": false, "locked": false, "type": "url",  "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+      {"id": "l3_text", "name": "l3_text", "label": "Link 3 — Label", "required": false, "locked": false, "type": "text", "default": ""},
+      {"id": "l3_url",  "name": "l3_url",  "label": "Link 3 — URL",   "required": false, "locked": false, "type": "url",  "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+      {"id": "l4_text", "name": "l4_text", "label": "Link 4 — Label", "required": false, "locked": false, "type": "text", "default": ""},
+      {"id": "l4_url",  "name": "l4_url",  "label": "Link 4 — URL",   "required": false, "locked": false, "type": "url",  "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+      {"id": "l5_text", "name": "l5_text", "label": "Link 5 — Label", "required": false, "locked": false, "type": "text", "default": ""},
+      {"id": "l5_url",  "name": "l5_url",  "label": "Link 5 — URL",   "required": false, "locked": false, "type": "url",  "default": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
     ]
   },
   {

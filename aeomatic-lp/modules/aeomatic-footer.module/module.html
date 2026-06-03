@@ -8,9 +8,11 @@
       {% for col in module.link_columns %}
       <div>
         <h5>{{ col.column_title }}</h5>
-        {% for link in col.links %}
-        <a href="{{ link.col_url.href }}">{{ link.col_link_text }}</a>
-        {% endfor %}
+        {% if col.l1_text %}<a href="{{ col.l1_url.href }}">{{ col.l1_text }}</a>{% endif %}
+        {% if col.l2_text %}<a href="{{ col.l2_url.href }}">{{ col.l2_text }}</a>{% endif %}
+        {% if col.l3_text %}<a href="{{ col.l3_url.href }}">{{ col.l3_text }}</a>{% endif %}
+        {% if col.l4_text %}<a href="{{ col.l4_url.href }}">{{ col.l4_text }}</a>{% endif %}
+        {% if col.l5_text %}<a href="{{ col.l5_url.href }}">{{ col.l5_text }}</a>{% endif %}
       </div>
       {% endfor %}
     </div>

@@ -11,14 +11,26 @@
         <span class="fb-tag">{{ feature.tag }}</span>
         <h3 class="fb-h">{{ feature.heading }}</h3>
         <div class="fb-p">{{ feature.body_text }}</div>
-        {% if feature.list_items %}
+        {% if feature.b1_title or feature.b2_title or feature.b3_title %}
         <ul class="fb-list">
-          {% for item in feature.list_items %}
+          {% if feature.b1_title %}
           <li>
-            <span class="icn">{{ item.li_icon }}</span>
-            <div><b>{{ item.li_title }}</b>{{ item.li_desc }}</div>
+            <span class="icn">{{ feature.b1_icon }}</span>
+            <div><b>{{ feature.b1_title }}</b>{{ feature.b1_desc }}</div>
           </li>
-          {% endfor %}
+          {% endif %}
+          {% if feature.b2_title %}
+          <li>
+            <span class="icn">{{ feature.b2_icon }}</span>
+            <div><b>{{ feature.b2_title }}</b>{{ feature.b2_desc }}</div>
+          </li>
+          {% endif %}
+          {% if feature.b3_title %}
+          <li>
+            <span class="icn">{{ feature.b3_icon }}</span>
+            <div><b>{{ feature.b3_title }}</b>{{ feature.b3_desc }}</div>
+          </li>
+          {% endif %}
         </ul>
         {% endif %}
         <a href="{{ feature.cta_url.href }}" class="fb-cta">{{ feature.cta_label }} <span class="arrow">→</span></a>

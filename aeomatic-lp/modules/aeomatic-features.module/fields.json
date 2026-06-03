@@ -41,7 +41,10 @@
         "body_text": "AEOmatic reads your post and picks from 26 schema.org types: Article, Recipe, Product, How-To, FAQ, Event and more. Every choice ships with a confidence percentage so you know when to trust it and when to override.",
         "cta_label": "Explore schema detection",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "schema"
+        "visual_type": "schema",
+        "b1_icon": "26", "b1_title": "Schema types out of the box", "b1_desc": "From Article to LocalBusiness to MedicalCondition — covered without configuration.",
+        "b2_icon": "%",  "b2_title": "Confidence on every detection", "b2_desc": "See exactly how sure AEOmatic is before it ships JSON-LD into your <head>.",
+        "b3_icon": "↺",  "b3_title": "One-click override", "b3_desc": "Edge cases happen. Pick the right type yourself; the rest stays auto-synced."
       },
       {
         "tag": "LLM indexing",
@@ -49,7 +52,10 @@
         "body_text": "The emerging standard — like robots.txt for answer engines — that tells LLMs which pages on your site are most worth quoting. AEOmatic writes yours automatically and updates it as you publish.",
         "cta_label": "Read the llms.txt guide",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "llmstxt"
+        "visual_type": "llmstxt",
+        "b1_icon": "⌘", "b1_title": "Auto-prioritised by content", "b1_desc": "Most quotable pages bubble to the top, sorted by freshness and structure.",
+        "b2_icon": "↧", "b2_title": "Markdown export", "b2_desc": "Review offline, edit, push back. Or let AEOmatic keep it in sync.",
+        "b3_icon": "⊘", "b3_title": "Per-section opt-out", "b3_desc": "Exclude private, paid, or low-quality pages with a single toggle."
       },
       {
         "tag": "Crawler control",
@@ -57,7 +63,10 @@
         "body_text": "Allow the engines you want to be cited by. Block the ones you don't. AEOmatic writes the robots directives, the meta tags, and the IP-aware rules — across 18 known AI crawlers — so your policy stays consistent everywhere.",
         "cta_label": "Explore crawler control",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "crawlers"
+        "visual_type": "crawlers",
+        "b1_icon": "18", "b1_title": "Named crawlers covered", "b1_desc": "GPTBot, ClaudeBot, PerplexityBot, GeminiBot, Google-Extended, Applebot, CCBot — and 11 more.",
+        "b2_icon": "⊕", "b2_title": "Per-content-type rules", "b2_desc": "Block paid posts from training while letting your blog be quoted freely.",
+        "b3_icon": "≡", "b3_title": "Audit log", "b3_desc": "See what each bot last fetched — and when."
       },
       {
         "tag": "Content audit",
@@ -65,7 +74,10 @@
         "body_text": "Every post gets a quotability score. The fixes are written as direct edits you can apply with one click — no consultant, no waiting.",
         "cta_label": "Explore the audit",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
-        "visual_type": "audit"
+        "visual_type": "audit",
+        "b1_icon": "100", "b1_title": "Quotability score", "b1_desc": "One number that tells you whether AI engines will pull from this page.",
+        "b2_icon": "★", "b2_title": "Priority-ordered fixes", "b2_desc": "The biggest wins, in order, with one-click apply.",
+        "b3_icon": "≋", "b3_title": "Trend history", "b3_desc": "See how your score moves with every publish — site-wide or per-post."
       }
     ],
     "children": [
@@ -130,43 +142,85 @@
         ]
       },
       {
-        "id": "list_items",
-        "name": "list_items",
-        "label": "Bullet Points",
+        "id": "b1_icon",
+        "name": "b1_icon",
+        "label": "Bullet 1 — Icon / Short Label",
         "required": false,
         "locked": false,
-        "type": "group",
-        "occurrence": {"min": 0, "max": 6},
-        "default": [],
-        "children": [
-          {
-            "id": "li_icon",
-            "name": "li_icon",
-            "label": "Icon / Short Label",
-            "required": false,
-            "locked": false,
-            "type": "text",
-            "default": "★"
-          },
-          {
-            "id": "li_title",
-            "name": "li_title",
-            "label": "Item Title",
-            "required": false,
-            "locked": false,
-            "type": "text",
-            "default": "Item title"
-          },
-          {
-            "id": "li_desc",
-            "name": "li_desc",
-            "label": "Item Description",
-            "required": false,
-            "locked": false,
-            "type": "textarea",
-            "default": "Item description."
-          }
-        ]
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "b1_title",
+        "name": "b1_title",
+        "label": "Bullet 1 — Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "b1_desc",
+        "name": "b1_desc",
+        "label": "Bullet 1 — Description",
+        "required": false,
+        "locked": false,
+        "type": "textarea",
+        "default": ""
+      },
+      {
+        "id": "b2_icon",
+        "name": "b2_icon",
+        "label": "Bullet 2 — Icon / Short Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "b2_title",
+        "name": "b2_title",
+        "label": "Bullet 2 — Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "b2_desc",
+        "name": "b2_desc",
+        "label": "Bullet 2 — Description",
+        "required": false,
+        "locked": false,
+        "type": "textarea",
+        "default": ""
+      },
+      {
+        "id": "b3_icon",
+        "name": "b3_icon",
+        "label": "Bullet 3 — Icon / Short Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "b3_title",
+        "name": "b3_title",
+        "label": "Bullet 3 — Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "b3_desc",
+        "name": "b3_desc",
+        "label": "Bullet 3 — Description",
+        "required": false,
+        "locked": false,
+        "type": "textarea",
+        "default": ""
       }
     ]
   }
