@@ -24,34 +24,34 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 6},
+    "occurrence": {"min": 0, "max": 6},
     "default": [
       {
         "column_title": "Plugin",
         "links": [
-          {"label": "Features", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "Schema", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "llms.txt", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "Crawlers", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "Audit", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}}
+          {"link_text": "Features",  "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "Schema",    "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "llms.txt",  "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "Crawlers",  "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "Audit",     "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}}
         ]
       },
       {
         "column_title": "Resources",
         "links": [
-          {"label": "Documentation", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "llms.txt guide", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "Changelog", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "Roadmap", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+          {"link_text": "Documentation", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "llms.txt guide","url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "Changelog",     "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "Roadmap",       "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
         ]
       },
       {
         "column_title": "Support",
         "links": [
-          {"label": "WordPress.org", "url": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "GitHub", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "Contact", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-          {"label": "Status", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+          {"link_text": "WordPress.org","url": {"href": "https://wordpress.org/plugins/aeomatic/", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "GitHub",       "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "Contact",      "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+          {"link_text": "Status",       "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
         ]
       }
     ],
@@ -76,8 +76,8 @@
         "default": [],
         "children": [
           {
-            "id": "label",
-            "name": "label",
+            "id": "link_text",
+            "name": "link_text",
             "label": "Link Label",
             "required": false,
             "locked": false,
@@ -115,13 +115,13 @@
     "type": "group",
     "occurrence": {"min": 0, "max": 6},
     "default": [
-      {"label": "Privacy", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
-      {"label": "Terms", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
+      {"link_text": "Privacy", "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}},
+      {"link_text": "Terms",   "url": {"href": "#", "content_id": null, "type": "EXTERNAL"}}
     ],
     "children": [
       {
-        "id": "label",
-        "name": "label",
+        "id": "link_text",
+        "name": "link_text",
         "label": "Link Label",
         "required": false,
         "locked": false,

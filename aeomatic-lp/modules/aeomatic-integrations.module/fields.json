@@ -69,7 +69,7 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 12},
+    "occurrence": {"min": 0, "max": 12},
     "default": [
       {"name": "ChatGPT",     "color": "#10a37f", "letter": "G", "position_class": "b1"},
       {"name": "Claude",      "color": "#d97706", "letter": "C", "position_class": "b2"},

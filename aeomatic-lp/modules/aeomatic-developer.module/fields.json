@@ -78,7 +78,7 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 6},
+    "occurrence": {"min": 0, "max": 6},
     "default": [
       {
         "tab_label": "cURL",

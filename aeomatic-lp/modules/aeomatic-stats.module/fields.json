@@ -42,11 +42,11 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 6},
+    "occurrence": {"min": 0, "max": 6},
     "default": [
-      {"number": "60", "suffix": "%", "label": "AI Overview coverage", "description": "Google AI Overviews now appear on 60%+ of informational queries — and growing."},
-      {"number": "2.4", "suffix": "B+", "label": "Monthly AI answers", "description": "ChatGPT, Claude, Gemini and Perplexity answer billions of queries every month."},
-      {"number": "3", "suffix": "×", "label": "Citation lift", "description": "Sites running AEOmatic see 3× more answer-engine citations within 60 days."}
+      {"number": "60",  "suffix": "%",  "stat_label": "AI Overview coverage", "description": "Google AI Overviews now appear on 60%+ of informational queries — and growing."},
+      {"number": "2.4", "suffix": "B+", "stat_label": "Monthly AI answers",   "description": "ChatGPT, Claude, Gemini and Perplexity answer billions of queries every month."},
+      {"number": "3",   "suffix": "×",  "stat_label": "Citation lift",         "description": "Sites running AEOmatic see 3× more answer-engine citations within 60 days."}
     ],
     "children": [
       {
@@ -68,8 +68,8 @@
         "default": ""
       },
       {
-        "id": "label",
-        "name": "label",
+        "id": "stat_label",
+        "name": "stat_label",
         "label": "Stat Label",
         "required": false,
         "locked": false,

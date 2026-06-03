@@ -42,7 +42,7 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 20},
+    "occurrence": {"min": 0, "max": 20},
     "default": [
       {"quote": "I had llms.txt generated and 200 recipes serving structured data before my second coffee. Citation traffic from Perplexity tripled in a month.", "author_name": "Mira Voss", "author_initials": "MV", "author_title": "slowloafkitchen.com"},
       {"quote": "Replaced two paid plugins and a custom JSON-LD snippet with AEOmatic. The confidence score is genuinely best-in-class.", "author_name": "Devin Kapoor", "author_initials": "DK", "author_title": "Lead SEO · Northwind"},
@@ -96,7 +96,7 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 20},
+    "occurrence": {"min": 0, "max": 20},
     "default": [
       {"quote": "The audit score is the part I keep coming back to — it's like Lighthouse for AI engines.", "author_name": "Juno Lee", "author_initials": "JL", "author_title": "Field Notes Co."},
       {"quote": "Works perfectly alongside Yoast. AEO layer drops in cleanly without touching the rest of our SEO setup.", "author_name": "Priya Krishnan", "author_initials": "PK", "author_title": "Open Stack"},

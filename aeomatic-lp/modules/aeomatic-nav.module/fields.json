@@ -17,15 +17,15 @@
     "type": "group",
     "occurrence": {"min": 0, "max": 10},
     "default": [
-      {"label": "Features", "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
-      {"label": "How it works", "url": {"href": "#how", "content_id": null, "type": "EXTERNAL"}},
-      {"label": "Reviews", "url": {"href": "#quotes", "content_id": null, "type": "EXTERNAL"}},
-      {"label": "Download", "url": {"href": "#download", "content_id": null, "type": "EXTERNAL"}}
+      {"link_text": "Features",    "url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
+      {"link_text": "How it works","url": {"href": "#how",      "content_id": null, "type": "EXTERNAL"}},
+      {"link_text": "Reviews",     "url": {"href": "#quotes",   "content_id": null, "type": "EXTERNAL"}},
+      {"link_text": "Download",    "url": {"href": "#download", "content_id": null, "type": "EXTERNAL"}}
     ],
     "children": [
       {
-        "id": "label",
-        "name": "label",
+        "id": "link_text",
+        "name": "link_text",
         "label": "Link Label",
         "required": false,
         "locked": false,

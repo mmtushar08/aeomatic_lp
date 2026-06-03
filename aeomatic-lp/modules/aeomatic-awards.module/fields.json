@@ -24,12 +24,12 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 6},
+    "occurrence": {"min": 0, "max": 6},
     "default": [
-      {"big": "#1", "label": "WordPress.org", "sub": "Top AEO plugin, 2026 Q1"},
-      {"big": "4.9", "label": "Avg review score", "sub": "From 1,800+ verified reviews"},
-      {"big": "50k+", "label": "Active sites", "sub": "In 80+ countries worldwide"},
-      {"big": "∞", "label": "Free", "sub": "GPL v2 · forever, no upsell"}
+      {"big": "#1",   "stat_label": "WordPress.org",   "sub": "Top AEO plugin, 2026 Q1"},
+      {"big": "4.9",  "stat_label": "Avg review score","sub": "From 1,800+ verified reviews"},
+      {"big": "50k+", "stat_label": "Active sites",    "sub": "In 80+ countries worldwide"},
+      {"big": "∞",    "stat_label": "Free",            "sub": "GPL v2 · forever, no upsell"}
     ],
     "children": [
       {
@@ -42,8 +42,8 @@
         "default": "#1"
       },
       {
-        "id": "label",
-        "name": "label",
+        "id": "stat_label",
+        "name": "stat_label",
         "label": "Label",
         "required": false,
         "locked": false,

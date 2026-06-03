@@ -33,7 +33,7 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 8},
+    "occurrence": {"min": 0, "max": 8},
     "default": [
       {
         "tag": "Schema detection",

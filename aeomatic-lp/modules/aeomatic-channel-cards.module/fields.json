@@ -33,7 +33,7 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 1, "max": 8},
+    "occurrence": {"min": 0, "max": 8},
     "default": [
       {"icon_text": "JL", "title": "JSON-LD", "description": "Structured data injected into every page's &lt;head&gt;, generated from your content with confidence scoring.", "cta_label": "Explore JSON-LD", "cta_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
       {"icon_text": "LM", "title": "llms.txt", "description": "The new standard for answer engines. AEOmatic writes yours automatically and keeps it synced.", "cta_label": "Explore llms.txt", "cta_url": {"href": "#features", "content_id": null, "type": "EXTERNAL"}},
