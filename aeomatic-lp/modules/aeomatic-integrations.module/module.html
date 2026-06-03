@@ -4,7 +4,7 @@
       <div class="int-text rv">
         <span class="eyebrow">{{ module.eyebrow }}</span>
         <h2>{{ module.heading }} <span class="accent">{{ module.heading_accent }}</span> {{ module.heading_end }}</h2>
-        <div class="int-body">{{ module.body }}</div>
+        <div class="int-body">{{ module.body_text }}</div>
         <a class="btn btn-primary" href="{{ module.cta_url.href }}" style="padding:12px 18px">{{ module.cta_label }} <span class="arrow">→</span></a>
       </div>
       <div class="int-stage rv">
@@ -12,7 +12,7 @@
         {% for item in module.integrations %}
         <div class="int-bubble {{ item.position_class }}">
           <span class="mk" style="background:{{ item.color }}{% if item.color == '#f5f1ea' %};color:#0a0a0a{% endif %}">{{ item.letter }}</span>
-          {{ item.name }}
+          {{ item.item_name }}
         </div>
         {% endfor %}
       </div>

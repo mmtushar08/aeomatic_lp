@@ -108,8 +108,8 @@
         "default": "Feature heading"
       },
       {
-        "id": "body",
-        "name": "body",
+        "id": "body_text",
+        "name": "body_text",
         "label": "Feature Body",
         "required": false,
         "locked": false,

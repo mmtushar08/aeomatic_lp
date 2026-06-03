@@ -151,19 +151,19 @@
     "type": "group",
     "occurrence": {"min": 0, "max": 20},
     "default": [
-      {"name": "Slowloaf"},
-      {"name": "Northwind"},
-      {"name": "Linen & Loom"},
-      {"name": "Field Notes Co."},
-      {"name": "Halcyon Press"},
-      {"name": "Marginalia"},
-      {"name": "Atelier Twelve"},
-      {"name": "Open Stack"}
+      {"item_name": "Slowloaf"},
+      {"item_name": "Northwind"},
+      {"item_name": "Linen & Loom"},
+      {"item_name": "Field Notes Co."},
+      {"item_name": "Halcyon Press"},
+      {"item_name": "Marginalia"},
+      {"item_name": "Atelier Twelve"},
+      {"item_name": "Open Stack"}
     ],
     "children": [
       {
-        "id": "name",
-        "name": "name",
+        "id": "item_name",
+        "name": "item_name",
         "label": "Logo Name",
         "required": false,
         "locked": false,

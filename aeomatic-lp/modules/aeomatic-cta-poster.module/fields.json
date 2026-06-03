@@ -27,8 +27,8 @@
     "default": "Start free today."
   },
   {
-    "id": "body",
-    "name": "body",
+    "id": "body_text",
+    "name": "body_text",
     "label": "Body Text",
     "required": false,
     "locked": false,

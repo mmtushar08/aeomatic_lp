@@ -36,8 +36,8 @@
     "default": "covered."
   },
   {
-    "id": "body",
-    "name": "body",
+    "id": "body_text",
+    "name": "body_text",
     "label": "Body Text",
     "required": false,
     "locked": false,
@@ -60,7 +60,11 @@
     "required": false,
     "locked": false,
     "type": "url",
-    "default": {"href": "#download", "content_id": null, "type": "EXTERNAL"}
+    "default": {
+      "href": "#download",
+      "content_id": null,
+      "type": "EXTERNAL"
+    }
   },
   {
     "id": "integrations",
@@ -69,21 +73,64 @@
     "required": false,
     "locked": false,
     "type": "group",
-    "occurrence": {"min": 0, "max": 12},
+    "occurrence": {
+      "min": 0,
+      "max": 12
+    },
     "default": [
-      {"name": "ChatGPT",     "color": "#10a37f", "letter": "G", "position_class": "b1"},
-      {"name": "Claude",      "color": "#d97706", "letter": "C", "position_class": "b2"},
-      {"name": "Gemini",      "color": "#4285f4", "letter": "G", "position_class": "b3"},
-      {"name": "Perplexity",  "color": "#22d3ee", "letter": "P", "position_class": "b4"},
-      {"name": "AI Overviews","color": "#f5f1ea", "letter": "A", "position_class": "b5"},
-      {"name": "Copilot",     "color": "#a78bfa", "letter": "C", "position_class": "b6"},
-      {"name": "You.com",     "color": "#fb923c", "letter": "Y", "position_class": "b7"},
-      {"name": "Bytespider",  "color": "#34d399", "letter": "B", "position_class": "b8"}
+      {
+        "color": "#10a37f",
+        "letter": "G",
+        "position_class": "b1",
+        "item_name": "ChatGPT"
+      },
+      {
+        "color": "#d97706",
+        "letter": "C",
+        "position_class": "b2",
+        "item_name": "Claude"
+      },
+      {
+        "color": "#4285f4",
+        "letter": "G",
+        "position_class": "b3",
+        "item_name": "Gemini"
+      },
+      {
+        "color": "#22d3ee",
+        "letter": "P",
+        "position_class": "b4",
+        "item_name": "Perplexity"
+      },
+      {
+        "color": "#f5f1ea",
+        "letter": "A",
+        "position_class": "b5",
+        "item_name": "AI Overviews"
+      },
+      {
+        "color": "#a78bfa",
+        "letter": "C",
+        "position_class": "b6",
+        "item_name": "Copilot"
+      },
+      {
+        "color": "#fb923c",
+        "letter": "Y",
+        "position_class": "b7",
+        "item_name": "You.com"
+      },
+      {
+        "color": "#34d399",
+        "letter": "B",
+        "position_class": "b8",
+        "item_name": "Bytespider"
+      }
     ],
     "children": [
       {
-        "id": "name",
-        "name": "name",
+        "id": "item_name",
+        "name": "item_name",
         "label": "Engine Name",
         "required": false,
         "locked": false,
