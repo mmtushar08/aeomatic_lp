@@ -38,7 +38,7 @@
       {
         "tag": "Schema detection",
         "heading": "Auto-detect the right type — with a confidence score.",
-        "body": "AEOmatic reads your post and picks from 26 schema.org types: Article, Recipe, Product, How-To, FAQ, Event and more. Every choice ships with a confidence percentage so you know when to trust it and when to override.",
+        "body_text": "AEOmatic reads your post and picks from 26 schema.org types: Article, Recipe, Product, How-To, FAQ, Event and more. Every choice ships with a confidence percentage so you know when to trust it and when to override.",
         "cta_label": "Explore schema detection",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
         "visual_type": "schema",
@@ -51,7 +51,7 @@
       {
         "tag": "LLM indexing",
         "heading": "A clean llms.txt, generated for you.",
-        "body": "The emerging standard — like robots.txt for answer engines — that tells LLMs which pages on your site are most worth quoting. AEOmatic writes yours automatically and updates it as you publish.",
+        "body_text": "The emerging standard — like robots.txt for answer engines — that tells LLMs which pages on your site are most worth quoting. AEOmatic writes yours automatically and updates it as you publish.",
         "cta_label": "Read the llms.txt guide",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
         "visual_type": "llmstxt",
@@ -64,7 +64,7 @@
       {
         "tag": "Crawler control",
         "heading": "Decide which AIs can read you.",
-        "body": "Allow the engines you want to be cited by. Block the ones you don't. AEOmatic writes the robots directives, the meta tags, and the IP-aware rules — across 18 known AI crawlers — so your policy stays consistent everywhere.",
+        "body_text": "Allow the engines you want to be cited by. Block the ones you don't. AEOmatic writes the robots directives, the meta tags, and the IP-aware rules — across 18 known AI crawlers — so your policy stays consistent everywhere.",
         "cta_label": "Explore crawler control",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
         "visual_type": "crawlers",
@@ -77,7 +77,7 @@
       {
         "tag": "Content audit",
         "heading": "A 0–100 AEO score, with the next thing to fix.",
-        "body": "Every post gets a quotability score. The fixes are written as direct edits you can apply with one click — no consultant, no waiting.",
+        "body_text": "Every post gets a quotability score. The fixes are written as direct edits you can apply with one click — no consultant, no waiting.",
         "cta_label": "Explore the audit",
         "cta_url": {"href": "#", "content_id": null, "type": "EXTERNAL"},
         "visual_type": "audit",
