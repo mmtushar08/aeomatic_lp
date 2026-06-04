@@ -17,7 +17,7 @@
           {% endfor %}
         </div>
         {% for tab in module.code_tabs %}
-        <div class="dev-panel dev-code" data-index="{{ loop.index0 }}"{% if loop.index != 1 %} style="display:none"{% endif %}>{{ tab.code }}</div>
+        <div class="dev-panel dev-code" data-index="{{ loop.index0 }}"{% if loop.index != 1 %} style="display:none"{% endif %}>{{ tab.tab_code }}</div>
         {% endfor %}
       </div>
     </div>
