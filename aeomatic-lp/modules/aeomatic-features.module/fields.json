@@ -36,7 +36,7 @@
     "occurrence": {"min": 0, "max": 8},
     "default": [
       {
-        "tag": "Schema detection",
+        "feature_tag": "Schema detection",
         "heading": "Auto-detect the right type — with a confidence score.",
         "body_text": "AEOmatic reads your post and picks from 26 schema.org types: Article, Recipe, Product, How-To, FAQ, Event and more. Every choice ships with a confidence percentage so you know when to trust it and when to override.",
         "cta_label": "Explore schema detection",
@@ -47,7 +47,7 @@
         "b3_icon": "↺",  "b3_title": "One-click override", "b3_desc": "Edge cases happen. Pick the right type yourself; the rest stays auto-synced."
       },
       {
-        "tag": "LLM indexing",
+        "feature_tag": "LLM indexing",
         "heading": "A clean llms.txt, generated for you.",
         "body_text": "The emerging standard — like robots.txt for answer engines — that tells LLMs which pages on your site are most worth quoting. AEOmatic writes yours automatically and updates it as you publish.",
         "cta_label": "Read the llms.txt guide",
@@ -58,7 +58,7 @@
         "b3_icon": "⊘", "b3_title": "Per-section opt-out", "b3_desc": "Exclude private, paid, or low-quality pages with a single toggle."
       },
       {
-        "tag": "Crawler control",
+        "feature_tag": "Crawler control",
         "heading": "Decide which AIs can read you.",
         "body_text": "Allow the engines you want to be cited by. Block the ones you don't. AEOmatic writes the robots directives, the meta tags, and the IP-aware rules — across 18 known AI crawlers — so your policy stays consistent everywhere.",
         "cta_label": "Explore crawler control",
@@ -69,7 +69,7 @@
         "b3_icon": "≡", "b3_title": "Audit log", "b3_desc": "See what each bot last fetched — and when."
       },
       {
-        "tag": "Content audit",
+        "feature_tag": "Content audit",
         "heading": "A 0–100 AEO score, with the next thing to fix.",
         "body_text": "Every post gets a quotability score. The fixes are written as direct edits you can apply with one click — no consultant, no waiting.",
         "cta_label": "Explore the audit",
@@ -82,8 +82,8 @@
     ],
     "children": [
       {
-        "id": "tag",
-        "name": "tag",
+        "id": "feature_tag",
+        "name": "feature_tag",
         "label": "Feature Tag",
         "required": false,
         "locked": false,

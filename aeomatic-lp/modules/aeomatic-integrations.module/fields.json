@@ -79,49 +79,49 @@
     },
     "default": [
       {
-        "color": "#10a37f",
+        "brand_color": "#10a37f",
         "letter": "G",
         "position_class": "b1",
         "item_name": "ChatGPT"
       },
       {
-        "color": "#d97706",
+        "brand_color": "#d97706",
         "letter": "C",
         "position_class": "b2",
         "item_name": "Claude"
       },
       {
-        "color": "#4285f4",
+        "brand_color": "#4285f4",
         "letter": "G",
         "position_class": "b3",
         "item_name": "Gemini"
       },
       {
-        "color": "#22d3ee",
+        "brand_color": "#22d3ee",
         "letter": "P",
         "position_class": "b4",
         "item_name": "Perplexity"
       },
       {
-        "color": "#f5f1ea",
+        "brand_color": "#f5f1ea",
         "letter": "A",
         "position_class": "b5",
         "item_name": "AI Overviews"
       },
       {
-        "color": "#a78bfa",
+        "brand_color": "#a78bfa",
         "letter": "C",
         "position_class": "b6",
         "item_name": "Copilot"
       },
       {
-        "color": "#fb923c",
+        "brand_color": "#fb923c",
         "letter": "Y",
         "position_class": "b7",
         "item_name": "You.com"
       },
       {
-        "color": "#34d399",
+        "brand_color": "#34d399",
         "letter": "B",
         "position_class": "b8",
         "item_name": "Bytespider"
@@ -138,8 +138,8 @@
         "default": "ChatGPT"
       },
       {
-        "id": "color",
-        "name": "color",
+        "id": "brand_color",
+        "name": "brand_color",
         "label": "Icon Background Color (hex)",
         "required": false,
         "locked": false,

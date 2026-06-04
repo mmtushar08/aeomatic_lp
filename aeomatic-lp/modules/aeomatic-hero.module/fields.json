@@ -98,15 +98,15 @@
     "type": "group",
     "occurrence": {"min": 0, "max": 10},
     "default": [
-      {"text": "✓ Free forever"},
-      {"text": "✓ No API keys"},
-      {"text": "✓ 50,000+ sites"},
-      {"text": "✓ GPL v2"}
+      {"meta_text": "✓ Free forever"},
+      {"meta_text": "✓ No API keys"},
+      {"meta_text": "✓ 50,000+ sites"},
+      {"meta_text": "✓ GPL v2"}
     ],
     "children": [
       {
-        "id": "text",
-        "name": "text",
+        "id": "meta_text",
+        "name": "meta_text",
         "label": "Meta Item Text",
         "required": false,
         "locked": false,

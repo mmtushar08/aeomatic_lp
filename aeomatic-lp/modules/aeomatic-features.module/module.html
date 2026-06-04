@@ -8,7 +8,7 @@
     {% for feature in module.features %}
     <div class="fblock rv{% if loop.index is divisibleby 2 %} fblock-even{% endif %}">
       <div class="fb-text">
-        <span class="fb-tag">{{ feature.tag }}</span>
+        <span class="fb-tag">{{ feature.feature_tag }}</span>
         <h3 class="fb-h">{{ feature.heading }}</h3>
         <div class="fb-p">{{ feature.body_text }}</div>
         {% if feature.b1_title or feature.b2_title or feature.b3_title %}

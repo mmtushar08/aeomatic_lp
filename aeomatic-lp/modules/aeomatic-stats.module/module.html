@@ -10,7 +10,7 @@
     <div class="stats-row rv">
       {% for stat in module.stats %}
       <div class="stat-cell">
-        <div class="n" data-target="{{ stat.number }}" data-suffix="{{ stat.suffix }}">0{{ stat.suffix }}</div>
+        <div class="n" data-target="{{ stat.stat_number }}" data-suffix="{{ stat.suffix }}">0{{ stat.suffix }}</div>
         <div class="l">{{ stat.stat_label }}</div>
         <div class="d">{{ stat.description }}</div>
       </div>

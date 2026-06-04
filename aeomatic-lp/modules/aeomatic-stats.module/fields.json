@@ -44,14 +44,14 @@
     "type": "group",
     "occurrence": {"min": 0, "max": 6},
     "default": [
-      {"number": "60",  "suffix": "%",  "stat_label": "AI Overview coverage", "description": "Google AI Overviews now appear on 60%+ of informational queries — and growing."},
-      {"number": "2.4", "suffix": "B+", "stat_label": "Monthly AI answers",   "description": "ChatGPT, Claude, Gemini and Perplexity answer billions of queries every month."},
-      {"number": "3",   "suffix": "×",  "stat_label": "Citation lift",         "description": "Sites running AEOmatic see 3× more answer-engine citations within 60 days."}
+      {"stat_number": "60",  "suffix": "%",  "stat_label": "AI Overview coverage", "description": "Google AI Overviews now appear on 60%+ of informational queries — and growing."},
+      {"stat_number": "2.4", "suffix": "B+", "stat_label": "Monthly AI answers",   "description": "ChatGPT, Claude, Gemini and Perplexity answer billions of queries every month."},
+      {"stat_number": "3",   "suffix": "×",  "stat_label": "Citation lift",         "description": "Sites running AEOmatic see 3× more answer-engine citations within 60 days."}
     ],
     "children": [
       {
-        "id": "number",
-        "name": "number",
+        "id": "stat_number",
+        "name": "stat_number",
         "label": "Number (used for counter animation)",
         "required": false,
         "locked": false,

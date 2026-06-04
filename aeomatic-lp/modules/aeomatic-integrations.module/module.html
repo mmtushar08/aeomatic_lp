@@ -11,7 +11,7 @@
         <div class="int-center"><span>aeo</span></div>
         {% for item in module.integrations %}
         <div class="int-bubble {{ item.position_class }}">
-          <span class="mk" style="background:{{ item.color }}{% if item.color == '#f5f1ea' %};color:#0a0a0a{% endif %}">{{ item.letter }}</span>
+          <span class="mk" style="background:{{ item.brand_color }}{% if item.brand_color == '#f5f1ea' %};color:#0a0a0a{% endif %}">{{ item.letter }}</span>
           {{ item.item_name }}
         </div>
         {% endfor %}

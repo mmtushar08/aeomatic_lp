@@ -17,7 +17,7 @@
       </div>
       <div class="hero-meta">
         {% for item in module.hero_meta_items %}
-          <span>{{ item.text }}</span>
+          <span>{{ item.meta_text }}</span>
           {% if not loop.last %}<span class="dot"></span>{% endif %}
         {% endfor %}
       </div>
