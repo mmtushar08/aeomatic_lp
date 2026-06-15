@@ -654,6 +654,64 @@
   /* awards strip background */
   .awards{background:rgba(255,255,255,0.4)}
 
+  /* ─── HOW IT WORKS ─── */
+  .how{padding:80px 0;border-top:1px solid var(--line)}
+  .how-head{text-align:center;margin-bottom:64px}
+  .how-head h2{font-size:clamp(32px,4.2vw,52px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0}
+  .how-head h2 .accent{background:linear-gradient(120deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .how-head p{margin-top:18px;color:var(--ink-dim);font-size:17px;line-height:1.55;max-width:520px;margin-left:auto;margin-right:auto}
+  .how-steps{display:grid;grid-template-columns:repeat(3,1fr);position:relative}
+  .how-steps::before{content:"";position:absolute;top:36px;left:calc(16.6% + 16px);right:calc(16.6% + 16px);height:1px;background:linear-gradient(90deg,var(--accent),var(--accent-glow));z-index:0}
+  @media(max-width:780px){.how-steps{grid-template-columns:1fr;gap:32px}.how-steps::before{display:none}}
+  .how-step{padding:0 24px;text-align:center;position:relative;z-index:1}
+  .how-num{width:72px;height:72px;border-radius:50%;margin:0 auto 22px;background:linear-gradient(180deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-size:26px;font-weight:500;color:#fff;letter-spacing:-0.02em;box-shadow:0 0 28px var(--accent-glow)}
+  .how-step h3{font-size:19px;font-weight:500;letter-spacing:-0.02em;margin:0 0 10px;color:var(--ink)}
+  .how-step p{color:var(--ink-dim);font-size:14.5px;line-height:1.6;margin:0;max-width:26ch;margin-left:auto;margin-right:auto}
+
+  /* ─── COMPARISON ─── */
+  .compare{padding:100px 0;border-top:1px solid var(--line)}
+  .compare-head{text-align:center;margin-bottom:52px}
+  .compare-head h2{font-size:clamp(32px,4.2vw,52px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0}
+  .compare-head h2 .accent{background:linear-gradient(120deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .compare-head p{margin-top:18px;color:var(--ink-dim);font-size:16px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.55}
+  .tbl-wrap{overflow-x:auto}
+  .cmp-tbl{width:100%;border-collapse:collapse;border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:#fff}
+  .cmp-tbl th{padding:14px 20px;text-align:left;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-faint);background:#fafafa;border-bottom:1px solid var(--line);font-weight:500}
+  .cmp-tbl th.hl{color:var(--accent);background:rgba(74,114,209,0.04)}
+  .cmp-tbl td{padding:12px 20px;font-size:13.5px;color:var(--ink-dim);border-bottom:1px solid var(--line);vertical-align:middle}
+  .cmp-tbl td.hl{background:rgba(74,114,209,0.025)}
+  .cmp-tbl tr:last-child td{border-bottom:0}
+  .cmp-tbl .yes{color:var(--good);font-size:16px}
+  .cmp-tbl .no{color:var(--ink-ghost);font-size:14px}
+  .cmp-tbl .mono{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+  .cmp-tbl .feat{color:var(--ink);font-size:14px}
+
+  /* ─── COMPATIBILITY ─── */
+  .compat{padding:80px 0;border-top:1px solid var(--line)}
+  .compat-head{text-align:center;margin-bottom:44px}
+  .compat-head h2{font-size:clamp(28px,3.6vw,44px);line-height:1.0;letter-spacing:-0.03em;font-weight:500;margin:0}
+  .compat-head p{margin-top:14px;color:var(--ink-dim);font-size:16px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.55}
+  .compat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:780px){.compat-grid{grid-template-columns:repeat(2,1fr)}}
+  .compat-card{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:13.5px;color:var(--ink-dim);box-shadow:0 1px 0 rgba(255,255,255,0.5) inset,0 2px 8px rgba(14,14,16,0.04);transition:border-color .2s,box-shadow .2s}
+  .compat-card:hover{border-color:var(--line-2);box-shadow:0 1px 0 rgba(255,255,255,0.5) inset,0 4px 14px rgba(14,14,16,0.08)}
+  .compat-icon{width:32px;height:32px;border-radius:7px;background:rgba(74,114,209,0.08);border:1px solid rgba(74,114,209,0.16);display:grid;place-items:center;font-family:var(--mono);font-size:9px;font-weight:700;color:var(--accent);flex:0 0 32px}
+
+  /* ─── FAQ ─── */
+  .faq{padding:100px 0;border-top:1px solid var(--line)}
+  .faq-head{text-align:center;margin-bottom:56px}
+  .faq-head h2{font-size:clamp(30px,3.8vw,48px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0}
+  .faq-head p{margin-top:14px;color:var(--ink-dim);font-size:16px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.55}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:960px;margin:0 auto;border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+  @media(max-width:780px){.faq-grid{grid-template-columns:1fr}}
+  .faq-item{padding:22px 26px;background:#fff;border-bottom:1px solid var(--line)}
+  .faq-item:nth-child(odd){border-right:1px solid var(--line)}
+  @media(max-width:780px){.faq-item:nth-child(odd){border-right:0}}
+  .faq-item:nth-last-child(-n+2){border-bottom:0}
+  @media(max-width:780px){.faq-item:last-child{border-bottom:0}.faq-item:nth-last-child(2){border-bottom:1px solid var(--line)}}
+  .faq-item h4{font-size:14.5px;font-weight:500;letter-spacing:-0.01em;margin:0 0 8px;color:var(--ink)}
+  .faq-item p{margin:0;color:var(--ink-dim);font-size:13.5px;line-height:1.6}
+
 </style>
 </head>
 <body>
@@ -664,8 +722,9 @@
     <div class="brand"><span class="brand-mark"></span> AEOmatic</div>
     <div class="top-links">
       <a href="#features">Features</a>
-      <a href="#features">How it works</a>
+      <a href="#how">How it works</a>
       <a href="#quotes">Reviews</a>
+      <a href="#faq">FAQ</a>
       <a href="#download">Download</a>
     </div>
     <div class="top-actions">
@@ -688,7 +747,7 @@
       <p class="hero-sub">From schema detection to <span style="font-family:var(--mono);color:var(--ink);font-size:0.9em">llms.txt</span>, AEOmatic handles the entire answer-engine layer for WordPress — so ChatGPT, Claude, Gemini, Perplexity and Google AI Overviews quote your URL, not someone else's.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#download">Download free <span class="arrow">→</span></a>
-        <a class="btn btn-ghost" href="#features">See how it works</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
       </div>
       <div class="hero-meta">
         <span>✓ Free forever</span><span class="dot"></span>
@@ -775,6 +834,34 @@
         <div class="n" data-target="3" data-suffix="×">0×</div>
         <div class="l">Citation lift</div>
         <div class="d">Sites running AEOmatic see 3× more answer-engine citations within 60 days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how">
+  <div class="container">
+    <div class="how-head rv">
+      <span class="eyebrow">How it works</span>
+      <h2>From install to <span class="accent">cited</span> in 3 steps.</h2>
+      <p>No configuration wizards. No developer required. Install, activate, and AEOmatic handles the entire AEO layer automatically.</p>
+    </div>
+    <div class="how-steps rv">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <h3>Install the plugin</h3>
+        <p>Search "AEOmatic" in WordPress plugins and activate. Zero configuration required.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <h3>AEOmatic scans your site</h3>
+        <p>Every post and page gets schema detection, a quotability score, and a crawler policy — automatically, in the background.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <h3>AI engines start citing you</h3>
+        <p>Your llms.txt, JSON-LD, and crawler directives go live. Your AEO score updates with every publish.</p>
       </div>
     </div>
   </div>
@@ -1021,6 +1108,65 @@
   </div>
 </section>
 
+<!-- COMPARISON TABLE -->
+<section class="compare">
+  <div class="container">
+    <div class="compare-head rv">
+      <span class="eyebrow">vs the alternatives</span>
+      <h2>AEOmatic vs <span class="accent">Yoast &amp; RankMath.</span></h2>
+      <p>AEO is a different layer from traditional SEO. Here's what AEOmatic adds on top of what schema plugins already give you — and why you can run it alongside both.</p>
+    </div>
+    <div class="tbl-wrap rv">
+      <table class="cmp-tbl">
+        <thead>
+          <tr>
+            <th style="width:36%">Feature</th>
+            <th class="hl">AEOmatic</th>
+            <th>Yoast SEO</th>
+            <th>RankMath</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feat">AI-specific schema detection (26 types)</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td class="mono">partial</td></tr>
+          <tr><td class="feat">Schema confidence scoring</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td class="feat">llms.txt auto-generation</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td class="feat">AI crawler control (18 named bots)</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td class="feat">Quotability score (0–100)</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td></tr>
+          <tr><td class="feat">Works alongside Yoast / RankMath</td><td class="hl"><span class="yes">✓</span></td><td class="mono">n/a</td><td class="mono">n/a</td></tr>
+          <tr><td class="feat">REST API for schema &amp; audit</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✗</span></td><td class="mono">Pro only</td></tr>
+          <tr><td class="feat">Traditional SEO meta &amp; sitemaps</td><td class="hl" style="color:var(--ink-faint);font-family:var(--mono);font-size:11.5px">AEO only</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="feat">Price</td><td class="hl" style="color:var(--good);font-family:var(--mono);font-weight:500;font-size:12.5px">Free forever</td><td class="mono">$99–$229/yr</td><td class="mono">Free / $59+/yr Pro</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBILITY -->
+<section class="compat">
+  <div class="container">
+    <div class="compat-head rv">
+      <span class="eyebrow">Compatibility</span>
+      <h2>Works with everything you're already running.</h2>
+      <p>AEOmatic reads your content, not your builder's markup — so it drops into your existing stack without touching your theme or performance.</p>
+    </div>
+    <div class="compat-grid rv">
+      <div class="compat-card"><div class="compat-icon">EL</div>Elementor</div>
+      <div class="compat-card"><div class="compat-icon">BX</div>Bricks</div>
+      <div class="compat-card"><div class="compat-icon">DV</div>Divi</div>
+      <div class="compat-card"><div class="compat-icon">KD</div>Kadence</div>
+      <div class="compat-card"><div class="compat-icon">GP</div>GeneratePress</div>
+      <div class="compat-card"><div class="compat-icon">OX</div>Oxygen</div>
+      <div class="compat-card"><div class="compat-icon">WC</div>WooCommerce</div>
+      <div class="compat-card"><div class="compat-icon">YO</div>Yoast SEO</div>
+      <div class="compat-card"><div class="compat-icon">RM</div>RankMath</div>
+      <div class="compat-card"><div class="compat-icon">GB</div>Gutenberg</div>
+      <div class="compat-card"><div class="compat-icon">CE</div>Classic Editor</div>
+      <div class="compat-card"><div class="compat-icon">WP</div>WP 6.4+</div>
+    </div>
+  </div>
+</section>
+
 <!-- INTEGRATIONS -->
 <section class="integrations">
   <div class="container">
@@ -1086,6 +1232,51 @@
 <span class="ln">18</span>  },
 <span class="ln">19</span>  <span class="fn">"next_fix"</span>:    <span class="str">"add FAQPage block"</span>
 <span class="ln">20</span>}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="faq-head rv">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions answered.</h2>
+      <p>Everything you need to know before you install.</p>
+    </div>
+    <div class="faq-grid rv">
+      <div class="faq-item">
+        <h4>Will AEOmatic conflict with Yoast SEO or RankMath?</h4>
+        <p>No. AEOmatic operates on a separate AEO layer and detects existing schema plugins automatically. It adds AI-specific optimisations without overwriting your SEO setup.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Does it work with my page builder?</h4>
+        <p>Yes — tested with Elementor, Bricks, Divi, Oxygen, Kadence, and GeneratePress. AEOmatic reads your content, not your builder's markup, so compatibility is universal.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I need an API key or external account?</h4>
+        <p>No. AEOmatic runs entirely on your server with no external API calls. No SaaS dependency, no account required. Install, activate, done.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What's the difference between AEO and SEO?</h4>
+        <p>SEO optimises for ranked links in search results. AEO optimises for citations in AI-generated answers — a completely different signal, which is why existing SEO plugins don't cover it.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How long before I see results?</h4>
+        <p>Most sites see AI crawlers respecting new policies within 48 hours. Citation improvements in AI answers typically appear within 2–6 weeks as engines re-index your structured content.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Does it work on WooCommerce product pages?</h4>
+        <p>Yes. AEOmatic auto-detects Product schema for WooCommerce, adding price, availability, and review structured data optimised for AI shopping queries.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is it really free, forever?</h4>
+        <p>Yes — GPL v2, no upsell wall, no trial period, no feature lock. All four modules (schema, llms.txt, crawlers, audit) are fully included at no cost.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I use the REST API in production?</h4>
+        <p>Yes. The REST API is fully supported and stable — used in production for headless WordPress builds and CI pipelines. See the documentation for authentication and rate limits.</p>
       </div>
     </div>
   </div>
