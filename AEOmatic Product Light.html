@@ -3,11 +3,126 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="AEOmatic is a free WordPress plugin that automatically optimizes your site for AI answer engines — generating schema markup, llms.txt, and crawler policies so ChatGPT, Claude, Gemini, and Perplexity cite your content." />
-<title>AEOmatic — AI-first answer engine optimization for WordPress (Light)</title>
+<meta name="description" content="AEOmatic is the free WordPress AEO plugin — auto-generates schema markup, llms.txt, and AI crawler policies so ChatGPT, Claude, Gemini, and Perplexity cite your content. 50,000+ sites. No API key, no credit card." />
+<title>AEOmatic — Free WordPress AEO Plugin | Get Cited by ChatGPT, Claude &amp; Gemini</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "AEOmatic",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "WordPress",
+      "url": "https://wordpress.org/plugins/aeomatic/",
+      "description": "Free WordPress plugin for Answer Engine Optimization. Auto-generates schema markup, llms.txt, and AI crawler policies so ChatGPT, Claude, Gemini, and Perplexity cite your content.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1800",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "featureList": [
+        "AI schema detection with 26 schema.org types",
+        "llms.txt auto-generation and sync",
+        "AI crawler control for 18 named bots",
+        "Quotability score 0–100 per page",
+        "REST API for schema and audit",
+        "WooCommerce Product schema support",
+        "Works alongside Yoast SEO and RankMath"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "name": "AEOmatic",
+      "url": "https://wordpress.org/plugins/aeomatic/",
+      "sameAs": [
+        "https://wordpress.org/plugins/aeomatic/",
+        "https://github.com/aeomatic/aeomatic"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will AEOmatic conflict with Yoast SEO or RankMath?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AEOmatic operates on a separate AEO layer and detects existing schema plugins automatically. It adds AI-specific optimisations without overwriting your SEO setup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does AEOmatic work with my page builder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — tested with Elementor, Bricks, Divi, Oxygen, Kadence, and GeneratePress. AEOmatic reads your content, not your builder's markup, so compatibility is universal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an API key or external account to use AEOmatic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AEOmatic runs entirely on your server with no external API calls. No SaaS dependency, no account required. Install, activate, done."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between AEO and SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SEO optimises for ranked links in search results. AEO optimises for citations in AI-generated answers — a completely different signal, which is why existing SEO plugins don't cover it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long before I see results from AEOmatic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most sites see AI crawlers respecting new policies within 48 hours. Citation improvements in AI answers typically appear within 2–6 weeks as engines re-index your structured content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does AEOmatic work on WooCommerce product pages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. AEOmatic auto-detects Product schema for WooCommerce, adding price, availability, and review structured data optimised for AI shopping queries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AEOmatic really free forever?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — GPL v2, no upsell wall, no trial period, no feature lock. All four modules (schema, llms.txt, crawlers, audit) are fully included at no cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the AEOmatic REST API in production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The REST API is fully supported and stable — used in production for headless WordPress builds and CI pipelines. See the documentation for authentication and rate limits."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --bg:#f7f5f0;
@@ -773,6 +888,27 @@
   .faq-item h4{font-size:14.5px;font-weight:500;letter-spacing:-0.01em;margin:0 0 8px;color:var(--ink)}
   .faq-item p{margin:0;color:var(--ink-dim);font-size:13.5px;line-height:1.6}
 
+  /* ─── BLOG PREVIEW ─── */
+  .blog-prev{padding:100px 0;border-top:1px solid var(--line)}
+  .blog-head{text-align:center;margin-bottom:56px}
+  .blog-head h2{font-size:clamp(32px,4.2vw,52px);line-height:1.0;letter-spacing:-0.035em;font-weight:500;margin:0}
+  .blog-head h2 .accent{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .blog-head p{margin-top:16px;color:var(--ink-dim);font-size:17px;line-height:1.55;max-width:520px;margin-left:auto;margin-right:auto}
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.blog-grid{grid-template-columns:1fr}}
+  .blog-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;
+    display:flex;flex-direction:column;gap:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,0.5) inset,0 2px 10px rgba(14,14,16,0.04);
+    transition:border-color .2s,box-shadow .2s,transform .2s;
+  }
+  .blog-card:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 8px 28px var(--accent-glow);transform:translateY(-2px)}
+  .blog-cat{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;color:var(--accent);text-transform:uppercase;letter-spacing:0.10em;font-weight:500}
+  .blog-cat::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .blog-card h3{font-size:17px;font-weight:500;letter-spacing:-0.02em;line-height:1.3;margin:0;color:var(--ink)}
+  .blog-card p{margin:0;color:var(--ink-dim);font-size:13.5px;line-height:1.6;flex:1}
+  .blog-cta{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);font-weight:500;margin-top:auto;padding-top:4px}
+
 </style>
 </head>
 <body>
@@ -785,6 +921,7 @@
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
       <a href="#quotes">Reviews</a>
+      <a href="#blog">Blog</a>
       <a href="#faq">FAQ</a>
       <a href="#download">Download</a>
     </div>
@@ -1348,6 +1485,37 @@
   </div>
 </section>
 
+<!-- BLOG PREVIEW -->
+<section id="blog" class="blog-prev">
+  <div class="container">
+    <div class="blog-head rv">
+      <span class="eyebrow">From the blog</span>
+      <h2>Learn AEO. <span class="accent">Rank in AI answers.</span></h2>
+      <p>Practical guides on getting your WordPress site cited by ChatGPT, Claude, Gemini, and Perplexity.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card rv">
+        <div class="blog-cat">Guide</div>
+        <h3>What is llms.txt and how to add it to your WordPress site</h3>
+        <p>The emerging standard that tells AI engines which pages are worth quoting — and how AEOmatic generates and keeps it in sync automatically.</p>
+        <a href="#download" class="blog-cta">Read the guide <span class="arrow">→</span></a>
+      </article>
+      <article class="blog-card rv">
+        <div class="blog-cat">Research</div>
+        <h3>AEO vs SEO: what's the difference and why it matters in 2026</h3>
+        <p>SEO optimises for ranked links. AEO optimises for AI citations. Here's why the signals are completely different — and how to win at both without extra plugins.</p>
+        <a href="#download" class="blog-cta">Read the article <span class="arrow">→</span></a>
+      </article>
+      <article class="blog-card rv">
+        <div class="blog-cat">Tutorial</div>
+        <h3>How to control which AI bots crawl your WordPress site</h3>
+        <p>GPTBot, ClaudeBot, PerplexityBot — each engine has its own crawler. This tutorial shows how to allow the engines you want cited by, and block the ones you don't.</p>
+        <a href="#download" class="blog-cta">Read the tutorial <span class="arrow">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- CTA POSTER -->
 <section id="download">
   <div class="container">
@@ -1379,7 +1547,7 @@
       </div>
       <div>
         <h5>Resources</h5>
-        <a href="https://wordpress.org/plugins/aeomatic/">Documentation</a><a href="#features">llms.txt guide</a><a href="https://wordpress.org/plugins/aeomatic/#developers">Changelog</a><a href="https://wordpress.org/plugins/aeomatic/">Roadmap</a>
+        <a href="#blog">Blog</a><a href="https://wordpress.org/plugins/aeomatic/">Documentation</a><a href="#blog">llms.txt guide</a><a href="https://wordpress.org/plugins/aeomatic/#developers">Changelog</a><a href="https://wordpress.org/plugins/aeomatic/">Roadmap</a>
       </div>
       <div>
         <h5>Support</h5>
