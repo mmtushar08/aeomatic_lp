@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="AEOmatic is a free WordPress plugin that automatically optimizes your site for AI answer engines — generating schema markup, llms.txt, and crawler policies so ChatGPT, Claude, Gemini, and Perplexity cite your content." />
 <title>AEOmatic — AI-first answer engine optimization for WordPress (Light)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,15 +19,24 @@
     --ink-dim:rgba(14,14,16,0.66);
     --ink-faint:rgba(14,14,16,0.46);
     --ink-ghost:rgba(14,14,16,0.24);
-    --accent: oklch(0.52 0.20 252);
-    --accent-2: oklch(0.46 0.20 272);
-    --accent-glow: oklch(0.52 0.22 252 / 0.28);
-    --good: oklch(0.52 0.16 150);
-    --warn: oklch(0.62 0.16 70);
+    --accent:#4a72d1;
+    --accent-2:#3d5ec0;
+    --accent-glow:rgba(74,114,209,0.28);
+    --good:#2d8a5e;
+    --warn:#c97c2a;
     --sans:"Geist",system-ui,sans-serif;
     --mono:"Geist Mono",ui-monospace,monospace;
     --maxw:1240px;
     --pad-x:clamp(20px,4vw,40px);
+  }
+  @supports (color: oklch(0 0 0)){
+    :root{
+      --accent: oklch(0.52 0.20 252);
+      --accent-2: oklch(0.46 0.20 272);
+      --accent-glow: oklch(0.52 0.22 252 / 0.28);
+      --good: oklch(0.52 0.16 150);
+      --warn: oklch(0.62 0.16 70);
+    }
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -654,7 +664,7 @@
     <div class="brand"><span class="brand-mark"></span> AEOmatic</div>
     <div class="top-links">
       <a href="#features">Features</a>
-      <a href="#how">How it works</a>
+      <a href="#features">How it works</a>
       <a href="#quotes">Reviews</a>
       <a href="#download">Download</a>
     </div>
@@ -678,7 +688,7 @@
       <p class="hero-sub">From schema detection to <span style="font-family:var(--mono);color:var(--ink);font-size:0.9em">llms.txt</span>, AEOmatic handles the entire answer-engine layer for WordPress — so ChatGPT, Claude, Gemini, Perplexity and Google AI Overviews quote your URL, not someone else's.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#download">Download free <span class="arrow">→</span></a>
-        <a class="btn btn-ghost" href="#how">See how it works</a>
+        <a class="btn btn-ghost" href="#features">See how it works</a>
       </div>
       <div class="hero-meta">
         <span>✓ Free forever</span><span class="dot"></span>
@@ -717,6 +727,15 @@
       <div class="trust-label">Trusted by 50,000+ WordPress sites — including these</div>
       <div class="marquee">
         <div class="marquee-track" id="mtrack">
+          <span class="mlogo"><span class="mk"></span>Slowloaf</span>
+          <span class="mlogo"><span class="mk"></span>Northwind</span>
+          <span class="mlogo"><span class="mk"></span>Linen &amp; Loom</span>
+          <span class="mlogo"><span class="mk"></span>Field Notes Co.</span>
+          <span class="mlogo"><span class="mk"></span>Halcyon Press</span>
+          <span class="mlogo"><span class="mk"></span>Marginalia</span>
+          <span class="mlogo"><span class="mk"></span>Atelier Twelve</span>
+          <span class="mlogo"><span class="mk"></span>Open Stack</span>
+          <!-- duplicate set for seamless loop -->
           <span class="mlogo"><span class="mk"></span>Slowloaf</span>
           <span class="mlogo"><span class="mk"></span>Northwind</span>
           <span class="mlogo"><span class="mk"></span>Linen &amp; Loom</span>
@@ -1098,20 +1117,20 @@
       </div>
       <div>
         <h5>Plugin</h5>
-        <a>Features</a><a>Schema</a><a>llms.txt</a><a>Crawlers</a><a>Audit</a>
+        <a href="#features">Features</a><a href="#features">Schema</a><a href="#features">llms.txt</a><a href="#features">Crawlers</a><a href="#features">Audit</a>
       </div>
       <div>
         <h5>Resources</h5>
-        <a>Documentation</a><a>llms.txt guide</a><a>Changelog</a><a>Roadmap</a>
+        <a href="https://wordpress.org/plugins/aeomatic/">Documentation</a><a href="#features">llms.txt guide</a><a href="https://wordpress.org/plugins/aeomatic/#developers">Changelog</a><a href="https://wordpress.org/plugins/aeomatic/">Roadmap</a>
       </div>
       <div>
         <h5>Support</h5>
-        <a>WordPress.org</a><a>GitHub</a><a>Contact</a><a>Status</a>
+        <a href="https://wordpress.org/plugins/aeomatic/">WordPress.org</a><a href="https://github.com/aeomatic/aeomatic">GitHub</a><a href="https://wordpress.org/support/plugin/aeomatic/">Contact</a><a href="https://wordpress.org/plugins/aeomatic/">Status</a>
       </div>
     </div>
     <div class="foot-row">
       <span>© 2026 AEOmatic · GPL v2 licensed</span>
-      <span><a style="display:inline;margin-right:18px">Privacy</a><a style="display:inline">Terms</a></span>
+      <span><a href="#" style="display:inline;margin-right:18px">Privacy</a><a href="#" style="display:inline">Terms</a></span>
     </div>
   </div>
 </footer>
@@ -1150,6 +1169,7 @@
     const dur = 1400;
     const start = performance.now();
     const isFloat = target % 1 !== 0;
+    el.textContent = (isFloat ? (0).toFixed(1) : '0') + suffix;
     function step(t){
       const p = Math.min(1,(t-start)/dur);
       const eased = 1 - Math.pow(1-p,3);
@@ -1169,25 +1189,68 @@
   },{threshold:0.3});
   document.querySelectorAll('.stats-row').forEach(el=>statIO.observe(el));
 
-  // Dev tabs (visual only)
-  document.querySelectorAll('.dev-tab').forEach(tab=>{
-    tab.addEventListener('click', ()=>{
-      tab.parentElement.querySelectorAll('.dev-tab').forEach(t=>t.classList.remove('on'));
+  // Dev tabs — swap code content per language
+  const devCode = document.querySelector('.dev-code');
+  const tabSnippets = [
+    devCode.innerHTML,
+    `<span class="ln">1</span><span class="com">// Fetch the AEO audit score for a post</span>
+<span class="ln">2</span><span class="key">const</span> res = <span class="key">await</span> <span class="fn">fetch</span>(
+<span class="ln">3</span>  <span class="str">'https://yoursite.com/wp-json/aeomatic/v1/audit/124'</span>,
+<span class="ln">4</span>  { headers: { <span class="str">'X-AEO-Key'</span>: process.env.<span class="fn">AEO_API_KEY</span> } }
+<span class="ln">5</span>);
+<span class="ln">6</span><span class="key">const</span> data = <span class="key">await</span> res.<span class="fn">json</span>();
+<span class="ln">7</span>
+<span class="ln">8</span><span class="com">// Response</span>
+<span class="ln">9</span>console.<span class="fn">log</span>(data.score);       <span class="com">// 82</span>
+<span class="ln">10</span>console.<span class="fn">log</span>(data.schema_type); <span class="com">// "Recipe"</span>
+<span class="ln">11</span>console.<span class="fn">log</span>(data.next_fix);    <span class="com">// "add FAQPage block"</span>`,
+    `<span class="ln">1</span><span class="key">import</span> requests, os
+<span class="ln">2</span>
+<span class="ln">3</span>r = requests.<span class="fn">get</span>(
+<span class="ln">4</span>  <span class="str">'https://yoursite.com/wp-json/aeomatic/v1/audit/124'</span>,
+<span class="ln">5</span>  headers={<span class="str">'X-AEO-Key'</span>: os.environ[<span class="str">'AEO_API_KEY'</span>]}
+<span class="ln">6</span>)
+<span class="ln">7</span>data = r.<span class="fn">json</span>()
+<span class="ln">8</span>
+<span class="ln">9</span><span class="com"># Response</span>
+<span class="ln">10</span><span class="fn">print</span>(data[<span class="str">'score'</span>])        <span class="com"># 82</span>
+<span class="ln">11</span><span class="fn">print</span>(data[<span class="str">'schema_type'</span>])  <span class="com"># Recipe</span>
+<span class="ln">12</span><span class="fn">print</span>(data[<span class="str">'next_fix'</span>])     <span class="com"># add FAQPage block</span>`,
+    `<span class="ln">1</span><span class="key">&lt;?php</span>
+<span class="ln">2</span>$ch = <span class="fn">curl_init</span>();
+<span class="ln">3</span><span class="fn">curl_setopt_array</span>($ch, [
+<span class="ln">4</span>  CURLOPT_URL            =&gt; <span class="str">'https://yoursite.com/wp-json/aeomatic/v1/audit/124'</span>,
+<span class="ln">5</span>  CURLOPT_HTTPHEADER     =&gt; [<span class="str">'X-AEO-Key: '</span> . <span class="fn">getenv</span>(<span class="str">'AEO_API_KEY'</span>)],
+<span class="ln">6</span>  CURLOPT_RETURNTRANSFER =&gt; <span class="key">true</span>,
+<span class="ln">7</span>]);
+<span class="ln">8</span>$data = <span class="fn">json_decode</span>(<span class="fn">curl_exec</span>($ch), <span class="key">true</span>);
+<span class="ln">9</span>
+<span class="ln">10</span><span class="com">// Response</span>
+<span class="ln">11</span><span class="key">echo</span> $data[<span class="str">'score'</span>];        <span class="com">// 82</span>
+<span class="ln">12</span><span class="key">echo</span> $data[<span class="str">'schema_type'</span>];  <span class="com">// Recipe</span>`
+  ];
+  document.querySelectorAll('.dev-tab').forEach((tab, idx) => {
+    tab.addEventListener('click', () => {
+      tab.parentElement.querySelectorAll('.dev-tab').forEach(t => t.classList.remove('on'));
       tab.classList.add('on');
+      devCode.innerHTML = tabSnippets[idx];
     });
   });
 
-  // Integration bubble subtle drift
+  // Integration bubble drift — single shared RAF loop with visibility pause
   const bubbles = document.querySelectorAll('.int-bubble');
-  bubbles.forEach((b,i)=>{
-    const phase = i*0.7;
-    function tick(t){
-      const sx = Math.sin(t/1500 + phase) * 4;
-      const sy = Math.cos(t/1700 + phase) * 4;
-      b.style.transform = `translate(${sx}px, ${sy}px)`;
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+  const bubblePhases = Array.from(bubbles, (_, i) => i * 0.7);
+  let bubbleRaf;
+  function bubbleTick(t) {
+    bubbles.forEach((b, i) => {
+      b.style.transform = `translate(${Math.sin(t/1500 + bubblePhases[i]) * 4}px, ${Math.cos(t/1700 + bubblePhases[i]) * 4}px)`;
+    });
+    bubbleRaf = requestAnimationFrame(bubbleTick);
+  }
+  bubbleRaf = requestAnimationFrame(bubbleTick);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelAnimationFrame(bubbleRaf);
+    else bubbleRaf = requestAnimationFrame(bubbleTick);
   });
 </script>
 
