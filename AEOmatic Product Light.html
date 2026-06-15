@@ -502,9 +502,9 @@
   .foot a:hover{color:var(--ink)}
   .foot-row{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--ink-faint);font-size:12px;flex-wrap:wrap;gap:10px;font-family:var(--mono);letter-spacing:0.04em}
 
-  /* reveal */
-  .rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
-  .rv.in{opacity:1;transform:none}
+  /* reveal — stagger delay driven by --rv-delay set in JS */
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .5s ease var(--rv-delay,0ms), transform .5s cubic-bezier(.2,.7,.2,1) var(--rv-delay,0ms)}
+  .rv.in{opacity:1;transform:translateY(0)}
 
   /* ─────────── LIGHT-MODE OVERRIDES: dark data surfaces ─────────── */
   .stage{
@@ -654,6 +654,67 @@
   /* awards strip background */
   .awards{background:rgba(255,255,255,0.4)}
 
+  /* ─── ANIMATION ENHANCEMENTS ─── */
+
+  /* 1. Terminal cursor blink on active checklist item */
+  .ci.active .text::after{content:"▋";animation:cursor-blink .7s step-start infinite;margin-left:3px;color:var(--accent);font-size:.75em;vertical-align:baseline}
+  @keyframes cursor-blink{50%{opacity:0}}
+
+  /* 3. Hero h1 accent shimmer — placed after the !important override so it wins */
+  h1.hero-h .accent{
+    background:linear-gradient(120deg,#4a72d1 0%,#3d5ec0 32%,#7ba4f8 55%,#4a72d1 100%) !important;
+    background-size:200% auto !important;
+    -webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;
+    animation:shimmer 4s linear infinite;
+  }
+  @supports(color:oklch(0 0 0)){
+    h1.hero-h .accent{
+      background:linear-gradient(120deg,oklch(0.52 0.20 252) 0%,oklch(0.42 0.22 280) 32%,oklch(0.72 0.16 228) 55%,oklch(0.52 0.20 252) 100%) !important;
+      background-size:200% auto !important;
+    }
+  }
+  @keyframes shimmer{to{background-position:200% center}}
+
+  /* 5. Feature visual + channel card hover glow */
+  .fb-visual{transition:box-shadow .3s ease,border-color .3s ease !important}
+  .fb-visual:hover{
+    box-shadow:0 0 0 1px var(--accent),0 8px 32px var(--accent-glow),0 30px 80px rgba(20,30,80,0.22) !important;
+    border-color:var(--accent) !important;
+  }
+  .ch{transition:border-color .25s,transform .25s,box-shadow .25s !important}
+  .ch:hover{
+    box-shadow:0 0 0 1px var(--accent),0 8px 32px var(--accent-glow),0 1px 0 rgba(255,255,255,0.5) inset !important;
+    border-color:var(--accent) !important;
+  }
+
+  /* 6. Hero floating pills around the stage */
+  .stage-outer{position:relative}
+  .hp{
+    position:absolute;display:inline-flex;align-items:center;gap:7px;
+    padding:5px 13px 5px 9px;border-radius:999px;
+    background:rgba(255,255,255,0.94);border:1px solid rgba(14,14,16,0.14);
+    font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink);
+    box-shadow:0 2px 14px rgba(0,0,0,0.09),0 0 0 1px rgba(255,255,255,0.7) inset;
+    white-space:nowrap;pointer-events:none;z-index:10;
+  }
+  .hp .hpdot{width:6px;height:6px;border-radius:50%;flex:0 0 6px;background:var(--good);box-shadow:0 0 6px var(--good)}
+  .hp-1{top:54px;left:-22px;animation:hp-bob 3.5s ease-in-out infinite}
+  .hp-2{top:48%;right:-22px;animation:hp-bob 4.2s ease-in-out infinite .7s}
+  .hp-3{bottom:68px;left:-22px;animation:hp-bob 3.8s ease-in-out infinite 1.4s}
+  @keyframes hp-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @media(max-width:960px){.hp{display:none}}
+
+  /* 7. CTA poster animated dot ticker grid */
+  .cta-drift{
+    position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(circle,rgba(255,255,255,0.20) 1px,transparent 1px);
+    background-size:28px 28px;
+    animation:drift-x 18s linear infinite;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black 10%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black 10%,transparent 75%);
+  }
+  @keyframes drift-x{to{background-position:28px 0}}
+
   /* ─── HOW IT WORKS ─── */
   .how{padding:80px 0;border-top:1px solid var(--line)}
   .how-head{text-align:center;margin-bottom:64px}
@@ -758,6 +819,7 @@
     </div>
 
     <!-- Animated hero stage: AEO action checklist -->
+    <div class="stage-outer">
     <div class="stage" aria-hidden="true">
       <div class="stage-head">
         <span>aeo.run · session #2148</span>
@@ -778,6 +840,10 @@
         <span>WordPress 6.4+</span>
       </div>
     </div>
+    <div class="hp hp-1" aria-hidden="true"><span class="hpdot"></span>llms.txt live</div>
+    <div class="hp hp-2" aria-hidden="true"><span class="hpdot"></span>Schema ✓</div>
+    <div class="hp hp-3" aria-hidden="true"><span class="hpdot"></span>AI-ready</div>
+    </div><!-- /stage-outer -->
   </div>
 
   <!-- Logo marquee -->
@@ -847,18 +913,18 @@
       <h2>From install to <span class="accent">cited</span> in 3 steps.</h2>
       <p>No configuration wizards. No developer required. Install, activate, and AEOmatic handles the entire AEO layer automatically.</p>
     </div>
-    <div class="how-steps rv">
-      <div class="how-step">
+    <div class="how-steps">
+      <div class="how-step rv">
         <div class="how-num">1</div>
         <h3>Install the plugin</h3>
         <p>Search "AEOmatic" in WordPress plugins and activate. Zero configuration required.</p>
       </div>
-      <div class="how-step">
+      <div class="how-step rv">
         <div class="how-num">2</div>
         <h3>AEOmatic scans your site</h3>
         <p>Every post and page gets schema detection, a quotability score, and a crawler policy — automatically, in the background.</p>
       </div>
-      <div class="how-step">
+      <div class="how-step rv">
         <div class="how-num">3</div>
         <h3>AI engines start citing you</h3>
         <p>Your llms.txt, JSON-LD, and crawler directives go live. Your AEO score updates with every publish.</p>
@@ -1150,19 +1216,19 @@
       <h2>Works with everything you're already running.</h2>
       <p>AEOmatic reads your content, not your builder's markup — so it drops into your existing stack without touching your theme or performance.</p>
     </div>
-    <div class="compat-grid rv">
-      <div class="compat-card"><div class="compat-icon">EL</div>Elementor</div>
-      <div class="compat-card"><div class="compat-icon">BX</div>Bricks</div>
-      <div class="compat-card"><div class="compat-icon">DV</div>Divi</div>
-      <div class="compat-card"><div class="compat-icon">KD</div>Kadence</div>
-      <div class="compat-card"><div class="compat-icon">GP</div>GeneratePress</div>
-      <div class="compat-card"><div class="compat-icon">OX</div>Oxygen</div>
-      <div class="compat-card"><div class="compat-icon">WC</div>WooCommerce</div>
-      <div class="compat-card"><div class="compat-icon">YO</div>Yoast SEO</div>
-      <div class="compat-card"><div class="compat-icon">RM</div>RankMath</div>
-      <div class="compat-card"><div class="compat-icon">GB</div>Gutenberg</div>
-      <div class="compat-card"><div class="compat-icon">CE</div>Classic Editor</div>
-      <div class="compat-card"><div class="compat-icon">WP</div>WP 6.4+</div>
+    <div class="compat-grid">
+      <div class="compat-card rv"><div class="compat-icon">EL</div>Elementor</div>
+      <div class="compat-card rv"><div class="compat-icon">BX</div>Bricks</div>
+      <div class="compat-card rv"><div class="compat-icon">DV</div>Divi</div>
+      <div class="compat-card rv"><div class="compat-icon">KD</div>Kadence</div>
+      <div class="compat-card rv"><div class="compat-icon">GP</div>GeneratePress</div>
+      <div class="compat-card rv"><div class="compat-icon">OX</div>Oxygen</div>
+      <div class="compat-card rv"><div class="compat-icon">WC</div>WooCommerce</div>
+      <div class="compat-card rv"><div class="compat-icon">YO</div>Yoast SEO</div>
+      <div class="compat-card rv"><div class="compat-icon">RM</div>RankMath</div>
+      <div class="compat-card rv"><div class="compat-icon">GB</div>Gutenberg</div>
+      <div class="compat-card rv"><div class="compat-icon">CE</div>Classic Editor</div>
+      <div class="compat-card rv"><div class="compat-icon">WP</div>WP 6.4+</div>
     </div>
   </div>
 </section>
@@ -1245,36 +1311,36 @@
       <h2>Questions answered.</h2>
       <p>Everything you need to know before you install.</p>
     </div>
-    <div class="faq-grid rv">
-      <div class="faq-item">
+    <div class="faq-grid">
+      <div class="faq-item rv">
         <h4>Will AEOmatic conflict with Yoast SEO or RankMath?</h4>
         <p>No. AEOmatic operates on a separate AEO layer and detects existing schema plugins automatically. It adds AI-specific optimisations without overwriting your SEO setup.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item rv">
         <h4>Does it work with my page builder?</h4>
         <p>Yes — tested with Elementor, Bricks, Divi, Oxygen, Kadence, and GeneratePress. AEOmatic reads your content, not your builder's markup, so compatibility is universal.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item rv">
         <h4>Do I need an API key or external account?</h4>
         <p>No. AEOmatic runs entirely on your server with no external API calls. No SaaS dependency, no account required. Install, activate, done.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item rv">
         <h4>What's the difference between AEO and SEO?</h4>
         <p>SEO optimises for ranked links in search results. AEO optimises for citations in AI-generated answers — a completely different signal, which is why existing SEO plugins don't cover it.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item rv">
         <h4>How long before I see results?</h4>
         <p>Most sites see AI crawlers respecting new policies within 48 hours. Citation improvements in AI answers typically appear within 2–6 weeks as engines re-index your structured content.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item rv">
         <h4>Does it work on WooCommerce product pages?</h4>
         <p>Yes. AEOmatic auto-detects Product schema for WooCommerce, adding price, availability, and review structured data optimised for AI shopping queries.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item rv">
         <h4>Is it really free, forever?</h4>
         <p>Yes — GPL v2, no upsell wall, no trial period, no feature lock. All four modules (schema, llms.txt, crawlers, audit) are fully included at no cost.</p>
       </div>
-      <div class="faq-item">
+      <div class="faq-item rv">
         <h4>Can I use the REST API in production?</h4>
         <p>Yes. The REST API is fully supported and stable — used in production for headless WordPress builds and CI pipelines. See the documentation for authentication and rate limits.</p>
       </div>
@@ -1287,6 +1353,7 @@
   <div class="container">
     <div class="cta-poster rv">
       <div class="glow"></div>
+      <div class="cta-drift" aria-hidden="true"></div>
       <h2>Be cited. <span class="accent">Be quoted.</span><br>Start free today.</h2>
       <p>Free forever. Installs in under a minute. No account, no credit card, no API key — and your AEO score updates the moment you publish.</p>
       <div class="ctas">
@@ -1327,9 +1394,20 @@
 </footer>
 
 <script>
-  // Reveal on scroll
-  const io = new IntersectionObserver(es=>{for(const e of es){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}},{threshold:0.08,rootMargin:"0px 0px -40px 0px"});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  // Staggered scroll reveal — siblings cascade in 50 ms apart
+  const io = new IntersectionObserver(es => {
+    for (const e of es) {
+      if (e.isIntersecting) {
+        const parent = e.target.parentElement;
+        const siblings = parent ? Array.from(parent.querySelectorAll(':scope > .rv')) : [];
+        const idx = siblings.indexOf(e.target);
+        e.target.style.setProperty('--rv-delay', (idx >= 0 ? idx * 50 : 0) + 'ms');
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, {threshold: 0.08, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
   // Hero checklist cycle
   (function(){
@@ -1353,32 +1431,37 @@
     tick();
   })();
 
-  // Stat counters
-  function animateStat(el){
+  // Stat counters — easeOutExpo + comma formatting
+  function fmtNum(v, isFloat) {
+    if (isFloat) return v.toFixed(1);
+    const n = Math.round(v);
+    return n >= 1000 ? n.toLocaleString('en-US') : String(n);
+  }
+  function animateStat(el) {
     const target = parseFloat(el.dataset.target);
     const suffix = el.dataset.suffix || '';
-    const dur = 1400;
+    const dur = 1600;
     const start = performance.now();
     const isFloat = target % 1 !== 0;
-    el.textContent = (isFloat ? (0).toFixed(1) : '0') + suffix;
-    function step(t){
-      const p = Math.min(1,(t-start)/dur);
-      const eased = 1 - Math.pow(1-p,3);
+    el.textContent = (isFloat ? '0.0' : '0') + suffix;
+    function step(t) {
+      const p = Math.min(1, (t - start) / dur);
+      const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p); // easeOutExpo
       const v = target * eased;
-      el.textContent = (isFloat ? v.toFixed(1) : Math.round(v)) + suffix;
-      if(p<1) requestAnimationFrame(step);
+      el.textContent = fmtNum(v, isFloat) + suffix;
+      if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
-  const statIO = new IntersectionObserver(es=>{
-    for(const e of es){
-      if(e.isIntersecting){
+  const statIO = new IntersectionObserver(es => {
+    for (const e of es) {
+      if (e.isIntersecting) {
         e.target.querySelectorAll('.n[data-target]').forEach(animateStat);
         statIO.unobserve(e.target);
       }
     }
-  },{threshold:0.3});
-  document.querySelectorAll('.stats-row').forEach(el=>statIO.observe(el));
+  }, {threshold: 0.3});
+  document.querySelectorAll('.stats-row').forEach(el => statIO.observe(el));
 
   // Dev tabs — swap code content per language
   const devCode = document.querySelector('.dev-code');
