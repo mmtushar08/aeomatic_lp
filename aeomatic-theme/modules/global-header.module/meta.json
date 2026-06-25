@@ -1,0 +1,10 @@
+{
+  "label": "Global Header",
+  "css_assets": [{ "path": "module.css" }],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["navigation", "global"],
+  "is_available_for_new_content": false,
+  "global": true
+}

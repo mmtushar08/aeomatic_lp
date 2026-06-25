@@ -1,0 +1,32 @@
+[
+  {
+    "id": "label",
+    "type": "text",
+    "name": "label",
+    "label": "Section Label",
+    "default": "Trusted by 50,000+ WordPress sites — including these"
+  },
+  {
+    "id": "logos",
+    "type": "group",
+    "name": "logos",
+    "label": "Logo Items",
+    "occurrence": { "min": 1, "max": 20, "default": 8 },
+    "fields": [
+      {
+        "id": "logos--name",
+        "type": "text",
+        "name": "name",
+        "label": "Company / Site Name",
+        "default": "Slowloaf"
+      },
+      {
+        "id": "logos--logo_image",
+        "type": "image",
+        "name": "logo_image",
+        "label": "Logo Image (optional — uses text mark if empty)",
+        "default": { "src": "", "alt": "" }
+      }
+    ]
+  }
+]

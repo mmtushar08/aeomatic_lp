@@ -1,0 +1,10 @@
+{
+  "label": "Statistics",
+  "css_assets": [{ "path": "module.css" }],
+  "js_assets": [{ "path": "module.js" }],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["stats", "numbers"],
+  "is_available_for_new_content": true,
+  "icon": "bar-chart"
+}

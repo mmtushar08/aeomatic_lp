@@ -1,0 +1,136 @@
+<!--
+  templateType: page
+  label: Home Page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/template-home.png
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" prefix="og: http://ogp.me/ns#">
+<head>
+  {% include "partials/head.html" %}
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main id="main-content">
+
+    {# Hero section #}
+    {% dnd_area "hero_area" label="Hero Area", class="dnd-area--hero" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/hero.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Trust bar / Logo marquee #}
+    {% dnd_area "trust_area" label="Trust Bar / Logos", class="dnd-area--trust" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/trust-bar.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Stats section #}
+    {% dnd_area "stats_area" label="Statistics", class="dnd-area--stats" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/stats.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Feature splits #}
+    {% dnd_area "features_area" label="Features", class="dnd-area--features" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/features.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Channel cards #}
+    {% dnd_area "channels_area" label="Channels / Cards", class="dnd-area--channels" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/channels.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Testimonials #}
+    {% dnd_area "testimonials_area" label="Testimonials / Reviews", class="dnd-area--testimonials" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/testimonials.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Awards strip #}
+    {% dnd_area "awards_area" label="Awards & Ratings", class="dnd-area--awards" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/awards.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Integrations #}
+    {% dnd_area "integrations_area" label="Integrations", class="dnd-area--integrations" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/integrations.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# Developer / API section #}
+    {% dnd_area "developer_area" label="Developer / API", class="dnd-area--developer" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/developer.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+    {# CTA Poster #}
+    {% dnd_area "cta_area" label="CTA Poster", class="dnd-area--cta" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="../modules/cta-poster.module" %}{% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  {# Theme JS #}
+  {{ require_js(get_asset_url("../js/main.js")) }}
+
+</body>
+</html>

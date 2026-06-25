@@ -1,0 +1,38 @@
+<div class="trust" aria-label="Trusted by">
+  {% if module.label %}
+    <p class="trust-label">{{ module.label }}</p>
+  {% endif %}
+
+  {% if module.logos %}
+    <div class="marquee" role="img" aria-label="Companies using AEOmatic">
+      <div class="marquee-track" aria-hidden="true">
+        {# First pass #}
+        {% for logo in module.logos %}
+          <span class="mlogo">
+            {% if logo.logo_image.src %}
+              <img src="{{ logo.logo_image.src }}"
+                   alt="{{ logo.logo_image.alt | default(logo.name) }}"
+                   width="18" height="18"
+                   loading="lazy"
+                   decoding="async">
+            {% else %}
+              <span class="mlogo__mk" aria-hidden="true"></span>
+            {% endif %}
+            {{ logo.name }}
+          </span>
+        {% endfor %}
+        {# Duplicate for seamless loop #}
+        {% for logo in module.logos %}
+          <span class="mlogo" aria-hidden="true">
+            {% if logo.logo_image.src %}
+              <img src="{{ logo.logo_image.src }}" alt="" width="18" height="18" loading="lazy" decoding="async">
+            {% else %}
+              <span class="mlogo__mk"></span>
+            {% endif %}
+            {{ logo.name }}
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,86 @@
+.dev { padding: 120px 0; position: relative; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.text h2 { font-size: clamp(34px,4.2vw,52px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 500; margin: 18px 0 18px; text-wrap: balance; }
+.text p  { color: var(--ink-dim); font-size: 16px; line-height: 1.55; margin: 0 0 28px; max-width: 48ch; }
+.accent {
+  background: linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.window {
+  border: 1px solid #1a1a22;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #06060a;
+  box-shadow: 0 30px 80px rgba(20,30,80,0.18);
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: #08080c;
+}
+
+.tab {
+  padding: 14px 18px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: rgba(244,245,247,0.42);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  transition: color .15s, background .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+}
+.tab:last-child { border-right: none; }
+.tab:hover { color: #f4f5f7; }
+.tabOn { color: #f4f5f7 !important; background: #06060a !important; }
+.tabOn .badge { color: oklch(0.74 0.18 248) !important; background: rgba(80,140,220,0.10) !important; }
+
+.badge {
+  color: rgba(244,245,247,0.42);
+  font-weight: 500;
+  font-family: var(--mono);
+  font-size: 9px;
+  background: rgba(255,255,255,0.05);
+  padding: 2px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.code {
+  padding: 20px 24px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: rgba(244,245,247,0.66);
+  max-height: 380px;
+  overflow: auto;
+  white-space: pre;
+  margin: 0;
+}
+
+/* syntax highlight */
+.com { color: rgba(244,245,247,0.42); }
+.key { color: oklch(0.74 0.16 280); }
+.fn  { color: oklch(0.74 0.18 248); }
+.str { color: oklch(0.82 0.14 145); }
+.num { color: oklch(0.82 0.14 60); }
+
+@media (max-width: 960px) { .grid { grid-template-columns: 1fr; gap: 40px; } }

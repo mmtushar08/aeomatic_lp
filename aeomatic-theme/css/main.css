@@ -1,0 +1,241 @@
+/* ============================================================
+   AEOmatic Theme — main.css
+   CSS custom properties driven by HubSpot theme settings.
+   All design tokens, resets, utilities, and shared components.
+   ============================================================ */
+
+/* ─── THEME TOKENS ─── */
+:root {
+  /* Colors — overridden by HubSpot theme settings */
+  --accent:          {{ theme.colors.accent.color }};
+  --accent-2:        {{ theme.colors.accent_2.color }};
+  --good:            {{ theme.colors.good.color }};
+  --bg:              {{ theme.colors.bg.color }};
+  --bg-2:            {{ theme.colors.bg_2.color }};
+  --card:            {{ theme.colors.bg_2.color }};
+  --ink:             {{ theme.colors.ink.color }};
+
+  /* Derived opacity variants */
+  --line:            rgba(15,15,20,0.08);
+  --line-2:          rgba(15,15,20,0.16);
+  --ink-dim:         rgba(14,14,16,0.66);
+  --ink-faint:       rgba(14,14,16,0.46);
+  --ink-ghost:       rgba(14,14,16,0.24);
+  --accent-glow:     rgba(67,97,194,0.28);
+  --warn:            oklch(0.62 0.16 70);
+
+  /* Typography */
+  --sans: "{{ theme.typography.body_font.font }}", system-ui, sans-serif;
+  --mono: "{{ theme.typography.mono_font.font }}", ui-monospace, monospace;
+
+  /* Layout */
+  --maxw:    {{ theme.layout.max_width }}px;
+  --pad-x:   clamp(20px, 4vw, 40px);
+
+  /* Border radius scale */
+  {% if theme.layout.border_radius == "sharp" %}
+  --radius-sm:  4px;
+  --radius-md:  6px;
+  --radius-lg:  10px;
+  --radius-xl:  14px;
+  --radius-pill: 999px;
+  {% elif theme.layout.border_radius == "rounded" %}
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-pill: 999px;
+  {% else %}
+  --radius-sm:  6px;
+  --radius-md:  8px;
+  --radius-lg:  14px;
+  --radius-xl:  18px;
+  --radius-pill: 999px;
+  {% endif %}
+
+  /* Marquee speed */
+  {% if theme.animations.marquee_speed == "slow" %}
+  --marquee-dur: 60s;
+  --marquee-dur-r2: 80s;
+  {% elif theme.animations.marquee_speed == "fast" %}
+  --marquee-dur: 25s;
+  --marquee-dur-r2: 35s;
+  {% else %}
+  --marquee-dur: 40s;
+  --marquee-dur-r2: 60s;
+  {% endif %}
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background:
+    radial-gradient(1200px 700px at 50% -300px, rgba(80,120,220,0.10), transparent 70%),
+    var(--bg);
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+img { max-width: 100%; height: auto; display: block; }
+ul, ol { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+p { margin: 0; }
+::selection { background: var(--accent-glow); color: var(--ink); }
+
+/* ─── LAYOUT ─── */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── TYPOGRAPHY UTILITIES ─── */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.sec-h {
+  font-size: clamp(36px, 4.6vw, 60px);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  margin: 0;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+
+.accent-text {
+  background: linear-gradient(120deg, oklch(0.78 0.18 248), oklch(0.66 0.22 280));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ─── SHARED BUTTON STYLES ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1;
+  font-family: var(--sans);
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, oklch(0.56 0.20 252), oklch(0.46 0.20 268));
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.06),
+    0 6px 22px rgba(60,100,200,0.30),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.10),
+    0 10px 30px rgba(60,100,200,0.42),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+.btn-ghost {
+  color: var(--ink-dim);
+  border-color: var(--line-2);
+}
+
+.btn-ghost:hover {
+  color: var(--ink);
+  background: rgba(14,14,16,0.04);
+}
+
+.btn .arrow {
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.btn:hover .arrow { transform: translateX(2px); }
+
+/* ─── SCROLL REVEAL ─── */
+{% if theme.animations.reveal_on_scroll %}
+.rv {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1);
+}
+.rv.in {
+  opacity: 1;
+  transform: none;
+}
+{% endif %}
+
+/* ─── DARK DATA SURFACE (shared by hero stage, feature visuals, dev window) ─── */
+.dark-surface {
+  background: linear-gradient(180deg, #0d0d12, #08080c);
+  border: 1px solid #1a1a22;
+  color: #f4f5f7;
+  box-shadow: 0 30px 80px rgba(20,30,80,0.18), 0 4px 14px rgba(20,30,80,0.06);
+}
+
+/* ─── SKIP LINK (Accessibility) ─── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius-md) 0;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ─── VISUALLY HIDDEN (screen-reader only) ─── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}

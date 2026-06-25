@@ -1,0 +1,60 @@
+.reviews { padding: 120px 0; position: relative; overflow: hidden; }
+
+.head { text-align: center; margin-bottom: 56px; }
+.head h2 { font-size: clamp(36px,4.6vw,60px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 500; }
+.head p  { margin-top: 20px; color: var(--ink-dim); font-size: 16px; max-width: 540px; margin-left: auto; margin-right: auto; line-height: 1.55; }
+.accent {
+  background: linear-gradient(120deg, oklch(0.52 0.20 252), oklch(0.42 0.22 280));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.row {
+  overflow: hidden;
+  position: relative;
+  margin: 0 calc(-1 * var(--pad-x));
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+.row + .row { margin-top: 18px; }
+
+.track {
+  display: flex;
+  gap: 18px;
+  animation: scroll-r1 60s linear infinite;
+  width: max-content;
+  padding: 8px 0;
+}
+.row:hover .track { animation-play-state: paused; }
+
+.rowReverse .track { animation: scroll-r2 75s linear infinite reverse; }
+
+@keyframes scroll-r1 { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes scroll-r2 { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+.card {
+  width: 380px;
+  flex: 0 0 380px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 4px 14px rgba(20,30,80,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+
+.stars { color: var(--warn); font-size: 13px; letter-spacing: 2px; }
+.quote { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink); text-wrap: pretty; letter-spacing: -0.005em; }
+.foot  { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.av {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, oklch(0.6 0.16 248), oklch(0.42 0.12 280));
+  font-family: var(--mono); font-size: 11px; display: grid; place-items: center;
+  color: #fff; font-weight: 500; letter-spacing: 0.04em; flex-shrink: 0;
+}
+.nm { font-size: 13px; font-weight: 500; letter-spacing: -0.005em; }
+.ti { font-size: 11.5px; color: var(--ink-faint); }
+
+@media (prefers-reduced-motion: reduce) { .track { animation: none; } }

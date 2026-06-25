@@ -1,0 +1,10 @@
+{
+  "label": "Hero",
+  "css_assets": [{ "path": "module.css" }],
+  "js_assets": [{ "path": "module.js" }],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["hero", "above-fold"],
+  "is_available_for_new_content": true,
+  "icon": "layout"
+}

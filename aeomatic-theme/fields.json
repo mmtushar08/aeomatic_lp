@@ -1,0 +1,184 @@
+[
+  {
+    "type": "group",
+    "name": "colors",
+    "label": "Brand Colors",
+    "tab": "STYLE",
+    "fields": [
+      {
+        "id": "colors--accent",
+        "type": "color",
+        "name": "accent",
+        "label": "Accent / Primary",
+        "default": { "color": "#4361c2", "opacity": 100 }
+      },
+      {
+        "id": "colors--accent_2",
+        "type": "color",
+        "name": "accent_2",
+        "label": "Accent / Secondary",
+        "default": { "color": "#3730a3", "opacity": 100 }
+      },
+      {
+        "id": "colors--good",
+        "type": "color",
+        "name": "good",
+        "label": "Success / Good",
+        "default": { "color": "#1a9448", "opacity": 100 }
+      },
+      {
+        "id": "colors--bg",
+        "type": "color",
+        "name": "bg",
+        "label": "Page Background",
+        "default": { "color": "#f7f5f0", "opacity": 100 }
+      },
+      {
+        "id": "colors--bg_2",
+        "type": "color",
+        "name": "bg_2",
+        "label": "Surface / Card Background",
+        "default": { "color": "#ffffff", "opacity": 100 }
+      },
+      {
+        "id": "colors--ink",
+        "type": "color",
+        "name": "ink",
+        "label": "Primary Text",
+        "default": { "color": "#0e0e10", "opacity": 100 }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "typography",
+    "label": "Typography",
+    "tab": "STYLE",
+    "fields": [
+      {
+        "id": "typography--body_font",
+        "type": "font",
+        "name": "body_font",
+        "label": "Body Font",
+        "default": {
+          "font": "Geist",
+          "font_set": "GOOGLE",
+          "size": 16,
+          "size_unit": "px",
+          "color": "#0e0e10"
+        }
+      },
+      {
+        "id": "typography--mono_font",
+        "type": "font",
+        "name": "mono_font",
+        "label": "Monospace Font",
+        "default": {
+          "font": "Geist Mono",
+          "font_set": "GOOGLE",
+          "size": 12,
+          "size_unit": "px",
+          "color": "#0e0e10"
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "layout",
+    "label": "Layout & Spacing",
+    "tab": "STYLE",
+    "fields": [
+      {
+        "id": "layout--max_width",
+        "type": "number",
+        "name": "max_width",
+        "label": "Container Max Width (px)",
+        "default": 1240
+      },
+      {
+        "id": "layout--border_radius",
+        "type": "choice",
+        "name": "border_radius",
+        "label": "Border Radius Scale",
+        "default": "default",
+        "choices": [
+          ["sharp", "Sharp (4px base)"],
+          ["default", "Default (8–16px base)"],
+          ["rounded", "Rounded (12–24px base)"]
+        ]
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "buttons",
+    "label": "Buttons",
+    "tab": "STYLE",
+    "fields": [
+      {
+        "id": "buttons--primary_bg",
+        "type": "color",
+        "name": "primary_bg",
+        "label": "Primary Button Background",
+        "default": { "color": "#4361c2", "opacity": 100 }
+      },
+      {
+        "id": "buttons--primary_text",
+        "type": "color",
+        "name": "primary_text",
+        "label": "Primary Button Text",
+        "default": { "color": "#ffffff", "opacity": 100 }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "header_settings",
+    "label": "Header",
+    "tab": "STYLE",
+    "fields": [
+      {
+        "id": "header_settings--sticky",
+        "type": "boolean",
+        "name": "sticky",
+        "label": "Sticky / Fixed Header",
+        "default": true
+      },
+      {
+        "id": "header_settings--show_social_proof",
+        "type": "boolean",
+        "name": "show_social_proof",
+        "label": "Show Social Proof Text in Nav",
+        "default": true
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "animations",
+    "label": "Animations",
+    "tab": "STYLE",
+    "fields": [
+      {
+        "id": "animations--reveal_on_scroll",
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Enable Scroll Reveal Animations",
+        "default": true
+      },
+      {
+        "id": "animations--marquee_speed",
+        "type": "choice",
+        "name": "marquee_speed",
+        "label": "Marquee / Scroll Animation Speed",
+        "default": "normal",
+        "choices": [
+          ["slow", "Slow"],
+          ["normal", "Normal"],
+          ["fast", "Fast"]
+        ]
+      }
+    ]
+  }
+]

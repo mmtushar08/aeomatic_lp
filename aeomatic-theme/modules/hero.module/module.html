@@ -1,0 +1,102 @@
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container hero-inner">
+
+    {# Left: copy #}
+    <div class="hero-copy">
+
+      {% if module.badge_tag or module.badge_text %}
+        <div class="badge" role="note">
+          {% if module.badge_tag %}
+            <span class="badge__tag">{{ module.badge_tag }}</span>
+          {% endif %}
+          {% if module.badge_text %}
+            <span class="badge__text">{{ module.badge_text }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <h1 class="hero-h" id="hero-heading">
+        {% if module.heading_line_1 %}
+          <span class="hero-h__grad">{{ module.heading_line_1 }}</span><br>
+        {% endif %}
+        {% if module.heading_line_2 %}
+          <span class="hero-h__accent">{{ module.heading_line_2 }}</span><br>
+        {% endif %}
+        {% if module.heading_line_3 %}
+          <span class="hero-h__grad hero-h__grad--dim">{{ module.heading_line_3 }}</span>
+        {% endif %}
+      </h1>
+
+      {% if module.subheadline %}
+        <div class="hero-sub">{{ module.subheadline }}</div>
+      {% endif %}
+
+      <div class="hero-ctas">
+        <a class="btn btn-primary"
+           href="{{ module.primary_cta_url.url.href }}"
+           {% if module.primary_cta_url.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+          {{ module.primary_cta_text }}
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="btn btn-ghost"
+           href="{{ module.secondary_cta_url.url.href }}"
+           {% if module.secondary_cta_url.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+          {{ module.secondary_cta_text }}
+        </a>
+      </div>
+
+      {% if module.meta_items %}
+        <ul class="hero-meta" aria-label="Key features">
+          {% for i in range(module.meta_items|length) %}
+            {% set item = module.meta_items[i] %}
+            {% if i > 0 %}
+              <li class="hero-meta__dot" aria-hidden="true"></li>
+            {% endif %}
+            <li>{{ item.text }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+    </div>
+
+    {# Right: animated AEO stage #}
+    <div class="stage" aria-hidden="true" role="presentation">
+      <div class="stage__head">
+        <span class="stage__session">aeo.run · session #2148</span>
+        <span class="stage__lights">
+          <i></i><i></i><i></i>
+        </span>
+      </div>
+
+      <div class="stage__body">
+        <p class="stage__title">
+          Optimizing
+          <strong>{{ module.stage_title_site }}</strong>
+          for citation…
+        </p>
+
+        {% if module.stage_checklist %}
+          <ol class="checklist" id="hero-checklist">
+            {% for i in range(module.stage_checklist|length) %}
+              {% set step = module.stage_checklist[i] %}
+              <li class="ci" data-step="{{ i }}">
+                <span class="ci__indicator"></span>
+                <span class="ci__text">{{ step.text }}</span>
+                <span class="ci__meta">step {{ i + 1 }} / {{ module.stage_checklist|length }}</span>
+              </li>
+            {% endfor %}
+          </ol>
+        {% endif %}
+      </div>
+
+      <div class="stage__foot">
+        <span class="stage__live">
+          <span class="stage__dot"></span>
+          {{ module.stage_live_text }}
+        </span>
+        <span>{{ module.stage_platform_text }}</span>
+      </div>
+    </div>
+
+  </div>
+</section>

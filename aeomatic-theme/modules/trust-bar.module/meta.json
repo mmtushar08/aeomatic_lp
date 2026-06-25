@@ -1,0 +1,10 @@
+{
+  "label": "Trust Bar / Logo Marquee",
+  "css_assets": [{ "path": "module.css" }],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["social-proof", "logos"],
+  "is_available_for_new_content": true,
+  "icon": "star"
+}

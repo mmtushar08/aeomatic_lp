@@ -1,0 +1,54 @@
+{% comment %}
+  AEOmatic Theme — head.html
+  Global <head> partial. Included by all page templates.
+{% endcomment %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+{# Page title — HubSpot injects the page title via standard HubL #}
+<title>{{ content.html_title }}</title>
+
+{# Meta description #}
+{% if content.meta_description %}
+  <meta name="description" content="{{ content.meta_description }}">
+{% endif %}
+
+{# Canonical URL #}
+<link rel="canonical" href="{{ content.absolute_url }}">
+
+{# Open Graph #}
+<meta property="og:title" content="{{ content.html_title }}">
+{% if content.meta_description %}
+  <meta property="og:description" content="{{ content.meta_description }}">
+{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ content.absolute_url }}">
+{% if content.featured_image %}
+  <meta property="og:image" content="{{ content.featured_image }}">
+{% endif %}
+
+{# Twitter Card #}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ content.html_title }}">
+{% if content.meta_description %}
+  <meta name="twitter:description" content="{{ content.meta_description }}">
+{% endif %}
+{% if content.featured_image %}
+  <meta name="twitter:image" content="{{ content.featured_image }}">
+{% endif %}
+
+{# Google Fonts — Geist & Geist Mono #}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+</noscript>
+
+{# Theme CSS #}
+{{ require_css(get_asset_url("../css/main.css")) }}
+
+{# Standard HubSpot head requirements #}
+{{ standard_header_includes }}

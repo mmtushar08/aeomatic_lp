@@ -1,0 +1,125 @@
+[
+  {
+    "id": "badge_tag",
+    "type": "text",
+    "name": "badge_tag",
+    "label": "Badge Tag (e.g. v1.6)",
+    "default": "v1.6"
+  },
+  {
+    "id": "badge_text",
+    "type": "text",
+    "name": "badge_text",
+    "label": "Badge Description",
+    "default": "Free WordPress plugin — just shipped"
+  },
+  {
+    "id": "heading_line_1",
+    "type": "text",
+    "name": "heading_line_1",
+    "label": "H1 — Line 1 (dark text)",
+    "default": "Be cited by"
+  },
+  {
+    "id": "heading_line_2",
+    "type": "text",
+    "name": "heading_line_2",
+    "label": "H1 — Line 2 (accent gradient text)",
+    "default": "every AI answer engine"
+  },
+  {
+    "id": "heading_line_3",
+    "type": "text",
+    "name": "heading_line_3",
+    "label": "H1 — Line 3 (dark text, dimmed)",
+    "default": "automatically."
+  },
+  {
+    "id": "subheadline",
+    "type": "richtext",
+    "name": "subheadline",
+    "label": "Subheadline",
+    "default": "<p>From schema detection to <code>llms.txt</code>, AEOmatic handles the entire answer-engine layer for WordPress — so ChatGPT, Claude, Gemini, Perplexity and Google AI Overviews quote your URL, not someone else's.</p>"
+  },
+  {
+    "id": "primary_cta_text",
+    "type": "text",
+    "name": "primary_cta_text",
+    "label": "Primary CTA Text",
+    "default": "Download free"
+  },
+  {
+    "id": "primary_cta_url",
+    "type": "link",
+    "name": "primary_cta_url",
+    "label": "Primary CTA URL",
+    "default": { "url": { "href": "#download" }, "open_in_new_tab": false }
+  },
+  {
+    "id": "secondary_cta_text",
+    "type": "text",
+    "name": "secondary_cta_text",
+    "label": "Secondary CTA Text",
+    "default": "See how it works"
+  },
+  {
+    "id": "secondary_cta_url",
+    "type": "link",
+    "name": "secondary_cta_url",
+    "label": "Secondary CTA URL",
+    "default": { "url": { "href": "#how" }, "open_in_new_tab": false }
+  },
+  {
+    "id": "meta_items",
+    "type": "group",
+    "name": "meta_items",
+    "label": "Meta / Trust Items",
+    "occurrence": { "min": 0, "max": 8, "default": 4 },
+    "fields": [
+      {
+        "id": "meta_items--text",
+        "type": "text",
+        "name": "text",
+        "label": "Item Text",
+        "default": "✓ Free forever"
+      }
+    ]
+  },
+  {
+    "id": "stage_title_site",
+    "type": "text",
+    "name": "stage_title_site",
+    "label": "Stage — Site Name in Title",
+    "default": "slowloafkitchen.com"
+  },
+  {
+    "id": "stage_checklist",
+    "type": "group",
+    "name": "stage_checklist",
+    "label": "Stage — Checklist Steps",
+    "occurrence": { "min": 1, "max": 10, "default": 5 },
+    "fields": [
+      {
+        "id": "stage_checklist--text",
+        "type": "text",
+        "name": "text",
+        "label": "Step Label",
+        "default": "Detecting schema type"
+      }
+    ]
+  },
+  {
+    "id": "stage_live_text",
+    "type": "text",
+    "name": "stage_live_text",
+    "label": "Stage — Live Status Text",
+    "default": "live · 12 citations / hr"
+  },
+  {
+    "id": "stage_platform_text",
+    "type": "text",
+    "name": "stage_platform_text",
+    "label": "Stage — Platform Text",
+    "default": "WordPress 6.4+"
+  }
+]

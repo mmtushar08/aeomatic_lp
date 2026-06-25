@@ -1,0 +1,62 @@
+.channels { padding: 120px 0; }
+
+.head { text-align: center; margin-bottom: 60px; }
+.head h2 { font-size: clamp(36px,4.6vw,60px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 500; }
+.head p  { margin-top: 20px; color: var(--ink-dim); font-size: 17px; line-height: 1.55; max-width: 600px; margin-left: auto; margin-right: auto; }
+.accent {
+  background: linear-gradient(120deg, oklch(0.52 0.20 252), oklch(0.42 0.22 280));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.ch {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 6px 18px rgba(20,30,80,0.04);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.ch:hover {
+  border-color: var(--line-2);
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 12px 28px rgba(20,30,80,0.10);
+}
+.ch::before {
+  content: "";
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,140,220,0.18), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.chIcon {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: rgba(80,120,200,0.10);
+  border: 1px solid rgba(80,120,200,0.22);
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--accent);
+  margin-bottom: 18px;
+  position: relative; z-index: 1;
+}
+
+.chTitle { font-size: 19px; letter-spacing: -0.02em; line-height: 1.2; font-weight: 500; margin-bottom: 8px; position: relative; z-index: 1; }
+.chDesc  { color: var(--ink-dim); font-size: 13.5px; line-height: 1.55; position: relative; z-index: 1; flex: 1; }
+.chCta   { margin-top: 18px; font-size: 13px; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; position: relative; z-index: 1; text-decoration: none; transition: opacity .15s; }
+.chCta:hover { opacity: 0.8; }
+
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
