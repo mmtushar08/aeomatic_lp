@@ -1,0 +1,11 @@
+{
+  "label": "AEOmatic Theme",
+  "preview_path": "/",
+  "screenshot_path": "images/theme-preview.png",
+  "enable_domain_stylesheets": false,
+  "default_style_path": "css/main.css",
+  "version": "1.0.0",
+  "author": {
+    "name": "AEOmatic"
+  }
+}

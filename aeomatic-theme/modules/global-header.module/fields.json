@@ -1,0 +1,53 @@
+[
+  {
+    "id": "brand_name",
+    "type": "text",
+    "name": "brand_name",
+    "label": "Brand Name",
+    "default": "AEOmatic"
+  },
+  {
+    "id": "nav_links",
+    "type": "group",
+    "name": "nav_links",
+    "label": "Navigation Links",
+    "occurrence": { "min": 0, "max": 10, "default": 4 },
+    "fields": [
+      {
+        "id": "nav_links--label",
+        "type": "text",
+        "name": "label",
+        "label": "Link Label",
+        "default": "Features"
+      },
+      {
+        "id": "nav_links--url",
+        "type": "link",
+        "name": "url",
+        "label": "Link URL",
+        "default": { "url": { "href": "#features" }, "open_in_new_tab": false }
+      }
+    ]
+  },
+  {
+    "id": "social_proof_text",
+    "type": "text",
+    "name": "social_proof_text",
+    "label": "Social Proof Text (e.g. ★ 3.1k on WP.org)",
+    "default": "★ 3.1k on WP.org"
+  },
+  {
+    "id": "cta_text",
+    "type": "text",
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "default": "Download free"
+  },
+  {
+    "id": "cta_url",
+    "type": "link",
+    "name": "cta_url",
+    "label": "CTA Button URL",
+    "default": { "url": { "href": "#download" }, "open_in_new_tab": false }
+  }
+]
